@@ -6063,23 +6063,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Leysi\\.nuget\\packages\\": {},
+    "C:\\Users\\manoly\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Cine\\Cine.csproj",
+      "projectUniqueName": "D:\\3.1 CC\\IS\\Proyecto Final\\Cine\\Cine.csproj",
       "projectName": "Cine",
-      "projectPath": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Cine\\Cine.csproj",
-      "packagesPath": "C:\\Users\\Leysi\\.nuget\\packages\\",
-      "outputPath": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Cine\\obj\\",
+      "projectPath": "D:\\3.1 CC\\IS\\Proyecto Final\\Cine\\Cine.csproj",
+      "packagesPath": "C:\\Users\\manoly\\.nuget\\packages\\",
+      "outputPath": "D:\\3.1 CC\\IS\\Proyecto Final\\Cine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Leysi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\manoly\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6138,7 +6138,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

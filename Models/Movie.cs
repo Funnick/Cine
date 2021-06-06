@@ -5,10 +5,48 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace Cine.Models{
+    [Table("Movie")]
     public class Movie{
-        public int MovieID { get; set; }
+        [Key]
+        [Required]
+        [Column("MovieId")]
+        public int MovieId { get; set; }
 
-        [StringLength(200)]
-        public string Name { get; set; }
+        [Required]
+        [Column("Title")]
+        [MaxLength(200)]
+        public string Title { get; set; }
+        
+        [Required]
+        [Column("Genre")]
+        [MaxLength(100)]
+        public string Genre { get; set; }
+        
+        [Required]
+        [Column("Duration")]
+        public DateTime Duration { get; set; }
+        
+        [Required]
+        [Column("Country")]
+        [MaxLength(50)]
+        public string Country { get; set; }
+        
+        [Required]
+        [Column("Category")]
+        [MaxLength(50)]
+        public string Category { get; set; }
+        
+        [Required]
+        [Column("Year")]
+        public int Year { get; set; }
+        
+        [Required]
+        [Column("Synopsis")]
+        [MaxLength(300)]
+        public string Synopsis { get; set; }
+        
+        public virtual ICollection<Director> Directors { get; set; }
+        
+        public virtual ICollection<Actor> Actors { get; set; }
     }
 }

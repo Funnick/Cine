@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
 using Cine.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Cine
 {

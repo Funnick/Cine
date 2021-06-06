@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Matcom\\güeb\\Back End Dev\\C#\\Cine\\Cine.csproj": {}
+    "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj": {}
   },
   "projects": {
-    "E:\\Matcom\\güeb\\Back End Dev\\C#\\Cine\\Cine.csproj": {
+    "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Cine\\Cine.csproj",
+        "projectUniqueName": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj",
         "projectName": "Cine",
-        "projectPath": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Cine\\Cine.csproj",
+        "projectPath": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj",
         "packagesPath": "C:\\Users\\Leysi\\.nuget\\packages\\",
-        "outputPath": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Cine\\obj\\",
+        "outputPath": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -54,6 +54,12 @@
               "version": "[5.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.5, )"
             }

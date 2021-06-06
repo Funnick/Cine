@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\3.1 CC\\IS\\Proyecto Final\\Cine\\Cine.csproj": {}
+    "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj": {}
   },
   "projects": {
-    "D:\\3.1 CC\\IS\\Proyecto Final\\Cine\\Cine.csproj": {
+    "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\3.1 CC\\IS\\Proyecto Final\\Cine\\Cine.csproj",
+        "projectUniqueName": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj",
         "projectName": "Cine",
-        "projectPath": "D:\\3.1 CC\\IS\\Proyecto Final\\Cine\\Cine.csproj",
-        "packagesPath": "C:\\Users\\manoly\\.nuget\\packages\\",
-        "outputPath": "D:\\3.1 CC\\IS\\Proyecto Final\\Cine\\obj\\",
+        "projectPath": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj",
+        "packagesPath": "C:\\Users\\Leysi\\.nuget\\packages\\",
+        "outputPath": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\manoly\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Leysi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -56,6 +56,12 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[5.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.5, )"
             }
           },
           "imports": [
@@ -76,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

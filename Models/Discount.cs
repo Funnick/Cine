@@ -5,21 +5,25 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cine.Models
 {
-    [Table("Promotion")]
-    public class Promotion
+    [Table("Discount")]
+    public class Discount
     {
-        [Required]
-        [Column("IdD")]
         [Key]
-        public int IdD { get; set; }
+        [Required]
+        [Column("DiscountId")]
+        public int DiscountId { get; set; }
         
         [Required]
-        [Column("Discount")]
-        public decimal Discount { get; set; }
+        [Column("Percent")]
+        public decimal Percent { get; set; }
         
         [Required]
         [Column("Description")]
         [MaxLength(300)]
         public string Description { get; set; }
+        
+        public virtual ICollection<Show> Shows { get; set; }
+        
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 }

@@ -8,13 +8,30 @@ namespace Cine.Models
     [Table("Ticket")]
     public class Ticket
     {
-        [Required]
-        [Column("IdE")]
         [Key]
-        public int IdE { get; set; }
+        [Required]
+        [Column("TicketId")]
+        public int TicketId { get; set; }
         
         [Required]
         [Column("Price")]
         public decimal Price { get; set; }
+
+        [Required] 
+        public int SeatNumber { get; set; }
+        
+        [Required]
+        public int TheaterUserId { get; set; }
+        
+        [Required]
+        public int ShowId { get; set; }
+        
+        [Required] 
+        public virtual TheaterUser TheaterUser { get; set; }
+        
+        [Required]
+        public virtual Show Show { get; set; }
+        
+        public virtual ICollection<Discount> Discounts { get; set; }
     }
 }

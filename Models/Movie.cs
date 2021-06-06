@@ -7,9 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Cine.Models{
     [Table("Movie")]
     public class Movie{
+        [Key]
         [Required]
         [Column("MovieId")]
-        [Key]
         public int MovieId { get; set; }
 
         [Required]
@@ -18,9 +18,9 @@ namespace Cine.Models{
         public string Title { get; set; }
         
         [Required]
-        [Column("Gender")]
+        [Column("Genre")]
         [MaxLength(100)]
-        public string Gender { get; set; }
+        public string Genre { get; set; }
         
         [Required]
         [Column("Duration")]
@@ -37,12 +37,16 @@ namespace Cine.Models{
         public string Category { get; set; }
         
         [Required]
-        [Column("Age")]
-        public int Age { get; set; }
+        [Column("Year")]
+        public int Year { get; set; }
         
         [Required]
         [Column("Synopsis")]
         [MaxLength(300)]
         public string Synopsis { get; set; }
+        
+        public virtual ICollection<Director> Directors { get; set; }
+        
+        public virtual ICollection<Actor> Actors { get; set; }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace Cine.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Cine.Models
 {
-    public class Director
+    public class Director : Producer
     {
         
     }

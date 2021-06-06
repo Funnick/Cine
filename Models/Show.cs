@@ -8,9 +8,9 @@ namespace Cine.Models
     [Table("Show")]
     public class Show
     {
+        [Key]
         [Required]
         [Column("StartTime")]
-        [Key]
         public DateTime StartTime { get; set; }
         
         [Required]
@@ -20,5 +20,21 @@ namespace Cine.Models
         [Required]
         [Column("Date")]
         public DateTime Date { get; set; }
+
+        [Required] 
+        public int MovieId { get; set; }
+        
+        [Required]
+        public int CinemaId { get; set; }
+        
+        [Required]
+        public virtual Movie Movie { get; set; }
+        
+        [Required]
+        public virtual Cinema Cinema { get; set; }
+
+        public virtual ICollection<Ticket> Ticekts { get; set; }
+        
+        public virtual ICollection<Discount> Discount { get; set; }
     }
 }

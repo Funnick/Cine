@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj": {}
+    "C:\\Users\\Jaime\\Documents\\MATCOM\\3ero\\IS\\Cine\\Cine.csproj": {}
   },
   "projects": {
-    "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj": {
+    "C:\\Users\\Jaime\\Documents\\MATCOM\\3ero\\IS\\Cine\\Cine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj",
+        "projectUniqueName": "C:\\Users\\Jaime\\Documents\\MATCOM\\3ero\\IS\\Cine\\Cine.csproj",
         "projectName": "Cine",
-        "projectPath": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\Cine.csproj",
-        "packagesPath": "C:\\Users\\Leysi\\.nuget\\packages\\",
-        "outputPath": "E:\\Matcom\\güeb\\Back End Dev\\C#\\Truly\\Cine\\obj\\",
+        "projectPath": "C:\\Users\\Jaime\\Documents\\MATCOM\\3ero\\IS\\Cine\\Cine.csproj",
+        "packagesPath": "C:\\Users\\Jaime\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jaime\\Documents\\MATCOM\\3ero\\IS\\Cine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Leysi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jaime\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +43,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Entity": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -62,6 +70,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.5, )"
+            },
+            "sqlite": {
+              "target": "Package",
+              "version": "[3.13.0, )"
             }
           },
           "imports": [
@@ -82,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

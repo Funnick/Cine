@@ -1,0 +1,48 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/tailwindcss/dist/tailwind.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+    </style>
+</head>
+<body class="">
+    <div class="absolute flex h-full w-full">
+        <div class="md:w-1/5 hidden md:flex h-full overflow-auto bg-gradient-to-t from-black to-white ">
+            <div class="w-full">
+                <div class="pb-4 w-full  text-center  bg-gray-100 text-2xl border-solid shadow-2xl border-black">
+                    This Week
+                </div>
+            </div>
+        </div>
+        <div class="md:w-3/5 w-full h-full overflow-hidden bg-cover bg-no-repeat" style="background-image:url('@Url.Content("~/images/bg.jpg")');">
+            <!--Navigator-->
+            <div class="flex">
+                <div class="flex-1 ">
+                    <div class="inline-block mt-2 ml-2 text-5xl text-white text-center subpixel-antialiased font-sans">
+                        Cine+
+                    </div>
+                </div>
+                <div class="flex-1 text-2xl text-white text-center subpixel-antialiased font-sans">
+                    <button class="rigt-0 mt-4 hover:bg-white hover:text-black hover:scale-125 p-2 rounded-lg transition duration-300 ease-in-out transform">Iniciar Sesion</button>
+                </div>
+                <div>
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        <div class="md:w-1/5 hidden md:flex bg-gradient-to-t from-black to-white  h-full overflow-auto">
+            <div class="w-full">
+                <div class="pb-4 w-full  bg-gray-100 text-center  text-2xl border-solid shadow-2xl border-black">
+                    Comming soon
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

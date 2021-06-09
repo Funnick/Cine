@@ -7,7 +7,9 @@
   <ItemGroup>
     <PackageReference Include="Entity" Version="1.0.0" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.6">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.6"/>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -22,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
@@ -35,6 +37,39 @@
     <Folder Include="wwwroot\lib\jquery-validation\dist\" />
     <Folder Include="wwwroot\lib\jquery\" />
     <Folder Include="wwwroot\lib\jquery\dist\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-brands-400.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-brands-400.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-brands-400.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-brands-400.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-brands-400.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-regular-400.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-regular-400.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-regular-400.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-regular-400.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-regular-400.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-solid-900.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-solid-900.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-solid-900.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-solid-900.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\webfonts\fa-solid-900.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-brands-400.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-brands-400.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-brands-400.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-brands-400.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-brands-400.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-regular-400.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-regular-400.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-regular-400.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-regular-400.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-regular-400.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-solid-900.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-solid-900.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-solid-900.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-solid-900.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\webfonts\fa-solid-900.woff2" />
   </ItemGroup>
 
 </Project>

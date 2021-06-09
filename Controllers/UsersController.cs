@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cine.Controllers
 {
-    public class Users : Controller
+    public class UsersController : Controller
     {
         public IActionResult Login()
         {

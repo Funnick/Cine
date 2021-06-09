@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Cine.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,17 @@ namespace Cine.Controllers
 {
     public class MainController : Controller
     {
-        public IActionResult Index()
+        private readonly CineDbContext _db;
+        public MainController(CineDbContext db)
         {
-            return View();
+            _db = db;
         }
-        public IActionResult Login()
+        public IActionResult Main()
         {
-            return View();
+            IEnumerable<Show> shows = _db.Shows;    
+            return View(shows);
         }
+        
 
     }
 }

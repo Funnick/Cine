@@ -1,6 +1,4 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -10,48 +8,33 @@
     <style>
     </style>
 </head>
-<body class="">
-    <div class="absolute flex h-full w-full">
-
-        <div class="md:w-1/5 hidden md:flex h-full overflow-auto bg-gradient-to-t from-black to-white ">
-            <div class="w-full">
-                <div class="pb-4 w-full  text-center  bg-gray-100 text-2xl border-solid shadow-2xl border-black">
-                    This Week
+<body class="bg-white">
+    <div class="absolute  h-full w-full">
+        <!--Navigation bar-->
+        <div class="bg-black w-full  px-4 h-20 flex flex-1 shadow-2xl" >
+            <div class="w-1/5 flex items-center">
+                <div class="">
+                    <a asp-action="Main"class="text-5xl text-center text-white">Cine+</a>
                 </div>
-                <div>
-
-                   
+            </div>
+            <div class="w-3/5 flex items-end justify-center">
+                <div class="">
+                    <a  asp-action="Main" class="text-2xl text-center text-white">Home</a>
+                </div>
+            </div>
+            <div class="w-1/5 flex items-center justify-end">
+                <div class="">
+                    <a asp-controller="Users" asp-action="Login" class="text-2xl text-center text-white">Login</a>
                 </div>
             </div>
         </div>
-
-        <div class="md:w-3/5 w-full h-full overflow-hidden bg-cover bg-no-repeat" style="background-image:url('@Url.Content("~/images/bgmain.jpg")');">
-            <!--Navigator-->
-            <div class="flex">
-                <div class="flex-1 ">
-                    <div class="inline-block mt-2 ml-2 text-5xl text-white text-center subpixel-antialiased font-sans">
-                        Cine+
-                    </div>
-                </div>
-                <div class="flex-1 text-2xl text-white text-center subpixel-antialiased font-sans">
-                    <form name="sesion">
-                        <button class="rigt-0 mt-4 hover:bg-white hover:text-black hover:scale-125 p-2 rounded-lg transition duration-300 ease-in-out transform" name="sesion_button" asp-controller="Users" asp-action="Login">Iniciar Sesion</button>
-                    </form>
-                </div>
-                <div>
-                    @RenderBody()
-                </div>
-            </div>
-        </div>
-
-        <div class="md:w-1/5 hidden md:flex bg-gradient-to-t from-black to-white  h-full overflow-auto">
-            <div class="w-full">
-                <div class="pb-4 w-full  bg-gray-100 text-center  text-2xl border-solid shadow-2xl border-black">
-                    Comming soon
-                </div>
-            </div>
+        <div>
+            @RenderBody()
         </div>
     </div>
+    <footer class=" absolute bottom-0 h-4 bg-black w-full">
+
+    </footer>
 </body>
 </html>
 

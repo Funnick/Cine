@@ -371,7 +371,6 @@ C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Cine.TagHelpers.ou
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Cine.RazorCoreGenerate.cache
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Main\Index.cshtml.g.cs
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Main\_Layout.cshtml.g.cs
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -468,3 +467,5 @@ C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Pages\_Layou
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Pages\_ViewImports.cshtml.g.cs
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Pages\_ViewStart.cshtml.g.cs
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Users\_Layout.cshtml.g.cs
+C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Main\Main.cshtml.g.cs
+C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Shared\ShowData.cshtml.g.cs

@@ -461,4 +461,5 @@ C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\bin\Debug\net5.0\zh-Hant\Microsoft.
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\bin\Debug\net5.0\bundleconfig.json
-C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Main\Login.cshtml.g.cs
+C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Users\Login.cshtml.g.cs
+C:\Users\Jaime\Documents\MATCOM\3ero\IS\Cine\obj\Debug\net5.0\Razor\Views\Users\Register.cshtml.g.cs

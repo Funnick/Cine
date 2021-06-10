@@ -3,14 +3,16 @@ using System;
 using Cine.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cine.Migrations
 {
     [DbContext(typeof(CineDbContext))]
-    partial class CineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210608154425_addingIdentity")]
+    partial class addingIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -172,14 +174,7 @@ namespace Cine.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("Points");
 
-                    b.Property<string>("TheaterUserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Code");
-
-                    b.HasIndex("TheaterUserId")
-                        .IsUnique();
 
                     b.ToTable("TheaterMember");
                 });
@@ -200,6 +195,12 @@ namespace Cine.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(70)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Country");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -273,15 +274,9 @@ namespace Cine.Migrations
                     b.Property<DateTime>("ShowStartTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TheaterUserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("TicketId");
 
                     b.HasIndex("ShowStartTime");
-
-                    b.HasIndex("TheaterUserId");
 
                     b.ToTable("Ticket");
                 });
@@ -496,17 +491,6 @@ namespace Cine.Migrations
                     b.Navigation("Movie");
                 });
 
-            modelBuilder.Entity("Cine.Models.TheaterMember", b =>
-                {
-                    b.HasOne("Cine.Models.TheaterUser", "TheaterUser")
-                        .WithOne("TheaterMember")
-                        .HasForeignKey("Cine.Models.TheaterMember", "TheaterUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TheaterUser");
-                });
-
             modelBuilder.Entity("Cine.Models.Ticket", b =>
                 {
                     b.HasOne("Cine.Models.Show", "Show")
@@ -515,15 +499,7 @@ namespace Cine.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cine.Models.TheaterUser", "TheaterUser")
-                        .WithMany("Ticekts")
-                        .HasForeignKey("TheaterUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Show");
-
-                    b.Navigation("TheaterUser");
                 });
 
             modelBuilder.Entity("DiscountShow", b =>
@@ -635,13 +611,6 @@ namespace Cine.Migrations
 
             modelBuilder.Entity("Cine.Models.Show", b =>
                 {
-                    b.Navigation("Ticekts");
-                });
-
-            modelBuilder.Entity("Cine.Models.TheaterUser", b =>
-                {
-                    b.Navigation("TheaterMember");
-
                     b.Navigation("Ticekts");
                 });
 #pragma warning restore 612, 618

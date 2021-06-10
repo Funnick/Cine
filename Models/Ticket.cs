@@ -20,15 +20,18 @@ namespace Cine.Models
         [Required] 
         public int SeatNumber { get; set; }
         
+        
+        [DataType("Text")]
+        [ForeignKey("TheaterUser")]
         [Required]
-        public int TheaterUserId { get; set; }
+        public string TheaterUserId { get; set; }
         
         [Required]
         public int ShowId { get; set; }
         
         [Required] 
         public virtual TheaterUser TheaterUser { get; set; }
-        
+
         [Required]
         public virtual Show Show { get; set; }
         

@@ -26,8 +26,22 @@ using Cine.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "E:\Matcom\güeb\Back End Dev\C#\Truly\Cine\Views\_ViewImports.cshtml"
+using Cine.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "E:\Matcom\güeb\Back End Dev\C#\Truly\Cine\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"99464617055fdb505bb0bb7fd91f9b14f7b0d030", @"/Views/Home/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3910a2e986b83a933ad7446afaf00ef46549eaf4", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"db6936a0a7791b50be8634ff416a25c3a1b4e63d", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

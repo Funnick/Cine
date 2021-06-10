@@ -3,14 +3,16 @@ using System;
 using Cine.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cine.Migrations
 {
     [DbContext(typeof(CineDbContext))]
-    partial class CineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210608160601_addingIdentity3")]
+    partial class addingIdentity3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -200,6 +202,12 @@ namespace Cine.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(70)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Country");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)

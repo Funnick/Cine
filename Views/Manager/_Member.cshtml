@@ -1,18 +1,16 @@
 ﻿<div class="card-body row">
-    <!-- Película -->
+    <!-- Member -->
     <div class="col-12">
-        <div class="card-title">Películas</div>
+        <div class="card-title">Miembros Asociados</div>
         <table class="table table-active">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Título</th>
-                <th scope="col">Género</th>
-                <th scope="col">Categoría</th>
-                <th scope="col">Duración</th>
-                <th scope="col">Año</th>
-                <th scope="col">País</th>
-                <th scope="col">Sinopsis</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Tarjeta</th>
+                <th scope="col">Código</th>
+                <th scope="col">Puntos</th>
                 <th scope="col">Acción</th>
             </tr>
             </thead>
@@ -21,8 +19,6 @@
                 <th scope="row">1</th>
                 <td>Mark</td>
                 <td>Otto</td>
-                <td>mdo</td>
-                <td>mdo</td>
                 <td>mdo</td>
                 <td>mdo</td>
                 <td>mdo</td>
@@ -44,8 +40,6 @@
                 <td>fat</td>
                 <td>fat</td>
                 <td>fat</td>
-                <td>fat</td>
-                <td>fat</td>
                 <td>
                     <div class="inline-flex">
                         <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
@@ -64,8 +58,6 @@
                 <td>twitter</td>
                 <td>twitter</td>
                 <td>twitter</td>
-                <td>twitter</td>
-                <td>twitter</td>
                 <td>
                     <div class="inline-flex">
                         <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
@@ -79,52 +71,40 @@
             </tr>
             </tbody>
         </table>
-        <button data-modal="formFilm" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Agregar Película</button>
-        <div id="formFilm" class="modal-wrapper">
+        <button data-modal="formMemb" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Agregar Miembro</button>
+        <div id="formMemb" class="modal-wrapper">
             <div class="overlay close-modal"></div>
             <div class="modal modal-centered">
                 <div class="modal-content shadow-lg p-5">
                     <div class="border-b p-2 pb-3 pt-0 mb-4">
                         <div class="flex justify-between items-center">
-                            Agregar Película
+                            Agregar Miembro
                         </div>
                     </div>
                     <!-- Modal content -->
                     <div class="form-group row">
                         <div class="col-10">
-                            <input class="form-control" placeholder="Título" type="text" id="example-text-input">
+                            <input class="form-control" placeholder="Nombre" type="text" id="example-text-input">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-10">
-                            <input class="form-control" placeholder="Categoría" type="text" id="example-text-input">
+                            <input class="form-control" placeholder="Correo" type="text" id="example-text-input">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-10">
-                            <input class="form-control" placeholder="Género" type="text" id="example-text-input">
+                            <input class="form-control" placeholder="Tarjeta" type="text" id="example-text-input">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-10">
-                            <input class="form-control" type="text" placeholder="Sinopsis" id="example-text-input">
+                            <input class="form-control" type="number" placeholder="Código" id="example-text-input">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-10">
-                            <input class="form-control" type="text" placeholder="País" id="example-text-input">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-10">
-                            <label>Duración</label>
-                            <input class="form-control" type="time" placeholder="Duración" id="example-text-input">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-10">
-                            <label>Año</label>
-                            <input class="form-control" type="number" value="2021" placeholder="Año" id="example-text-input">
+                            <input class="form-control" type="number" placeholder="Puntos" id="example-text-input">
                         </div>
                     </div>
                     <form id="form_id" class="w-full">

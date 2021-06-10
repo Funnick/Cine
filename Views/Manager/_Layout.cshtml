@@ -9,16 +9,28 @@
     <!-- Css -->
     <link rel="stylesheet" href="~/lib/tailwindcss/dist/tailwind.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/css/all.css">
 </head>
 <body class="">
 <div class="absolute flex h-full w-full">
 
 
-    <div class="w-full h-full overflow-hidden bg-cover bg-no-repeat">
+    <div class="w-full h-full overflow-hidden bg-cover bg-no-repeat" style="background-image:url('@Url.Content("~/images/bgmanager.jpg")');">
+        <!--Navigator-->
+        <div class="flex">
+            <div class="flex-1 ">
+                <div class="inline-block mt-2 ml-2 text-5xl  text-center subpixel-antialiased font-sans">
+                    <a class="text-white" asp-controller="Main" asp-action="Index">Cine+</a>
+                </div>
+            </div>
+        </div>
         <div>
             @RenderBody()
         </div>
     </div>
 </div>
+<script src="~/js/main.js"></script>
 </body>
 </html>

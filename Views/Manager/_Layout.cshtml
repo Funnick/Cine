@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="keywords" content="tailwind,tailwindcss,tailwind css,css,starter template,free template,admin templates, admin template, admin dashboard, free tailwind templates, tailwind example">
     <!-- Css -->
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/css/all.css">
     <link rel="stylesheet" href="~/lib/tailwindcss/dist/tailwind.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
     <style>
@@ -20,12 +22,12 @@
 <div class="absolute flex h-full w-full">
 
 
-    <div class="w-full h-full overflow-hidden bg-cover bg-no-repeat" style="background-image:url('@Url.Content("~/images/bgred.jpg")');">
+    <div class="w-full h-full overflow-hidden bg-cover bg-no-repeat">
         <!--Navigator-->
         <div class="flex">
             <div class="flex-1 ">
                 <div class="inline-block mt-2 ml-2 text-5xl  text-center subpixel-antialiased font-sans">
-                    <a class="text-white" asp-controller="Manager" asp-action="Main">Cine+</a>
+                    <a class="text-black" asp-controller="Manager" asp-action="Main">Cine+</a>
                 </div>
             </div>
         </div>
@@ -34,6 +36,8 @@
         </div>
     </div>
 </div>
+
+<script src="~/js/main.js"></script>
 
 </body>
 </html>

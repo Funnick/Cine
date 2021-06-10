@@ -5,7 +5,7 @@ namespace Cine.Controllers
     public class ManagerController : Controller
     {
         // GET
-        public IActionResult Index()
+        public IActionResult Main()
         {
             return View();
         }

@@ -3,14 +3,16 @@ using System;
 using Cine.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cine.Migrations
 {
     [DbContext(typeof(CineDbContext))]
-    partial class CineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210608155937_addingIdentity2")]
+    partial class addingIdentity2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -201,6 +203,12 @@ namespace Cine.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(70)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Country");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
@@ -273,15 +281,9 @@ namespace Cine.Migrations
                     b.Property<DateTime>("ShowStartTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TheaterUserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("TicketId");
 
                     b.HasIndex("ShowStartTime");
-
-                    b.HasIndex("TheaterUserId");
 
                     b.ToTable("Ticket");
                 });
@@ -515,15 +517,7 @@ namespace Cine.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cine.Models.TheaterUser", "TheaterUser")
-                        .WithMany("Ticekts")
-                        .HasForeignKey("TheaterUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Show");
-
-                    b.Navigation("TheaterUser");
                 });
 
             modelBuilder.Entity("DiscountShow", b =>
@@ -641,8 +635,6 @@ namespace Cine.Migrations
             modelBuilder.Entity("Cine.Models.TheaterUser", b =>
                 {
                     b.Navigation("TheaterMember");
-
-                    b.Navigation("Ticekts");
                 });
 #pragma warning restore 612, 618
         }

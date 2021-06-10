@@ -11,6 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
 using Cine.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Cine.ModelsRepository;
+using Cine.SQLiteRepository;
 
 namespace Cine
 {
@@ -31,6 +34,11 @@ namespace Cine
             services.AddDbContext<CineDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("CineConnection")));
 
+            services.AddIdentity<TheaterUser, IdentityRole>()
+                .AddEntityFrameworkStores<CineDbContext>();
+
+            services.AddScoped<ITheaterUserRepository, DbTheaterUserRepository>();
+            services.AddScoped<IGetRepository<Movie>, DbMovieRepository>();
             //services.AddDatabaseDeveloperPageExceptionFilter();
         }
 
@@ -49,6 +57,8 @@ namespace Cine
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

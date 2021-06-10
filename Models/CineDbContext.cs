@@ -1,13 +1,20 @@
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Cine.Models;
 
 namespace Cine.Models {
-    public class CineDbContext: DbContext {
+    public class CineDbContext: IdentityDbContext<TheaterUser> {
         public CineDbContext(DbContextOptions<CineDbContext> opts): base(opts) {}
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            
+        }
+        
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Show> Shows { get; set; }
         public DbSet<Ticket> Tickets { get; set; }

@@ -26,8 +26,22 @@ using Cine.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "E:\Matcom\güeb\Back End Dev\C#\Truly\Cine\Views\_ViewImports.cshtml"
+using Cine.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 4 "E:\Matcom\güeb\Back End Dev\C#\Truly\Cine\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8e36c99e85704d0f2d1766f11d875a37c118a605", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3910a2e986b83a933ad7446afaf00ef46549eaf4", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"db6936a0a7791b50be8634ff416a25c3a1b4e63d", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ErrorViewModel>
     {
         #pragma warning disable 1998

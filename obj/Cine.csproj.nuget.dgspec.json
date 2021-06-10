@@ -43,6 +43,7 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+<<<<<<< HEAD
             "Entity": {
               "target": "Package",
               "version": "[1.0.0, )"
@@ -50,6 +51,11 @@
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
+=======
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.5, )"
+>>>>>>> BackEnd
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

@@ -8,6 +8,7 @@ namespace Cine.Models
     [Table("TheaterMember")]
     public class TheaterMember
     {
+        [Key]
         [Required]
         [Column("Code")]
         [MaxLength(100)]
@@ -17,12 +18,14 @@ namespace Cine.Models
         [Column("Points")]
         public int Points { get; set; }
         
-        [Key]
+        [DataType("Text")]
         [ForeignKey("TheaterUser")]
         [Required]
-        public int TheaterUserId { get; set; }
+        public string TheaterUserId { get; set; }
+        
         
         [Required]
         public virtual TheaterUser TheaterUser { get; set; }
+        
     }
 }

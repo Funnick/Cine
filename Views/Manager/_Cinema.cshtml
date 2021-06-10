@@ -4,9 +4,10 @@
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Asientos</th>
+                <th scope="col">Películas</th>
+                <th scope="col">Funciones</th>
+                <th scope="col">Acción</th>
             </tr>
             </thead>
             <tbody>
@@ -15,23 +16,52 @@
                 <td>Mark</td>
                 <td>Otto</td>
                 <td>mdo</td>
+                <td>
+                    <div class="inline-flex">
+                        <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                            Edit
+                        </button>
+                        <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
+                            Elim
+                        </button>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <th scope="row">2</th>
                 <td>Jacob</td>
                 <td>Thornton</td>
                 <td>fat</td>
+                <td>
+                    <div class="inline-flex">
+                        <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                            Edit
+                        </button>
+                        <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
+                            Elim
+                        </button>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <th scope="row">3</th>
                 <td>Larry</td>
                 <td>the Bird</td>
                 <td>twitter</td>
+                <td>
+                    <div class="inline-flex">
+                        <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                            Edit
+                        </button>
+                        <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
+                            Elim
+                        </button>
+                    </div>
+                </td>
             </tr>
             </tbody>
         </table>
-
-        <button data-modal="formCinema" class="modal-trigger bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-full">Agregar Sala</button>
+    <button data-modal="formCinema" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Agregar Sala</button>
         <div id="formCinema" class="modal-wrapper">
             <div class="overlay close-modal"></div>
             <div class="modal modal-centered">
@@ -42,15 +72,15 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-                    <form id='form_id' class="w-full">
+                    <form id="form_id" class="w-full">
                         <div class="form-group row">
                             <div class="col-10">
                                 <input class="form-control" type="number" placeholder="Cantidad de sillas" id="example-text-input">
                             </div>
                         </div>
                         <div class="mt-5">
-                            <button class='bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded'> Crear </button>
-                            <span class='close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded'>
+                            <button class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"> Crear </button>
+                            <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
                                 Cerrar
                             </span>
                         </div>

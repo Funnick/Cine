@@ -18,12 +18,15 @@ namespace Cine.Controllers
     {
         private readonly UserManager<TheaterUser> _userManager;
         private readonly SignInManager<TheaterUser> _signInManager;
+        private readonly ITheaterMemberRepository _theaterMemberRepository;
         
         public TheaterUserController(UserManager<TheaterUser> userManager,
-                                    SignInManager<TheaterUser> signInManager)
+                                    SignInManager<TheaterUser> signInManager,
+                                    ITheaterMemberRepository theaterMemberRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _theaterMemberRepository = theaterMemberRepository;
         }
         
         [HttpGet]
@@ -86,6 +89,14 @@ namespace Cine.Controllers
             }
 
             return View(model);
+        }
+
+        
+        public async Task<IActionResult> BecomeClubMember()
+        {
+            TheaterUser _user = await _userManager.GetUserAsync(@User);
+            _theaterMemberRepository.Add(_user);
+            return RedirectToAction("index", "home");
         }
     }
 }

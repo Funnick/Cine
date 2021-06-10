@@ -14,6 +14,13 @@ namespace Cine.Controllers
 {
     public class MovieController : Controller
     {
+        private readonly IGetRepository<Movie> _movieRepository;
+
+        public MovieController(IGetRepository<Movie> movieRepository)
+        {
+            _movieRepository = movieRepository;
+        }
+        
         
     }
 }

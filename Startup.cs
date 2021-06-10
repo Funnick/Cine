@@ -38,7 +38,10 @@ namespace Cine
                 .AddEntityFrameworkStores<CineDbContext>();
 
             services.AddScoped<ITheaterUserRepository, DbTheaterUserRepository>();
+            services.AddScoped<ITheaterMemberRepository, DbTheaterMemberRepository>();
             services.AddScoped<IGetRepository<Movie>, DbMovieRepository>();
+            services.AddScoped<IGetRepository<Show>, DbShowRepository>();
+            
             //services.AddDatabaseDeveloperPageExceptionFilter();
         }
 

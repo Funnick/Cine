@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="tailwind,tailwindcss,tailwind css,css,starter template,free template,admin templates, admin template, admin dashboard, free tailwind templates, tailwind example">
+    <!-- Css -->
+    <link rel="stylesheet" href="~/lib/tailwindcss/dist/tailwind.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="~/css/styles.css">
+    <link rel="stylesheet" href="~/css/all.css">
+</head>
+<body class="">
+<div class="flex h-full w-full">
+
+
+    <div class="w-full h-full overflow-hidden bg-cover bg-no-repeat" style="background-image:url('@Url.Content("~/images/bgmanager.jpg")');">
+        <!--Navigator-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" asp-controller="Main" asp-action="Index">Cine+</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Películas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Funciones</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Salas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Miembros</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+</div>
+<script src="~/js/main.js"></script>
+</body>
+</html>

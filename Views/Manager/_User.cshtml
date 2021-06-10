@@ -1,0 +1,82 @@
+﻿<div class="card-body row">
+    <!-- User -->
+    <div class="col-12">
+        <div class="card-title">Usuarios</div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Tarjeta</th>
+                <th scope="col">Miembro?</th>
+                <th scope="col">Acción</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for (int j = 0; j < 3; j++)
+            {
+                <tr>
+                    <th scope="row">@j</th>
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <td>@(new Random(i * j).Next()) @j @i</td>
+                    }
+                    <td>
+                        <div class="inline-flex">
+                            <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                Edit
+                            </button>
+                            <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
+                                Elim
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <button data-modal="formUser" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Agregar Usuario</button>
+        <div id="formUser" class="modal-wrapper">
+            <div class="overlay close-modal"></div>
+            <div class="modal modal-centered">
+                <div class="modal-content shadow-lg p-5">
+                    <div class="border-b p-2 pb-3 pt-0 mb-4">
+                        <div class="flex justify-between items-center">
+                            Agregar Usuario
+                        </div>
+                    </div>
+                    <!-- Modal content -->
+                    <div class="form-group row">
+                        <div class="col-10">
+                            <input class="form-control" placeholder="Nombre" type="text" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-10">
+                            <input class="form-control" placeholder="Correo" type="text" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-10">
+                            <input class="form-control" placeholder="Tarjeta" type="text" id="example-text-input">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-10">
+                            <input class="form-control" type="number" min="0" max="1" placeholder="Miembro" id="example-text-input">
+                        </div>
+                    </div>
+                    <form id="form_id" class="w-full">
+                        <div class="mt-5">
+                            <button class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"> Crear </button>
+                            <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                Cerrar
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿<div class="col-6">
+        <div class="card-title">Salas</div>
+        <table class="table table-active">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>twitter</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <button data-modal="formCinema" class="modal-trigger bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-full">Agregar Sala</button>
+        <div id="formCinema" class="modal-wrapper">
+            <div class="overlay close-modal"></div>
+            <div class="modal modal-centered">
+                <div class="modal-content shadow-lg p-5">
+                    <div class="border-b p-2 pb-3 pt-0 mb-4">
+                        <div class="flex justify-between items-center">
+                            Agregar Sala
+                        </div>
+                    </div>
+                    <!-- Modal content -->
+                    <form id='form_id' class="w-full">
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <input class="form-control" type="number" placeholder="Cantidad de sillas" id="example-text-input">
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <button class='bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded'> Crear </button>
+                            <span class='close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded'>
+                                Cerrar
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

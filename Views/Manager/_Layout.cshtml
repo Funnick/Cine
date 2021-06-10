@@ -14,18 +14,36 @@
     <link rel="stylesheet" href="~/css/all.css">
 </head>
 <body class="">
-<div class="absolute flex h-full w-full">
+<div class="flex h-full w-full">
 
 
     <div class="w-full h-full overflow-hidden bg-cover bg-no-repeat" style="background-image:url('@Url.Content("~/images/bgmanager.jpg")');">
         <!--Navigator-->
-        <div class="flex">
-            <div class="flex-1 ">
-                <div class="inline-block mt-2 ml-2 text-5xl  text-center subpixel-antialiased font-sans">
-                    <a class="text-white" asp-controller="Main" asp-action="Index">Cine+</a>
-                </div>
-            </div>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" asp-controller="Main" asp-action="Index">Cine+</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Películas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Funciones</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Salas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Miembros</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
         <div>
             @RenderBody()
         </div>

@@ -46,8 +46,6 @@ namespace Cine.Models{
         [MaxLength(300)]
         public string Synopsis { get; set; }
         
-        public Image Poster { get; set; }
-        
         public virtual ICollection<Director> Directors { get; set; }
         
         public virtual ICollection<Actor> Actors { get; set; }

@@ -1,6 +1,6 @@
 ﻿<div class="col-6">
         <div class="card-title">Funciones</div>
-        <table class="table table-active">
+        <table class="table table-bordered">
             <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
@@ -11,54 +11,26 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>mdo</td>
-                <td>
-                    <div class="inline-flex">
-                        <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
-                            Edit
-                        </button>
-                        <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                            Elim
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>fat</td>
-                <td>
-                    <div class="inline-flex">
-                        <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
-                            Edit
-                        </button>
-                        <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                            Elim
-                        </button>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>twitter</td>
-                <td>
-                    <div class="inline-flex">
-                        <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
-                            Edit
-                        </button>
-                        <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                            Elim
-                        </button>
-                    </div>
-                </td>
-            </tr>
+            @for (int j = 0; j < 3; j++)
+            {
+                <tr>
+                    <th scope="row">@j</th>
+                    @for (int i = 0; i < 3; i++)
+                    {
+                        <td>@(new Random(i * j).Next()) @j @i</td>
+                    }
+                    <td>
+                        <div class="inline-flex">
+                            <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                Edit
+                            </button>
+                            <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
+                                Elim
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
             </tbody>
         </table>
         <button data-modal="formShow" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Agregar Función</button>

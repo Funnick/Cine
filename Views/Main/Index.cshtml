@@ -2,7 +2,13 @@
     Layout = "~/Views/Main/_Layout.cshtml";
 }
 
-@{
-    ViewBag.Title = "Index";
-}
 
+<div class="flex w-full items-center justify-center shadow-2xl">
+    @await Html.PartialAsync("ShowView")
+    @await Html.PartialAsync("ShowView")
+    @await Html.PartialAsync("ShowView")
+    @await Html.PartialAsync("ShowView")
+    @await Html.PartialAsync("ShowView")
+
+</div>
+    

@@ -18,7 +18,7 @@ namespace Cine.Controllers
         {
             _logger = logger;
         }
-        public IActionResult Main()
+        public IActionResult Index()
         {
             return View();
         }

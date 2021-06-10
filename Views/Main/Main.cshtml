@@ -2,18 +2,13 @@
     Layout = "~/Views/Main/_Layout.cshtml";
 }
 
-@{
-    ViewBag.Title = "Main";
-}
-@model IEnumerable<Cine.Models.Show>
 
-<div class="p-5 h-full w-full">
-    <div class="border-solid shadow-2xl h-full w-full">
-      @foreach (var show in Model)
-      {
-          @Html.Partial("ShowData",show)
-      }
-        
-    </div>
+<div class="flex w-full items-center justify-center shadow-2xl">
+    @await Html.PartialAsync("ShowView")
+    @await Html.PartialAsync("ShowView")
+    @await Html.PartialAsync("ShowView")
+    @await Html.PartialAsync("ShowView")
+    @await Html.PartialAsync("ShowView")
+
 </div>
     

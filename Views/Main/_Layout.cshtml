@@ -1,57 +1,74 @@
-﻿
+﻿@inject SignInManager<TheaterUser> _signInManager;
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@ViewBag.Title</title>
+    <meta name="author" content="name">
+    <meta name="description" content="description here">
+    <meta name="keywords" content="keywords,here">
     <link rel="stylesheet" href="~/lib/tailwindcss/dist/tailwind.min.css">
     <link rel="stylesheet" href="~/css/site.css" />
-    <style>
-    </style>
 </head>
-<body class="">
-    <div class="absolute flex h-full w-full">
+<body class="bg-white font-sans leading-normal tracking-normal">
 
-        <div class="md:w-1/5 hidden md:flex h-full overflow-auto bg-gradient-to-t from-black to-white ">
-            <div class="w-full">
-                <div class="pb-4 w-full  text-center  bg-gray-100 text-2xl border-solid shadow-2xl border-black">
-                    This Week
-                </div>
-                <div>
-
-                   
-                </div>
-            </div>
+    <nav class="flex items-center justify-between flex-wrap bg-black shadow-2xl p-6 fixed w-full z-10 top-0">
+        <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+                <span class="text-4xl pl-2"><i class="em em-grinning"></i>Cine+</span>
+            </a>
         </div>
-
-        <div class="md:w-3/5 w-full h-full overflow-hidden bg-cover bg-no-repeat" style="background-image:url('@Url.Content("~/images/bgmain.jpg")');">
-            <!--Navigator-->
-            <div class="flex">
-                <div class="flex-1 ">
-                    <div class="inline-block mt-2 ml-2 text-5xl text-white text-center subpixel-antialiased font-sans">
-                        Cine+
-                    </div>
-                </div>
-                <div class="flex-1 text-2xl text-white text-center subpixel-antialiased font-sans">
-                    <form name="sesion">
-                        <button class="rigt-0 mt-4 hover:bg-white hover:text-black hover:scale-125 p-2 rounded-lg transition duration-300 ease-in-out transform" name="sesion_button" asp-controller="Users" asp-action="Login">Iniciar Sesion</button>
-                    </form>
-                </div>
-                <div>
-                    @RenderBody()
-                </div>
-            </div>
+        <div>
+            @User.Identity.Name
         </div>
-
-        <div class="md:w-1/5 hidden md:flex bg-gradient-to-t from-black to-white  h-full overflow-auto">
-            <div class="w-full">
-                <div class="pb-4 w-full  bg-gray-100 text-center  text-2xl border-solid shadow-2xl border-black">
-                    Comming soon
-                </div>
-            </div>
+        <div class="block lg:hidden">
+            <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-white hover:border-white">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
+            </button>
         </div>
+        
+        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+            <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                <li class="mr-3">
+                    <a class="inline-block py-2 px-4 text-red-600 no-underline" asp-controller="Main" asp-action="Main">HOME</a>
+                </li>
+                <li class="mr-3 ">
+                    <a class="inline-block text-red-600 no-underline  hover:text-underline py-2 px-4" href="#">CONTACT</a>
+                </li>
+                <li class="mr-3">
+                    <a class="inline-block text-red-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">ABOUT</a>
+                </li>
+                @if (_signInManager.IsSignedIn(User))
+                {
+                    <li class="mr-3">
+                        <a class="inline-block text-red-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="TheaterUser" asp-action="Logout">Log out</a>
+                    </li>
+                }
+                else 
+                { 
+                    <li class="mr-3">
+                        <a class="inline-block text-red-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="TheaterUser" asp-action="Login">Log in</a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </nav>
+
+    <!--Container-->
+    <div class="container shadow-lg mx-auto bg-white mt-24 md:mt-18">
+        @RenderBody()
     </div>
+
+    <script>
+        //Javascript to toggle the menu
+        document.getElementById('nav-toggle').onclick = function () {
+            document.getElementById("nav-content").classList.toggle("hidden");
+        }
+    </script>
+
 </body>
 </html>
-

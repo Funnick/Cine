@@ -1,22 +1,28 @@
-﻿@model LoginViewModel
+﻿
+@model LoginViewModel
 
-<h1>User Login</h1>
-
-<div class="row">
-    <div class="col-md-12">
-        <form method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="text-danger" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+<div class="h-80 flex items-center">
+    <div class="w-1/2 inline-block ">
+        <a class="text-4xl pb-4 ml-4 text-red-800">User Log in</a>
+        <div class="px-2 w-full justify-center h-full">
+            <form method="post">
+                <div asp-validation-summary="All" class="text-red-400"></div>
+                <div class="w-full">
+                    <label asp-for="Email" class="text-2xl block"></label>
+                    <input asp-for="Email" class="block px-2 w-full bg-light-border bg-gray-100" />
+                    <span asp-validation-for="Email" class="text-red-900"></span>
+                </div>
+                <div class="w-full mt-4">
+                    <label asp-for="Password" class="text-2xl block"></label>
+                    <input asp-for="Password" class="block px-2 w-full bg-light-border bg-gray-100" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-red-900"></span>
+                </div>
+                <div class="text-sm ml-4">Did you don't have an account? You can <a asp-controller="TheatherUser" asp-action="Register">register</a></div>
+                <button type="submit" class="w-full h-11 mt-4 bg-red-800 rounded-2xl">Login</button>
+            </form>
+        </div>
+    </div>
+    <div class="w-1/2 p-8 inline-block h-full flex items-end  bg-cover  bg-no-repeat bg-center bg-clip-border" style="background-image:url('@Url.Content("~/images/loginVIP.jpg")');">
+        <a class="text-2xl text-red-800 ">Come with us</a>
     </div>
 </div>

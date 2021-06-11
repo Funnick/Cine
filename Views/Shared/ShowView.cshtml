@@ -1,92 +1,168 @@
 ﻿@model Show
 
 
-<div class="w-full overflow-hidden">
+<div class="w-full overflow-hidden bg-fixed bg-cover bg-no-repeat" style="background-image:url('@Url.Content("~/images/bgshowsview.jpg")');">
 
+    <div>
+        <div>
+            <h1 class="text-center font-bold text-5xl mt-8 tracking-wide relative">Disccounts</h1>
 
-    <h1 class="text-center font-bold text-5xl mt-8 tracking-wide relative">Disccounts</h1>
+            <div class="flex flex-row justify-center my-4 text-sm tracking-tight font-medium text-gray-700">
+                <p class="mx-3">USD</p>
 
-    <div class="flex flex-row justify-center my-4 text-sm tracking-tight font-medium text-gray-700">
-        <p class="mx-3">Chips</p>
+                <!-- Toggle Button -->
+                <label for="toggle" class="flex items-center cursor-pointer">
+                    <!-- toggle -->
+                    <div class="relative">
+                        <!-- hidden input -->
+                        <input id="toggle" type="checkbox" class="hidden" onclick="myFunction()" />
+                        <!-- line -->
+                        <div class="w-10 h-3 bg-gray-400 rounded-full shadow-inner"></div>
+                        <!-- dot -->
+                        <div class="toggle_dot absolute w-5 h-5 bg-white rounded-full shadow inset-y-0 left-0"></div>
+                    </div>
+                </label>
 
-        <!-- Toggle Button -->
-        <label for="toggle" class="flex items-center cursor-pointer">
-            <!-- toggle -->
-            <div class="relative">
-                <!-- hidden input -->
-                <input id="toggle" type="checkbox" class="hidden" onclick="myFunction()" />
-                <!-- line -->
-                <div class="w-10 h-3 bg-gray-400 rounded-full shadow-inner"></div>
-                <!-- dot -->
-                <div class="toggle_dot absolute w-5 h-5 bg-white rounded-full shadow inset-y-0 left-0"></div>
+                <p class="mx-3">Chips</p>
             </div>
-        </label>
 
-        <p class="mx-3">USD</p>
+            <div class="flex flex-col md:flex-row md: gap-2 md:transform md:scale-75 lg:scale-100 justify-center">
+                <div class="border rounded-lg  text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
+                    <div class="">Regular</div>
+                    <div id="Chips" class="font-bold text-6xl Chips hidden">20</div>
+                    <div id="USD" class="font-bold text-6xl USD">&dollar;19.99</div>
+                </div>
+
+                <div class="border rounded-lg   text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
+                    <div class="">Childs</div>
+                    <div id="Chips" class="font-bold text-6xl Chips hidden">12</div>
+                    <div id="USD" class="font-bold text-6xl USD">&dollar;12.99</div>
+                    <hr>
+
+
+                </div>
+
+                <div class="border rounded-lg   text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
+                    <div class="">Members</div>
+                    <div id="Chips" class="font-bold text-6xl Chips hidden">10</div>
+                    <div id="USD" class="font-bold text-6xl USD ">&dollar;9.99</div>
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <h1 class="text-center font-bold text-5xl mt-8 tracking-wide relative">Movie Title</h1>
+        </div>
+        <div>
+            <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">Date</h1>
+        </div>
+        <div class="flex flex-row items-center gap-4 justify-center">
+            <div>
+                <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">Start Time</h1>
+            </div>
+            <div>
+                <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">End Time</h1>
+            </div>
+        </div>
+        <div class="m-4 tracking-wide bg-gray-100 rounded-lg p-5 shadow-inner">
+            <p>
+                Star Wars is an American epic space opera[1] media franchise created by George Lucas, which began with the
+                eponymous 1977 film[b] and quickly became a worldwide pop-culture phenomenon. The franchise has been expanded
+                into various films and other media, including television series, video games, novels, comic books, theme park
+                attractions, and themed areas, comprising an all-encompassing fictional universe.[c] In 2020, its total value
+                was estimated at US$70 billion, and it is currently the fifth-highest-grossing media franchise of all time.
+
+                The original film (Star Wars), retroactively subtitled Episode IV: A New Hope (1977), was followed by the sequels
+                Episode V: The Empire Strikes Back (1980) and Episode VI: Return of the Jedi (1983), forming the original
+                Star Wars trilogy. Lucas later returned to filmmaking to direct a prequel trilogy, consisting of Episode I:
+                The Phantom Menace (1999), Episode II: Attack of the Clones (2002), and Episode III: Revenge of the Sith (2005).
+                In 2012, Lucas sold his production company to Disney, relinquishing his ownership of the franchise. The subsequently
+                produced sequel trilogy consists of Episode VII: The Force Awakens (2015), Episode VIII: The Last Jedi (2017), and
+                Episode IX: The Rise of Skywalker (2019).
+
+                All nine films of the 'Skywalker saga' were nominated for Academy Awards with wins going to the first two releases. Together with the theatrical live action spin-off films Rogue One (2016) and Solo (2018), the combined box office revenue of the films equated to over US$10 billion and is currently the second-highest-grossing film franchise of all time
+            </p>
+        </div>
+        <div class="w-full flex items-center justify-center">
+            <button id="card_open" class="py-8 px-8  bg-gradient border-gray-500 text-center font-bold text-2xl mt-8 tracking-wide relative rounded-lg block">BUY TICKETS</button>
+        </div>
+
     </div>
 
-    <div class="flex flex-col md:flex-row md: gap-2 md:transform md:scale-75 lg:scale-100 justify-center">
-        <div class="border rounded-lg  text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
-            <div class="">Regular</div>
-            <div id="USD" class="font-bold text-6xl USD hidden">&dollar;19.99</div>
-            <div id="Chips" class="font-bold text-6xl Chips">20</div>
-            <hr>
-            <div class="text-sm my-3">Description</div>
-            <hr>
-            <div class="text-sm my-3">Description</div>
-            <hr>
-            <div class="text-sm my-3">Description</div>
-            <hr>
-            
-            <div class="bg-gradient-base border border-blue-600 hover:bg-white text-white hover:text-blue-600 font-bold uppercase text-xs mt-5 py-2 px-4 rounded cursor-pointer">Learn More</div>
-          
-        </div>
 
-        <div class="border rounded-lg   text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
-            <div class="">Childs</div>
-            <div id="USD" class="font-bold text-6xl USD hidden">&dollar;12.99</div>
-            <div id="Chips" class="font-bold text-6xl Chips">12</div>
-            <hr>
-            <div class="text-sm my-3">Description</div>
-            <hr>
-            <div class="text-sm my-3">Description</div>
-            <hr>
-            <div class="text-sm my-3">Description</div>
-            <hr>
-            
-            <div class="bg-gradient-base border border-blue-600 hover:bg-transparent text-white hover:text-blue-600 font-bold uppercase text-xs mt-5 py-2 px-4 rounded cursor-pointer">Learn More</div>
-        </div>
 
-        <div class="border rounded-lg   text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
-            <div class="">Memebers</div>
-            <div id="USD" class="font-bold text-6xl USD hidden">&dollar;9.99</div>
-            <div id="Chips" class="font-bold text-6xl Chips ">10</div>
-            <hr>
-            <div class="text-sm my-3">Description</div>
-            <hr>
-            <div class="text-sm my-3">Description</div>
-            <hr>
-            <div class="text-sm my-3">Description</div>
-            <hr>
-            <div class="bg-gradient-base border border-blue-600 hover:bg-transparent text-white hover:text-blue-600 font-bold uppercase text-xs mt-5 py-2 px-4 rounded cursor-pointer">Learn More</div>
+    <div id="card_panel" class="main-modal fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center hidden">
+        <div class="modal-container bg-white w-4/12 md:max-w-11/12 mx-auto rounded-xl z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold text-gray-500">Header</p>
+                    <div id="card_close" class="modal-close cursor-pointer z-50">
+                        <svg class="fill-current text-gray-500" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="my-5 mr-5 ml-5 flex justify-center">
+                    <p>Formulario para comprar tickets</p>
+                </div>
+                <div class="flex justify-end pt-2 space-x-14">
+                    <button class="py-8 px-8  bg-gradient border-gray-500 text-center font-bold text-2xl mt-8 tracking-wide relative rounded-lg block">BUY TICKETS</button>
+                </div>
+            </div>
         </div>
     </div>
 
+    <script>
+        const card_open = document.getElementById('card_open')
+        const card_close = document.getElementById('card_close')
+        const card_panel = document.getElementById('card_panel')
+
+        function modalState() {
+            if (card_panel.classList.contains('hidden')) {
+                // Show modal
+                card_panel.classList.remove('hidden')
+                card_panel.classList.add('block')
+
+                // Delete button
+                card_open.classList.add('hidden')
+                card_open.classList.remove('block')
+
+                // Start animation open
+                card_panel.classList.add('card_open')
+            } else {
+                // Delete modal
+                card_panel.classList.add('hidden')
+                card_panel.classList.remove('block')
+
+                // Show button
+                card_open.classList.remove('hidden')
+                card_open.classList.add('block')
+
+                // Remove animation open
+                card_panel.classList.remove('card_open')
+            }
+        }
+
+        card_open.addEventListener('click', modalState)
+        card_close.addEventListener('click', modalState)
+    </script>
     <!--JS for toggle-->
     <script>
-    function myFunction() {
-        var x = document.querySelectorAll('.Chips');
-        var y = document.querySelectorAll('.USD');
-      for (var i = 0; i < x.length; i++) {
-        if (document.getElementById("toggle").checked == true) {
-          x[i].classList.add('hidden');
-          y[i].classList.remove('hidden');
-        } else {
-          x[i].classList.remove('hidden');
-          y[i].classList.add('hidden');
+        function myFunction() {
+            var x = document.querySelectorAll('.USD');
+            var y = document.querySelectorAll('.Chips');
+            for (var i = 0; i < x.length; i++) {
+                if (document.getElementById("toggle").checked == true) {
+                    x[i].classList.add('hidden');
+                    y[i].classList.remove('hidden');
+                } else {
+                    x[i].classList.remove('hidden');
+                    y[i].classList.add('hidden');
+                }
+            }
         }
-      }
-    }
     </script>
 
+</div>
+    </div>
 </div>

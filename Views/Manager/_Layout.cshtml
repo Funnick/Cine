@@ -1,54 +1,133 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<TheaterUser> _signInManager;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="keywords" content="tailwind,tailwindcss,tailwind css,css,starter template,free template,admin templates, admin template, admin dashboard, free tailwind templates, tailwind example">
-    <!-- Css -->
+    <title>@ViewBag.Title</title>
+    <meta name="author" content="name">
+    <meta name="description" content="description here">
+    <meta name="keywords" content="keywords,here">
     <link rel="stylesheet" href="~/lib/tailwindcss/dist/tailwind.min.css">
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="~/css/styles.css">
     <link rel="stylesheet" href="~/css/all.css">
+    <style>
+
+
+        .toggle_dot {
+            top: -.25rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input:checked ~ .toggle_dot {
+            transform: translateX(100%);
+            background-color: #0082c8;
+        }
+
+        .bg-gradient {
+            background: #667db6;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .bg-gradient-base {
+            background-color: #0082c8;
+        }
+
+        .font-work-sans {
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        :root {
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --ring-offset-shadow: 0 0 #0000;
+            --ring-shadow: 0 0 #0000;
+        }
+
+        .card_open {
+            animation-duration: 500ms;
+            animation-name: card_open;
+        }
+
+        @@keyframes card_open {
+            from {
+                height: 1%;
+                box-shadow: var(--shadow);
+            }
+
+            to {
+                height: 100%;
+                box-shadow: var(--ring-offset-shadow,0 0 #0000),var(--ring-shadow,0 0 #0000),var(--shadow);
+            }
+        }
+    </style>
 </head>
-<body class="">
-<div class="flex h-full w-full">
+<body class="bg-white font-sans leading-normal tracking-normal">
 
-
-    <div class="w-full h-full overflow-hidden bg-cover bg-no-repeat" style="background-color: steelblue">
-        <!--Navigator-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-          <a class="navbar-brand" asp-controller="Main" asp-action="Index">Cine+</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Películas</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Funciones</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Salas</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Miembros</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div>
-            @RenderBody()
-        </div>
+<nav class="flex absolute top-0 items-center justify-between flex-wrap bg-black shadow-2xl p-8 fixed w-full z-40 top-0">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
+            <span class="text-4xl pl-2"><i class="em em-grinning"></i>Cine+</span>
+        </a>
+        <span class="text-2xl pl-4">Admin</span>
     </div>
-</div>
+    <div>
+        @User.Identity.Name
+    </div>
+    <div class="block lg:hidden">
+        <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-white hover:border-white">
+            <svg class="fill-current h-3 w-3" viewBox="0 0 20 20">
+                <title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
+        <ul class="list-reset lg:flex justify-end flex-1 items-center">
+            <li class="mr-3">
+                <a class="inline-block py-2 px-4 text-red-600 no-underline" asp-controller="Main" asp-action="Index">HOME</a>
+            </li>
+            <li class="mr-3 ">
+                <a class="inline-block text-red-600 no-underline  hover:text-underline py-2 px-4" href="#">CONTACT</a>
+            </li>
+            <li class="mr-3">
+                <a class="inline-block text-red-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">ABOUT</a>
+            </li>
+            @if (_signInManager.IsSignedIn(User))
+            {
+                <li class="mr-3">
+                    <a class="inline-block text-red-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="TheaterUser" asp-action="Logout">Log out</a>
+                </li>
+            }
+            else
+            {
+                <li class="mr-3">
+                    <a class="inline-block text-red-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="TheaterUser" asp-action="Login">Log in</a>
+                </li>
+            }
+
+        </ul>
+    </div>
+</nav>
+
+<!--Container-->
+<div class="w-full h-full content shadow-lg mx-auto mt-24 md:mt-18 bg-cover bg-fixed" style="background-image:url('@Url.Content("~/images/bg.jpg")');">
+        @RenderBody()
+        </div>
+
+<script>
+        //Javascript to toggle the menu
+        document.getElementById('nav-toggle').onclick = function () {
+            document.getElementById("nav-content").classList.toggle("hidden");
+        }
+    </script>
 <script src="~/js/main.js"></script>
 </body>
 </html>

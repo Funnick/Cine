@@ -1,42 +1,60 @@
-﻿<div class="card-body row">
-    <!-- Película -->
-    <div class="col-12">
-        <div class="card-title">Películas</div>
-        <table class="table table-bordered">
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Título</th>
-                <th scope="col">Género</th>
-                <th scope="col">Categoría</th>
-                <th scope="col">Duración</th>
-                <th scope="col">Año</th>
-                <th scope="col">País</th>
-                <th scope="col">Sinopsis</th>
-                <th scope="col">Acción</th>
+﻿@model GenericPaginator<Cine.Models.Movie>   
+<div class=" w-full">
+    <div class="flex flex-col items-center justify-center">
+        <p class="text-2xl text-center font-bold m-5">Películas</p>
+        <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+            <tr class="text-left border-b-2 border-gray-300">
+                <th class="px-4 py-3">Título</th>
+                <th class="px-4 py-3">Género</th>
+                <th class="px-4 py-3">Categoría</th>
+                <th class="px-4 py-3">Duración</th>
+                <th class="px-4 py-3">Año</th>
+                <th class="px-4 py-3">País</th>
+                <th class="px-4 py-3">Sinopsis</th>
+                <th class="px-4 py-3">Acción</th>
             </tr>
-            </thead>
             <tbody>
-            @for (int j = 0; j < 3; j++)
-                {
-                    <tr>
-                        <th scope="row">@j</th>
-                        @for (int i = 0; i < 7;i ++)
-                        {
-                        <td>@(new Random(i*j).Next()) @j @i</td>
-                        }
-                        <td>
-                            <div class="inline-flex">
-                                <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
-                                    Edit
-                                </button>
-                                <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                                    Elim
-                                </button>
+            @foreach (var item in Model.Result)
+            {
+                <tr class="bg-gray-100 border-b border-gray-200">
+                    <th class="px-4 py-3">@item.Title</th>
+                    <th class="px-4 py-3">@item.Genre</th>
+                    <th class="px-4 py-3">@item.Category</th>
+                    <th class="px-4 py-3">@item.Duration</th>
+                    <th class="px-4 py-3">@item.Year</th>
+                    <th class="px-4 py-3">@item.Country</th>
+                    <th class="px-4 py-3">
+                        <button data-modal="@item.MovieId" class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Ver
+                        </button>
+                    </th>
+                    <div id="@item.MovieId" class="modal-wrapper">
+                        <div class="overlay close-modal"></div>
+                        <div class="modal modal-centered">
+                            <div class="modal-content shadow-lg p-5">
+                                <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                    <div class="flex justify-between items-center">
+                                        Sinopsis
+                                    </div>
+                                </div>
+                                <p>
+                                    @item.Synopsis
+                                </p>
                             </div>
-                        </td>
-                    </tr>
-                }
+                        </div>
+                    </div>
+                    <th class="px-4 py-3">
+                        <div class="inline-flex">
+                            <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                Edit
+                            </button>
+                            <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
+                                Elim
+                            </button>
+                        </div>
+                    </th>
+                </tr>
+            }                                                    
             </tbody>
         </table>
         <button data-modal="formFilm" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Agregar Película</button>

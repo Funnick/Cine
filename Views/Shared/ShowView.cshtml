@@ -1,7 +1,7 @@
 ﻿@model Show
 
 
-<div class="w-full overflow-hidden bg-fixed bg-cover bg-no-repeat" style="background-image:url('@Url.Content("~/images/bgshowsview.jpg")');">
+<div class="w-full overflow-hidden bg-fixed bg-cover bg-no-repeat" >
 
     <div>
         <div>
@@ -37,9 +37,6 @@
                     <div class="">Childs</div>
                     <div id="Chips" class="font-bold text-6xl Chips hidden">12</div>
                     <div id="USD" class="font-bold text-6xl USD">&dollar;12.99</div>
-                    <hr>
-
-
                 </div>
 
                 <div class="border rounded-lg   text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
@@ -104,6 +101,12 @@
                 </div>
                 <div class="my-5 mr-5 ml-5 flex justify-center">
                     <p>Formulario para comprar tickets</p>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" novalidate="novalidate">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="PQSM5XMP4R56U">
+                        <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet." formtarget="_blank" border="0">
+                        <img alt="" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" class="img-responsive" width="1" height="1" border="0">
+                    </form>
                 </div>
                 <div class="flex justify-end pt-2 space-x-14">
                     <button class="py-8 px-8  bg-gradient border-gray-500 text-center font-bold text-2xl mt-8 tracking-wide relative rounded-lg block">BUY TICKETS</button>

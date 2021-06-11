@@ -118,9 +118,9 @@
 </nav>
 
 <!--Container-->
-<div class="w-full h-full content shadow-lg mx-auto mt-24 md:mt-18 ">
-    @RenderBody()
-</div>
+<div class="w-full h-full content shadow-lg mx-auto mt-24 md:mt-18 bg-cover bg-fixed" style="background-image:url('@Url.Content("~/images/bg.jpg")');">
+        @RenderBody()
+        </div>
 
 <script>
         //Javascript to toggle the menu

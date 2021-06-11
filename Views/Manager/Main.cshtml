@@ -1,19 +1,14 @@
 ﻿@{
     Layout = "~/Views/Manager/_Layout.cshtml";
 }
-
-<div class="card" style="margin: 7px; opacity: .85; background-color: white">
-    @await Html.PartialAsync("_Films")
-<div class="card-body row">
-    <!-- Funcion -->
-    @await Html.PartialAsync("_Shows")
-    <!-- Sala -->
+@await Html.PartialAsync("_Films")
+@{
+    /*@await Html.PartialAsync("_Shows")
     @await Html.PartialAsync("_Cinema")
-</div>
-@await Html.PartialAsync("_Member")
-@await Html.PartialAsync("_User")
-@await Html.PartialAsync("_Ticket")
-@await Html.PartialAsync("_Producer")
-@await Html.PartialAsync("_Promotion")
-
-</div>
+    @await Html.PartialAsync("_Member")
+    @await Html.PartialAsync("_User")
+    @await Html.PartialAsync("_Ticket")
+    @await Html.PartialAsync("_Producer")
+    @await Html.PartialAsync("_Promotion")
+    */
+}

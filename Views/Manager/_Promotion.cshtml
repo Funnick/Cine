@@ -1,26 +1,20 @@
-﻿<div class="card-body row">
-    <!-- Member -->
-    <div class="col-6">
-        <div class="card-title">Promoción</div>
-        <table class="table table-bordered">
-            <thead class="thead-dark">
+﻿<div class=" w-full">
+    <div class="flex flex-col items-center justify-center">
+        <p class="text-2xl text-center font-bold m-5">Promociones</p>
+        <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+            <tr class="text-left border-b-2 border-gray-300">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Descuento</th>
-                <th scope="col">Acción</th>
+                <th class="px-4 py-3">Descripción</th>
+                <th class="px-4 py-3">Descuento</th>
+                <th class="px-4 py-3">Acción</th>
             </tr>
-            </thead>
             <tbody>
-            @for (int j = 0; j < 3; j++)
+            @foreach (var item in Model.Result)
             {
-                <tr>
-                    <th scope="row">@j</th>
-                    @for (int i = 0; i < 2; i++)
-                    {
-                        <td>@(new Random(i * j).Next()) @j @i</td>
-                    }
-                    <td>
+                <tr class="bg-gray-100 border-b border-gray-200">
+                    <th class="px-4 py-3">@item.Description</th>
+                    <th class="px-4 py-3">@item.Discount</th>
+                    <th class="px-4 py-3">
                         <div class="inline-flex">
                             <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
                                 Edit
@@ -29,7 +23,7 @@
                                 Elim
                             </button>
                         </div>
-                    </td>
+                    </th>
                 </tr>
             }
             </tbody>

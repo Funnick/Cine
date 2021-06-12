@@ -24,12 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-<<<<<<< HEAD
-=======
+    <Folder Include="Controllers\"/>
     <Folder Include="Models\" />
     <Folder Include="Views\Movie" />
->>>>>>> BackEnd
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />

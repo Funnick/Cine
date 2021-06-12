@@ -19,14 +19,17 @@ namespace Cine.Controllers
         private readonly UserManager<TheaterUser> _userManager;
         private readonly SignInManager<TheaterUser> _signInManager;
         private readonly ITheaterMemberRepository _theaterMemberRepository;
+        private readonly IGetRepository<TheaterUser> _userRepository;
         
         public TheaterUserController(UserManager<TheaterUser> userManager,
                                     SignInManager<TheaterUser> signInManager,
-                                    ITheaterMemberRepository theaterMemberRepository)
+                                    ITheaterMemberRepository theaterMemberRepository,
+                                    IGetRepository<TheaterUser> userRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _theaterMemberRepository = theaterMemberRepository;
+            _userRepository = userRepository;
         }
         
         [HttpGet]
@@ -34,7 +37,19 @@ namespace Cine.Controllers
         {
             return View();
         }
-
+        [HttpPost]
+        public IActionResult Create(TheaterUser obj)
+        {
+            _userRepository.Add(obj);
+            return RedirectToAction("Main", "Manager");
+        }
+        public IActionResult UserList()
+        {
+            Console.WriteLine(_userRepository.GetAllObj().Count());
+            Console.WriteLine("2");
+            ViewBag.Users = _userRepository.GetAllObj();
+            return View();
+        }
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {

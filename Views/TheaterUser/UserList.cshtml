@@ -1,4 +1,9 @@
-﻿<div class=" w-full">
+﻿@{
+    Layout = "~/Views/Manager/_Layout.cshtml";
+}
+@model TheaterUser;
+
+<div class=" w-full">
     <div class="flex flex-col items-center justify-center">
         <p class="text-2xl text-center font-bold m-5">Entradas</p>
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
@@ -11,7 +16,7 @@
                 <th class="px-4 py-3">Acción</th>
             </tr>
             <tbody>
-            @foreach (var item in Model.Result)
+            @foreach (var item in ViewBag.Users)
             {
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <th class="px-4 py-3">@item.Name</th>
@@ -43,29 +48,29 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-                    <div class="form-group row">
-                        <div class="col-10">
-                            <input class="form-control" placeholder="Nombre" type="text" id="example-text-input">
+                    <form method="post" id="form_id" class="w-full" asp-controller="TheaterUser" asp-action="Create">
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <input class="form-control" placeholder="Nombre" type="text" asp-for="UserName">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-10">
-                            <input class="form-control" placeholder="Correo" type="text" id="example-text-input">
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <input class="form-control" placeholder="Correo" type="text" asp-for="Email">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-10">
-                            <input class="form-control" placeholder="Tarjeta" type="text" id="example-text-input">
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <input class="form-control" placeholder="Tarjeta" type="text" asp-for="Card">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-10">
-                            <input class="form-control" type="number" min="0" max="1" placeholder="Miembro" id="example-text-input">
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <input class="form-control" type="text" placeholder="Miembro" asp-for="TheaterMember">
+                            </div>
                         </div>
-                    </div>
-                    <form id="form_id" class="w-full">
                         <div class="mt-5">
-                            <button class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"> Crear </button>
+                            <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Crear"/>
                             <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
                                 Cerrar
                             </span>

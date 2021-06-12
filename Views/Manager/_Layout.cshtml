@@ -16,7 +16,10 @@
     <link rel="stylesheet" href="~/css/styles.css">
     <link rel="stylesheet" href="~/css/all.css">
     <style>
-
+        body{background: #E55D87;  /* fallback for old browsers */
+             background: -webkit-linear-gradient(to right, #5FC3E4, #E55D87);  /* Chrome 10-25, Safari 5.1-6 */
+             background: linear-gradient(to right, #5FC3E4, #E55D87); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            }
 
         .toggle_dot {
             top: -.25rem;
@@ -118,7 +121,7 @@
 </nav>
 
 <!--Container-->
-<div class="w-full h-full content shadow-lg mx-auto mt-24 md:mt-18 bg-cover bg-fixed" style="background-image:url('@Url.Content("~/images/bg.jpg")');">
+<div class="w-full h-full content shadow-lg mx-auto mt-24 md:mt-18 bg-cover bg-fixed">
         @RenderBody()
         </div>
 

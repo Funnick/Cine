@@ -15,10 +15,14 @@ namespace Cine.Controllers
     public class ShowController : Controller
     {
         private readonly IGetRepository<Show> _showRepository;
+        private readonly IGetRepository<Movie> _movieRepository;
+        private readonly IGetRepository<Cinema> _cinemaRepository;
 
-        public ShowController(IGetRepository<Show> showRepository)
+        public ShowController(IGetRepository<Show> showRepository, IGetRepository<Cinema> cinemaRepository, IGetRepository<Movie> movieRepository)
         {
             _showRepository = showRepository;
+            _cinemaRepository = cinemaRepository;
+            _movieRepository = movieRepository;
         }
         /*
         [HttpGet]
@@ -31,7 +35,16 @@ namespace Cine.Controllers
         public IActionResult Create(Show obj)
         {
             _showRepository.Add(obj);
-            return RedirectToAction("index", "main");
+            return RedirectToAction("Main", "Manager");
+        }
+        public IActionResult ShowList()
+        {
+            Console.WriteLine(_showRepository.GetAllObj().Count());
+            Console.WriteLine("2");
+            ViewBag.Shows = _showRepository.GetAllObj();
+            ViewBag.Cinemas = _cinemaRepository.GetAllObj();
+            ViewBag.Movies = _movieRepository.GetAllObj();
+            return View();
         }
         /*
         public IActionResult ShowDetail(int id)

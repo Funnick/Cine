@@ -1,4 +1,8 @@
-﻿<div class=" w-full">
+﻿@{
+    Layout = "~/Views/Manager/_Layout.cshtml";
+}
+@model Show;
+<div class=" w-full">
     <div class="flex flex-col items-center justify-center">
         <p class="text-2xl text-center font-bold m-5">Funciones</p>
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
@@ -12,7 +16,7 @@
                 <th class="px-4 py-3">Acción</th>
             </tr>
             <tbody>
-            @foreach (var item in Model.Result)
+            @foreach (var item in ViewBag.Shows)
             {
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <th class="px-4 py-3">@item.StartTime</th>
@@ -45,39 +49,51 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-                    <div class="form-group row">
-                        <label for="example-date-input" class="col-2 col-form-label">Fecha</label>
-                        <div class="col-10">
-                            <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+                    <form method="post" id="form_id" class="w-full" asp-controller="Show" asp-action="Create">
+                        <div class="form-group row">
+                            <label for="example-date-input" class="col-2 col-form-label">Fecha</label>
+                            <div class="col-10">
+                                <input class="form-control" type="date" value="2011-08-19" asp-for="Date">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="example-time-input" class="col-2 col-form-label">Inicio</label>
-                        <div class="col-10">
-                            <input class="form-control" type="time" id="example-time-input">
+                        <div class="form-group row">
+                            <label for="example-time-input" class="col-2 col-form-label">Inicio</label>
+                            <div class="col-10">
+                                <input class="form-control" type="time" asp-for="StartTime">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="example-time-input" class="col-2 col-form-label">Fin</label>
-                        <div class="col-10">
-                            <input class="form-control" type="time" id="example-time-input">
+                        <div class="form-group row">
+                            <label for="example-time-input" class="col-2 col-form-label">Fin</label>
+                            <div class="col-10">
+                                <input class="form-control" type="time" asp-for="EndTime">
+                            </div>
                         </div>
-                    </div>
-                    <label for="example-time-input" class="col-form-label">Película</label>
-                    <select class="form-select form-control" aria-label="Default select example">
-                        <option selected=""></option>
-                        @{
-                            int i = 1;
-                            @foreach (var movie in Model.Movies)
-                            {
-                                i++;
-                                <option value="@i">@movie</option>
+                        <label for="example-time-input" class="col-form-label">Película</label>
+                        <select class="form-select form-control" aria-label="Default select example" asp-for="Movie">
+                            <option selected=""></option>
+                            @{
+                                int i = 1;
+                                @foreach (var movie in ViewBag.Movies)
+                                {
+                                    i++;
+                                    <option value="@i">@movie.Title</option>
+                                }
                             }
-                        }
-                    </select>
-                    <form id="form_id" class="w-full">
+                        </select>
+                        <label for="example-time-input" class="col-form-label">Cinema</label>
+                        <select class="form-select form-control" aria-label="Default select example" asp-for="Cinema">
+                            @{
+                                int i = 1;
+                                @foreach (var cinema in ViewBag.Cinemas)
+                                {
+                                    i++;
+                                    <option value="@i">@cinema.NumberOfSeats asientos</option>
+                                }
+                            }
+                        </select>
+
                         <div class="mt-5">
-                            <button class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"> Crear </button>
+                            <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Crear"/>
                             <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
                                 Cerrar
                             </span>

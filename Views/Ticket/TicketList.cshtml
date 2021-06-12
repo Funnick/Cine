@@ -1,4 +1,9 @@
-﻿<div class=" w-full">
+﻿@{
+    Layout = "~/Views/Manager/_Layout.cshtml";
+}
+@model Ticket;
+
+<div class=" w-full">
     <div class="flex flex-col items-center justify-center">
         <p class="text-2xl text-center font-bold m-5">Entradas</p>
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
@@ -11,7 +16,7 @@
                 <th class="px-4 py-3">Acción</th>
             </tr>
             <tbody>
-            @foreach (var item in Model.Result)
+            @foreach (var item in ViewBag.Tickets)
             {
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <th class="px-4 py-3">@item.Price</th>
@@ -44,18 +49,17 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-                    <form id="form_id" class="w-full">
+                    <form method="post" id="form_id" class="w-full" asp-controller="Ticket" asp-action="Create">
                         <div class="form-group row">
                             <div class="col-10">
-                                <input class="form-control" type="number" placeholder="Precio" id="example-text-input">
+                                <input class="form-control" type="number" placeholder="Precio" asp-for="Price">
                             </div>
                         </div>
                         <label for="example-time-input" class="col-form-label">Promoción</label>
-                        <select class="form-select form-control" aria-label="Default select example">
-                            <option selected=""></option>
+                        <select class="form-select form-control" aria-label="Default select example" asp-for="Discounts">
                             @{
-                                int i = 1;
-                                foreach (var promotion in Model.Promotions)
+                                int i = 0;
+                                foreach (var promotion in ViewBag.Discounts)
                                 {
                                     i++;
                                     <option value="@i">@promotion</option>
@@ -63,32 +67,26 @@
                             }
                         </select>
                         <label for="example-time-input" class="col-form-label">Función</label>
-                        <select class="form-select form-control" aria-label="Default select example">
-                            <option selected=""></option>
+                        <select class="form-select form-control" aria-label="Default select example" asp-for="Show">
                             @{
-                                int j = 1;
-                                foreach (var promotion in Model.Shows)
+                                foreach (var show in ViewBag.Shows)
                                 {
-                                    j++;
-                                    <option value="@j">@promotion</option>
+                                    <option value="@show.ShowId.">@show</option>
                                 }
                             }
                         </select>
                         <label for="example-time-input" class="col-form-label">Usuario</label>
-                        <select class="form-select form-control" aria-label="Default select example">
-                            <option selected=""></option>
+                        <select class="form-select form-control" aria-label="Default select example" asp-for="TheaterUser">
                             @{
-                                int k = 1;
-                                foreach (var user in Model.Users)
+                                foreach (var user in ViewBag.Users)
                                 {
-                                    k++;
-                                    <option value="@k">@user</option>
+                                    <option value="@user.TheaterUserId">@user.Name</option>
                                 }
                             }
                         </select>
 
                         <div class="mt-5">
-                            <button class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"> Crear </button>
+                            <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Crear"/>
                             <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
                                 Cerrar
                             </span>

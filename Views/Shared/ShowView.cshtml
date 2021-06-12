@@ -5,10 +5,10 @@
 
     <div>
         <div>
-            <h1 class="text-center font-bold text-5xl mt-8 tracking-wide relative">Disccounts</h1>
+            <h1 class="text-center font-bold text-5xl mt-8 tracking-wide relative">Descuentos</h1>
 
             <div class="flex flex-row justify-center my-4 text-sm tracking-tight font-medium text-gray-700">
-                <p class="mx-3">USD</p>
+                <p class="mx-3">MLC</p>
 
                 <!-- Toggle Button -->
                 <label for="toggle" class="flex items-center cursor-pointer">
@@ -30,54 +30,36 @@
                 <div class="border rounded-lg  text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
                     <div class="">Regular</div>
                     <div id="Chips" class="font-bold text-6xl Chips hidden">20</div>
-                    <div id="USD" class="font-bold text-6xl USD">&dollar;19.99</div>
+                    <div id="MLC" class="font-bold text-6xl MLC">&dollar;Price </div>
                 </div>
+                @foreach (var discount in Model.Discount)
+                {
+                    <div class="border rounded-lg  text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
+                        <div class="">@discount.Description</div>
+                        <div id="Chips" class="font-bold text-6xl Chips hidden">20</div>
+                        <div id="MLC" class="font-bold text-6xl MLC">&dollar;Price <a class="text-md text-red-400 font-bold">@discount.Percent % OFF</a></div>
+                    </div>
+                }
 
-                <div class="border rounded-lg   text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
-                    <div class="">Childs</div>
-                    <div id="Chips" class="font-bold text-6xl Chips hidden">12</div>
-                    <div id="USD" class="font-bold text-6xl USD">&dollar;12.99</div>
-                </div>
-
-                <div class="border rounded-lg   text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
-                    <div class="">Members</div>
-                    <div id="Chips" class="font-bold text-6xl Chips hidden">10</div>
-                    <div id="USD" class="font-bold text-6xl USD ">&dollar;9.99</div>
-
-                </div>
             </div>
         </div>
         <div>
-            <h1 class="text-center font-bold text-5xl mt-8 tracking-wide relative">Movie Title</h1>
+            <h1 class="text-center font-bold text-5xl mt-8 tracking-wide relative">@Model.Movie.Title</h1>
         </div>
         <div>
-            <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">Date</h1>
+            <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">@Model.Date</h1>
         </div>
         <div class="flex flex-row items-center gap-4 justify-center">
             <div>
-                <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">Start Time</h1>
+                <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">@Model.StartTime</h1>
             </div>
             <div>
-                <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">End Time</h1>
+                <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">@Model.EndTime</h1>
             </div>
         </div>
         <div class="m-4 tracking-wide bg-gray-100 rounded-lg p-5 shadow-inner">
             <p>
-                Star Wars is an American epic space opera[1] media franchise created by George Lucas, which began with the
-                eponymous 1977 film[b] and quickly became a worldwide pop-culture phenomenon. The franchise has been expanded
-                into various films and other media, including television series, video games, novels, comic books, theme park
-                attractions, and themed areas, comprising an all-encompassing fictional universe.[c] In 2020, its total value
-                was estimated at US$70 billion, and it is currently the fifth-highest-grossing media franchise of all time.
-
-                The original film (Star Wars), retroactively subtitled Episode IV: A New Hope (1977), was followed by the sequels
-                Episode V: The Empire Strikes Back (1980) and Episode VI: Return of the Jedi (1983), forming the original
-                Star Wars trilogy. Lucas later returned to filmmaking to direct a prequel trilogy, consisting of Episode I:
-                The Phantom Menace (1999), Episode II: Attack of the Clones (2002), and Episode III: Revenge of the Sith (2005).
-                In 2012, Lucas sold his production company to Disney, relinquishing his ownership of the franchise. The subsequently
-                produced sequel trilogy consists of Episode VII: The Force Awakens (2015), Episode VIII: The Last Jedi (2017), and
-                Episode IX: The Rise of Skywalker (2019).
-
-                All nine films of the 'Skywalker saga' were nominated for Academy Awards with wins going to the first two releases. Together with the theatrical live action spin-off films Rogue One (2016) and Solo (2018), the combined box office revenue of the films equated to over US$10 billion and is currently the second-highest-grossing film franchise of all time
+                @Model.Movie.Synopsis
             </p>
         </div>
         <div class="w-full flex items-center justify-center">
@@ -152,7 +134,7 @@
     <!--JS for toggle-->
     <script>
         function myFunction() {
-            var x = document.querySelectorAll('.USD');
+            var x = document.querySelectorAll('.MLC');
             var y = document.querySelectorAll('.Chips');
             for (var i = 0; i < x.length; i++) {
                 if (document.getElementById("toggle").checked == true) {

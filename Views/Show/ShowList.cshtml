@@ -83,11 +83,9 @@
                         <label for="example-time-input" class="col-form-label">Cinema</label>
                         <select class="form-select form-control" aria-label="Default select example" asp-for="Cinema">
                             @{
-                                int i = 1;
                                 @foreach (var cinema in ViewBag.Cinemas)
                                 {
-                                    i++;
-                                    <option value="@i">@cinema.NumberOfSeats asientos</option>
+                                    <option value="@cinema.CinemaId">@cinema.NumberOfSeats asientos</option>
                                 }
                             }
                         </select>

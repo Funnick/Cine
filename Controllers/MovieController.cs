@@ -27,23 +27,17 @@ namespace Cine.Controllers
             _movieRepository.Add(obj);
             return RedirectToAction("Main", "Manager");
         }
-        public IActionResult MovieList()
-        {
-            Console.WriteLine(_movieRepository.GetAllObj().Count());
-            Console.WriteLine("2");
-            ViewBag.Movies = _movieRepository.GetAllObj();
-            return View();
-        }
         /*
         public IActionResult MovieDetail(int id)
         {
             return View(_movieRepository.GetObj(id));
         }
-
+        */
         public IActionResult MovieList()
         {
-            return View(_movieRepository.GetAllObj());
+            ViewBag.Movies = _movieRepository.GetAllObj();
+            ViewBag.MoviesCount = _movieRepository.GetAllObj().Count();
+            return View();
         }
-        */
     }
 }

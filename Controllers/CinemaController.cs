@@ -25,7 +25,7 @@ namespace Cine.Controllers
         public IActionResult Create(Cinema obj)
         {
             _cinemaRepository.Add(obj);
-            return RedirectToAction("Main", "Manager");
+            return RedirectToAction("CinemaList", "Cinema");
         }
 
         public IActionResult CinemaList()

@@ -1,4 +1,6 @@
-﻿
+﻿@{
+    Layout = "~/Views/Manager/_Layout.cshtml";
+}
 @model Movie;
 <div class=" w-full">
     <div class="flex flex-col items-center justify-center">
@@ -15,7 +17,47 @@
                 <th class="px-4 py-3">Acción</th>
             </tr>
             <tbody>
-                                                                
+            @foreach (var item in ViewBag.Movies)
+            {
+                <tr class="bg-gray-100 border-b border-gray-200">
+                    <th class="px-4 py-3">@item.Title</th>
+                    <th class="px-4 py-3">@item.Genre</th>
+                    <th class="px-4 py-3">@item.Category</th>
+                    <th class="px-4 py-3">@item.Duration</th>
+                    <th class="px-4 py-3">@item.Year</th>
+                    <th class="px-4 py-3">@item.Country</th>
+                    <th class="px-4 py-3">
+                        <button data-modal="@item.MovieId" class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Ver
+                        </button>
+                    </th>
+                    <div id="@item.MovieId" class="modal-wrapper">
+                        <div class="overlay close-modal"></div>
+                        <div class="modal modal-centered">
+                            <div class="modal-content shadow-lg p-5">
+                                <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                    <div class="flex justify-between items-center">
+                                        Sinopsis
+                                    </div>
+                                </div>
+                                <p>
+                                    @item.Synopsis
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <th class="px-4 py-3">
+                        <div class="inline-flex">
+                            <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                Edit
+                            </button>
+                            <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
+                                Elim
+                            </button>
+                        </div>
+                    </th>
+                </tr>
+            }                                                    
             </tbody>
         </table>
         <button data-modal="formFilm" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Agregar Película</button>

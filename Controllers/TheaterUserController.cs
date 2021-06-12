@@ -19,7 +19,7 @@ namespace Cine.Controllers
         private readonly UserManager<TheaterUser> _userManager;
         private readonly SignInManager<TheaterUser> _signInManager;
         private readonly ITheaterMemberRepository _theaterMemberRepository;
-        
+
         public TheaterUserController(UserManager<TheaterUser> userManager,
                                     SignInManager<TheaterUser> signInManager,
                                     ITheaterMemberRepository theaterMemberRepository)
@@ -34,7 +34,6 @@ namespace Cine.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {

@@ -1,17 +1,24 @@
-﻿<div class=" w-full">
+﻿@{
+    Layout = "~/Views/Manager/_Layout.cshtml";
+}
+@model Discount;
+
+<div class=" w-full">
     <div class="flex flex-col items-center justify-center">
         <p class="text-2xl text-center font-bold m-5">Promociones</p>
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
             <tr>
+                <th class="px-4 py-3">Id</th>
                 <th class="px-4 py-3">Descripción</th>
                 <th class="px-4 py-3">Descuento</th>
                 <th class="px-4 py-3">Acción</th>
             </tr>
             <tbody>
-            @foreach (var item in Model.Result)
+            @foreach (var item in ViewBag.Discounts)
             {
                 <tr class="bg-gray-100 border-b border-gray-200">
+                     <th class="px-4 py-3">@item.DiscountId</th>
                     <th class="px-4 py-3">@item.Description</th>
                     <th class="px-4 py-3">@item.Discount</th>
                     <th class="px-4 py-3">
@@ -39,19 +46,20 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-                    <div class="form-group row">
-                        <div class="col-10">
-                            <input class="form-control" placeholder="Descripción" type="text" id="example-text-input">
+
+                    <form method="post" id="form_id" class="w-full" asp-controller="Discount" asp-action="DiscountList">
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <input class="form-control" placeholder="Descripción" type="text" asp-for="Description">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-10">
-                            <input class="form-control" placeholder="Descuento" type="number" id="example-text-input">
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <input class="form-control" placeholder="Descuento" type="number" asp-for="Percent">
+                            </div>
                         </div>
-                    </div>
-                    <form id="form_id" class="w-full">
                         <div class="mt-5">
-                            <button class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"> Crear </button>
+                            <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Crear"/>
                             <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
                                 Cerrar
                             </span>

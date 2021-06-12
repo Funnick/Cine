@@ -11,6 +11,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
 using Cine.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Cine.ModelsRepository;
+using Cine.SQLiteRepository;
 
 namespace Cine
 {
@@ -31,6 +34,15 @@ namespace Cine
             services.AddDbContext<CineDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("CineConnection")));
 
+            services.AddIdentity<TheaterUser, IdentityRole>()
+                .AddEntityFrameworkStores<CineDbContext>();
+
+            services.AddScoped<ITheaterUserRepository, DbTheaterUserRepository>();
+            services.AddScoped<ITheaterMemberRepository, DbTheaterMemberRepository>();
+            services.AddScoped<IGetRepository<Movie>, DbMovieRepository>();
+            services.AddScoped<IGetRepository<Show>, DbShowRepository>();
+            services.AddScoped<IGetRepository<Cinema>, DbCinemaRepository>();
+
             //services.AddDatabaseDeveloperPageExceptionFilter();
         }
 
@@ -43,19 +55,21 @@ namespace Cine
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Main/Error");
             }
             app.UseStaticFiles();
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Main}/{action=Index}/{id?}");
             });
 
             

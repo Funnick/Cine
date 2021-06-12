@@ -1,0 +1,31 @@
+﻿
+@model LoginViewModel
+
+<div class="font-sans ">
+    <div class="relative min-h-screen flex flex-col sm:justify-center items-center ">
+        <div class="relative w-auto h-auto sm:max-w-sm w-full">
+            <div class="card bg-gray-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
+            <div class="card bg-red-400 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
+            <div class="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
+                <label for="" class="block mt-3  text-center ">
+                    <a class="text-center text-black font-bold text-4xl mt-8 tracking-wide relative">LOG IN</a>
+                </label>
+                <form method="post">
+                    <div asp-validation-summary="All" class="text-red-400"></div>
+                    <div class="w-full">
+                        <label asp-for="Email" class="text-2xl block"></label>
+                        <input asp-for="Email" class="block px-2 w-full bg-light-border h-8 bg-gray-100" placeholder="example@gmail.com" />
+                        <span asp-validation-for="Email" class="text-red-900"></span>
+                    </div>
+                    <div class="w-full mt-4">
+                        <label asp-for="Password" class="text-2xl block"></label>
+                        <input asp-for="Password" class="block px-2 w-full bg-light-border h-8 bg-gray-100" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-red-900"></span>
+                    </div>
+                    <div class="text-sm mt-8 ml-4">Did you don't have an account? You can <a class="text-red-400" asp-controller="TheaterUser" asp-action="Register">register</a></div>
+                    <button type="submit" class="w-full h-11 mt-4 bg-red-400 hover:bg-red-600 rounded-2xl">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

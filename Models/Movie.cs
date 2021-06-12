@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Net.Mime;
 
 
 namespace Cine.Models{
@@ -24,7 +25,7 @@ namespace Cine.Models{
         
         [Required]
         [Column("Duration")]
-        public DateTime Duration { get; set; }
+        public int Duration { get; set; }
         
         [Required]
         [Column("Country")]
@@ -44,6 +45,10 @@ namespace Cine.Models{
         [Column("Synopsis")]
         [MaxLength(300)]
         public string Synopsis { get; set; }
+
+        public int PointsPrice { get; set; }
+
+        public string Photo { get; set; }
         
         public virtual ICollection<Director> Directors { get; set; }
         

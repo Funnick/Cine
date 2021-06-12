@@ -1,0 +1,85 @@
+﻿@{
+    Layout = "~/Views/Manager/_Layout.cshtml";
+}
+@model TheaterMember;
+
+<div class=" w-full">
+    <div class="flex flex-col items-center justify-center">
+        <p class="text-2xl text-center font-bold m-5">Theater Members</p>
+        <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+            <tr class="text-left border-b-2 border-gray-300">
+            <tr>
+                <th class="px-4 py-3">Name</th>
+                <th class="px-4 py-3">Email</th>
+                <th class="px-4 py-3">Card</th>
+                <th class="px-4 py-3">Code</th>
+                <th class="px-4 py-3">Points</th>
+                <th class="px-4 py-3">Action</th>
+            </tr>
+            <tbody>
+            @foreach (var item in ViewBag.Members)
+            {
+                <tr class="bg-gray-100 border-b border-gray-200">
+                    <th class="px-4 py-3">@item.Name</th>
+                    <th class="px-4 py-3">@item.Email</th>
+                    <th class="px-4 py-3">@item.Card</th>
+                    <th class="px-4 py-3">@item.Code</th>
+                    <th class="px-4 py-3">@item.Points</th>
+                    <th class="px-4 py-3">
+                        <div class="inline-flex">
+                            <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                Edit
+                            </button>
+                            <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
+                                Del
+                            </button>
+                        </div>
+                    </th>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <button data-modal="formMemb" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Add Member</button>
+        <div id="formMemb" class="modal-wrapper">
+            <div class="overlay close-modal"></div>
+            <div class="modal modal-centered">
+                <div class="modal-content shadow-lg p-5">
+                    <form method="post" id="form_id" class="w-full" asp-controller="TheaterMember" asp-action="Create">
+                        <div class="border-b p-2 pb-3 pt-0 mb-4">
+                            <div class="flex justify-between items-center">
+                                Add Member
+                            </div>
+                        </div>
+                        <!-- Modal content -->
+                        <label for="example-time-input" class="col-form-label">User</label>
+                        <select class="form-select form-control" aria-label="Default select example" asp-for="TheaterUser">
+                            @{
+                                @foreach (var user in ViewBag.TheatherUsers)
+                                {
+                                    <option value="@user.UserId">@user.Name</option>
+                                }
+                            }
+                        </select>
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <input class="form-control" type="number" placeholder="Code" asp-for="Code">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-10">
+                                <input class="form-control" type="number" placeholder="Points" asp-for="Points">
+                            </div>
+                        </div>
+
+                        <div class="mt-5">
+                            <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
+                            <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                Close
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

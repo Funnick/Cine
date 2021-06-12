@@ -1,0 +1,68 @@
+﻿@{/*
+    @model Cinema;
+<div class=" w-full">
+        <div class="flex flex-col items-center justify-center">
+            <p class="text-2xl text-center font-bold m-5">Sala</p>
+            <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+                <tr class="text-left border-b-2 border-gray-300">
+                <tr>
+                    <th class="px-4 py-3">Asientos</th>
+                    <th class="px-4 py-3">Funciones</th>
+                    <th class="px-4 py-3">Acción</th>
+                </tr>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="bg-gray-100 border-b border-gray-200">
+                        <th class="px-4 py-3">@item.Asientos</th>
+                        <th class="px-4 py-3">
+                            @foreach (var shows in item.Shows)
+                            {
+                                <a>@shows.Date @shows.StartTime</a>
+                            }
+                        </th>
+                        <th class="px-4 py-3">
+                            <div class="inline-flex">
+                                <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                    Edit
+                                </button>
+                                <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
+                                    Elim
+                                </button>
+                            </div>
+                        </th>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <button data-modal="formCinema" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Agregar Sala</button>
+            <div id="formCinema" class="modal-wrapper">
+                <div class="overlay close-modal"></div>
+                <div class="modal modal-centered">
+                    <div class="modal-content shadow-lg p-5">
+                        <div class="border-b p-2 pb-3 pt-0 mb-4">
+                            <div class="flex justify-between items-center">
+                                Agregar Sala
+                            </div>
+                        </div>
+                        <!-- Modal content -->
+                        <form method="post" id="form_id" class="w-full" asp-controller="Cinema" asp-action="Create">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" type="number" placeholder="Cantidad de sillas" id="example-text-input" asp-for="NumberOfSeats"/>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Crear"/>
+                                <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                    Cerrar
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    */
+}

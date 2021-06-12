@@ -3,14 +3,16 @@ using System;
 using Cine.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cine.Migrations
 {
     [DbContext(typeof(CineDbContext))]
-    partial class CineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210611123623_MovieDuration")]
+    partial class MovieDuration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,12 +84,6 @@ namespace Cine.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT")
                         .HasColumnName("Genre");
-
-                    b.Property<string>("Photo")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("PointsPrice")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Synopsis")
                         .IsRequired()
@@ -280,6 +276,7 @@ namespace Cine.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("TheaterUserId")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("TicketId");
@@ -522,7 +519,9 @@ namespace Cine.Migrations
 
                     b.HasOne("Cine.Models.TheaterUser", "TheaterUser")
                         .WithMany("Ticekts")
-                        .HasForeignKey("TheaterUserId");
+                        .HasForeignKey("TheaterUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Show");
 

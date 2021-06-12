@@ -4,12 +4,6 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Views\Movie\**" />
-    <Content Remove="Views\Movie\**" />
-    <EmbeddedResource Remove="Views\Movie\**" />
-    <None Remove="Views\Movie\**" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Entity" Version="1.0.0" />

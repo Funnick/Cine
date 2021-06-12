@@ -45,8 +45,7 @@ namespace Cine.Models{
         [Column("Synopsis")]
         [MaxLength(300)]
         public string Synopsis { get; set; }
-
-        public int PointsPrice { get; set; }
+        
 
         public string Photo { get; set; }
         

@@ -19,7 +19,8 @@ namespace Cine.Controllers
         private readonly UserManager<TheaterUser> _userManager;
         private readonly SignInManager<TheaterUser> _signInManager;
         private readonly ITheaterMemberRepository _theaterMemberRepository;
-
+        
+        
         public TheaterUserController(UserManager<TheaterUser> userManager,
                                     SignInManager<TheaterUser> signInManager,
                                     ITheaterMemberRepository theaterMemberRepository)
@@ -34,6 +35,7 @@ namespace Cine.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
@@ -93,9 +95,24 @@ namespace Cine.Controllers
         
         public async Task<IActionResult> BecomeClubMember()
         {
-            TheaterUser _user = await _userManager.GetUserAsync(@User);
-            _theaterMemberRepository.Add(_user);
+            TheaterUser user = await _userManager.GetUserAsync(@User);
+            _theaterMemberRepository.Add(user);
             return RedirectToAction("index", "main");
+        }
+
+        [HttpPost]
+        public IActionResult Create(TheaterUser user)
+        {
+            _userManager.CreateAsync(user);
+            return RedirectToAction("UserList", "TheaterUser");
+        }
+        
+        public IActionResult UserList()
+        {
+            IEnumerable<TheaterUser> users = _userManager.Users;
+            ViewBag.Users = users;
+            ViewBag.UsersCount = users == null ? 0 : users.Count();
+            return View();
         }
     }
 }

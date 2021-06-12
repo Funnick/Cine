@@ -1,20 +1,17 @@
 ﻿
 @model LoginViewModel
 
-<div class="font-sans ">
-    <div class="relative min-h-screen flex flex-col sm:justify-center items-center ">
-        <div class="relative w-auto h-auto sm:max-w-sm w-full">
-            <div class="card bg-gray-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
-            <div class="card bg-red-400 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
-            <div class="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
-                <label for="" class="block mt-3  text-center ">
-                    <a class="text-center text-black font-bold text-4xl mt-8 tracking-wide relative">LOG IN</a>
-                </label>
+<div class="w-full p-10  bg-cover bg-no-repeat" style="background-image:url('@Url.Content("~/images/bglogin.jpg")');">
+    <div class="bg-transparent w-full md:max-w-md lg:max-w-full md:mx-auto md:mx-0 md:w-1/2 xl:w-1/3 h-screen px-4 lg:px-12 xl:px-10
+        flex items-center justify-center">
+        <div class="h-auto p-12 rounded-2xl bg-gray-800">
+            <a class="text-4xl pb-4 ml-4 text-red-800">User Log in</a>
+            <div class="w-64 justify-center h-full">
                 <form method="post">
                     <div asp-validation-summary="All" class="text-red-400"></div>
                     <div class="w-full">
                         <label asp-for="Email" class="text-2xl block"></label>
-                        <input asp-for="Email" class="block px-2 w-full bg-light-border h-8 bg-gray-100" placeholder="example@gmail.com" />
+                        <input asp-for="Email" class="block px-2 w-full bg-light-border h-8 bg-gray-100" />
                         <span asp-validation-for="Email" class="text-red-900"></span>
                     </div>
                     <div class="w-full mt-4">
@@ -22,10 +19,11 @@
                         <input asp-for="Password" class="block px-2 w-full bg-light-border h-8 bg-gray-100" placeholder="Password" />
                         <span asp-validation-for="Password" class="text-red-900"></span>
                     </div>
-                    <div class="text-sm mt-8 ml-4">Did you don't have an account? You can <a class="text-red-400" asp-controller="TheaterUser" asp-action="Register">register</a></div>
-                    <button type="submit" class="w-full h-11 mt-4 bg-red-400 hover:bg-red-600 rounded-2xl">Login</button>
+                    <div class="text-sm ml-4">Did you don't have an account? You can <a asp-controller="TheaterUser" asp-action="Register">register</a></div>
+                    <button type="submit" class="w-full h-11 mt-4 bg-red-800 rounded-2xl">Login</button>
                 </form>
             </div>
         </div>
+
     </div>
 </div>

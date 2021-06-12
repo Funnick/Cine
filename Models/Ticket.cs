@@ -23,13 +23,11 @@ namespace Cine.Models
         
         [DataType("Text")]
         [ForeignKey("TheaterUser")]
-        [Required]
         public string TheaterUserId { get; set; }
         
         [Required]
         public int ShowId { get; set; }
         
-        [Required] 
         public virtual TheaterUser TheaterUser { get; set; }
 
         [Required]

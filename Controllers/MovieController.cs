@@ -20,7 +20,23 @@ namespace Cine.Controllers
         {
             _movieRepository = movieRepository;
         }
-        
-        
+
+        [HttpPost]
+        public IActionResult Create(Movie obj)
+        {
+            _movieRepository.Add(obj);
+            return RedirectToAction("Main", "Manager");
+        }
+        /*
+        public IActionResult MovieDetail(int id)
+        {
+            return View(_movieRepository.GetObj(id));
+        }
+
+        public IActionResult MovieList()
+        {
+            return View(_movieRepository.GetAllObj());
+        }
+        */
     }
 }

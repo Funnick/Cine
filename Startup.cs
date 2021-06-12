@@ -41,7 +41,8 @@ namespace Cine
             services.AddScoped<ITheaterMemberRepository, DbTheaterMemberRepository>();
             services.AddScoped<IGetRepository<Movie>, DbMovieRepository>();
             services.AddScoped<IGetRepository<Show>, DbShowRepository>();
-            
+            services.AddScoped<IGetRepository<Cinema>, DbCinemaRepository>();
+
             //services.AddDatabaseDeveloperPageExceptionFilter();
         }
 
@@ -54,7 +55,7 @@ namespace Cine
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Main/Error");
             }
             app.UseStaticFiles();
 
@@ -68,7 +69,7 @@ namespace Cine
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Main}/{action=Index}/{id?}");
             });
 
             

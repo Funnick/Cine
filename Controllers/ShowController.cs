@@ -28,10 +28,10 @@ namespace Cine.Controllers
         }
         */
         [HttpPost]
-        public IActionResult CreateShow(Show obj)
+        public IActionResult Create(Show obj)
         {
             _showRepository.Add(obj);
-            return RedirectToAction("index", "home");
+            return RedirectToAction("index", "main");
         }
         /*
         public IActionResult ShowDetail(int id)

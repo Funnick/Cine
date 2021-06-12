@@ -1,28 +1,24 @@
-﻿<div class="card-body row">
-    <!-- User -->
-    <div class="col-12">
-        <div class="card-title">Realizador</div>
-        <table class="table table-bordered">
-            <thead class="thead-dark">
+﻿<div class=" w-full">
+    <div class="flex flex-col items-center justify-center">
+        <p class="text-2xl text-center font-bold m-5">Miembros Asociados</p>
+        <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+            <tr class="text-left border-b-2 border-gray-300">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">País</th>
-                <th scope="col">Edad</th>
-                <th scope="col">Películas</th>
-                <th scope="col">Acción</th>
+                <th class="px-4 py-3">Nombre</th>
+                <th class="px-4 py-3">País</th>
+                <th class="px-4 py-3">Edad</th>
+                <th class="px-4 py-3">Películas</th>
+                <th class="px-4 py-3">Acción</th>
             </tr>
-            </thead>
             <tbody>
-            @for (int j = 0; j < 3; j++)
+            @foreach (var item in Model.Result)
             {
-                <tr>
-                    <th scope="row">@j</th>
-                    @for (int i = 0; i < 4; i++)
-                    {
-                        <td>@(new Random(i * j).Next()) @j @i</td>
-                    }
-                    <td>
+                <tr class="bg-gray-100 border-b border-gray-200">
+                    <th class="px-4 py-3">@item.Name</th>
+                    <th class="px-4 py-3">@item.Country</th>
+                    <th class="px-4 py-3">@item.Age</th>
+                    <th class="px-4 py-3">@foreach(var movies in item.Movies){<a>@movies.Title</a>}</th>
+                    <th class="px-4 py-3">
                         <div class="inline-flex">
                             <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
                                 Edit
@@ -31,7 +27,7 @@
                                 Elim
                             </button>
                         </div>
-                    </td>
+                    </th>
                 </tr>
             }
             </tbody>

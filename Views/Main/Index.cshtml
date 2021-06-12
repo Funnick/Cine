@@ -1,17 +1,10 @@
-﻿@{
-    Layout = "~/Views/Main/_Layout.cshtml";
+﻿@model GenericPaginator<Cine.Models.Movie>
+
+@{
+    ViewData["Title"] = "Home";
 }
 
-
-<div class=" w-full pt-4 shadow-2xl">
-    <div class=" flex items-center justify-center">
-        @await Html.PartialAsync("ShowView")
-        @await Html.PartialAsync("ShowView")
-        @await Html.PartialAsync("ShowView")
-        @await Html.PartialAsync("ShowView")
-        @await Html.PartialAsync("ShowView")
-    </div>
+<div class=" w-full">
     
-
+    
 </div>
-    

@@ -33,11 +33,6 @@ namespace Cine.Models
         [Required]
         public virtual Cinema Cinema { get; set; }
 
-        [Required]
-        public int Price { get; set; }
-        
-        public int PointsPrice { get; set; }
-
         public virtual ICollection<Ticket> Ticekts { get; set; }
         
         public virtual ICollection<Discount> Discount { get; set; }

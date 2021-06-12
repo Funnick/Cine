@@ -8,9 +8,7 @@ namespace Cine.Models
     [Table("Producer")]
     public class Producer
     {
-        [Key] 
-        public int ProducerId { get; set; }
-
+        [Key]
         [Required]
         [Column("Name")]
         [MaxLength(60)]

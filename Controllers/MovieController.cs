@@ -35,5 +35,13 @@ namespace Cine.Controllers
             ViewBag.MoviesCount = movies == null ? 0 : movies.Count();
             return View();
         }
+        //Regular user view (Main)
+        public IActionResult MainMovies()
+        {
+            IEnumerable<Movie> movies = _movieRepository.GetAllObj();
+            ViewBag.Movies = movies;
+            ViewBag.MoviesCount = movies == null ? 0 : movies.Count();
+            return View();
+        }
     }
 }

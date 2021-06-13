@@ -50,5 +50,14 @@ namespace Cine.Controllers
             ViewBag.CinemasCount = cinemas?.Count() ?? 0;
             return View();
         }
+
+        //Regular user view (Main)
+        public IActionResult MainShows()
+        {
+            IEnumerable<Show> shows = _showRepository.GetAllObj();
+            ViewBag.Shows = shows;
+            ViewBag.ShowsCount = shows?.Count() ?? 0;
+            return View();
+        }
     }
 }

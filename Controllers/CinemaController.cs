@@ -25,14 +25,14 @@ namespace Cine.Controllers
         public IActionResult Create(Cinema obj)
         {
             _cinemaRepository.Add(obj);
-            return RedirectToAction("CinemaList", "Cinema");
+            return RedirectToAction("Main", "Manager");
         }
 
         public IActionResult CinemaList()
         {
-            Console.WriteLine(_cinemaRepository.GetAllObj().Count());
-            Console.WriteLine("2");
-            ViewBag.Cinemas = _cinemaRepository.GetAllObj();
+            IEnumerable<Cinema> cinemas = _cinemaRepository.GetAllObj();
+            ViewBag.Cinemas = cinemas;
+            ViewBag.CinemasCount = cinemas == null ? 0 : cinemas.Count();
             return View();
         }
     }

@@ -18,44 +18,37 @@ namespace Cine.Controllers
         private readonly IGetRepository<Movie> _movieRepository;
         private readonly IGetRepository<Cinema> _cinemaRepository;
 
-        public ShowController(IGetRepository<Show> showRepository, IGetRepository<Cinema> cinemaRepository, IGetRepository<Movie> movieRepository)
+        public ShowController(IGetRepository<Show> showRepository,IGetRepository<Movie> movieRepository,IGetRepository<Cinema> cinemaRepository)
         {
             _showRepository = showRepository;
-            _cinemaRepository = cinemaRepository;
             _movieRepository = movieRepository;
+            _cinemaRepository = cinemaRepository;
         }
-        /*
-        [HttpGet]
-        public IActionResult CreateShow()
-        {
-            return View();
-        }
-        */
+        
         [HttpPost]
         public IActionResult Create(Show obj)
         {
             _showRepository.Add(obj);
-            return RedirectToAction("Main", "Manager");
+            return RedirectToAction("index", "main");
         }
-        public IActionResult ShowList()
-        {
-            Console.WriteLine(_showRepository.GetAllObj().Count());
-            Console.WriteLine("2");
-            ViewBag.Shows = _showRepository.GetAllObj();
-            ViewBag.Cinemas = _cinemaRepository.GetAllObj();
-            ViewBag.Movies = _movieRepository.GetAllObj();
-            return View();
-        }
-        /*
-        public IActionResult ShowDetail(int id)
+        
+        /*public IActionResult ShowDetail(int id)
         {
             return View(_showRepository.GetObj(id));
-        }
+        }*/
         
         public IActionResult ShowList()
         {
-            return View(_showRepository.GetAllObj());
+            IEnumerable<Show> shows = _showRepository.GetAllObj();
+            IEnumerable<Movie> movies = _movieRepository.GetAllObj();
+            IEnumerable<Cinema> cinemas = _cinemaRepository.GetAllObj();
+            ViewBag.Shows = shows;
+            ViewBag.ShowsCount = shows?.Count() ?? 0;
+            ViewBag.Movies = movies;
+            ViewBag.MoviesCount = movies?.Count() ?? 0;
+            ViewBag.Cinemas = cinemas;
+            ViewBag.CinemasCount = cinemas?.Count() ?? 0;
+            return View();
         }
-        */
     }
 }

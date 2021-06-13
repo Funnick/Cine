@@ -3,30 +3,43 @@ using System.Linq;
 using Cine.Models;
 using Cine.ModelsRepository;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace Cine.Controllers
 {
     public class ProducerController : Controller
     {
         // GET
-        private readonly IGetRepository<Producer> _producerRepository;
+        private readonly IGetRepository<Actor> _actorRepository;
+        private readonly IGetRepository<Director> _directorRepository;
 
-        public ProducerController(IGetRepository<Producer> producerRepository)
+        public ProducerController(IGetRepository<Actor> actorRepository,
+            IGetRepository<Director> directorRepository)
         {
-            _producerRepository = producerRepository;
+            _actorRepository = actorRepository;
+            _directorRepository = directorRepository;
         }
 
         [HttpPost]
-        public IActionResult Create(Producer obj)
+        public IActionResult Create(Actor obj)
         {
-            _producerRepository.Add(obj);
-            return RedirectToAction("Main", "Manager");
+            _actorRepository.Add(obj);
+            return RedirectToAction("ProducerList", "Producer");
+        }
+        [HttpPost]
+        public IActionResult Create(Director obj)
+        {
+            _directorRepository.Add(obj);
+            return RedirectToAction("ProducerList", "Producer");
         }
         public IActionResult ProducerList()
         {
-            Console.WriteLine(_producerRepository.GetAllObj().Count());
-            Console.WriteLine("2");
-            ViewBag.Producers = _producerRepository.GetAllObj();
+            IEnumerable<Actor> actors = _actorRepository.GetAllObj();
+            IEnumerable<Director> directors = _directorRepository.GetAllObj();
+            ViewBag.Actors = actors;
+            ViewBag.Directors = directors;
+            ViewBag.ActorsCount = actors == null ? 0 : actors.Count();
+            ViewBag.DirectorsCount = directors == null ? 0 : directors.Count();
             return View();
         }
     }

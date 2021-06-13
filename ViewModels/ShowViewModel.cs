@@ -20,6 +20,10 @@ namespace Cine.ViewModels
         
         [Required]
         public int CinemaId { get; set; }
-        
+
+        [Required] 
+        public int Price { get; set; }
+
+        public int PointsPrice { get; set; }
     }
 }

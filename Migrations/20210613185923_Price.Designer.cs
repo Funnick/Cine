@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cine.Migrations
 {
     [DbContext(typeof(CineDbContext))]
-    [Migration("20210608155937_addingIdentity2")]
-    partial class addingIdentity2
+    [Migration("20210613185923_Price")]
+    partial class Price
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.5");
+                .HasAnnotation("ProductVersion", "5.0.6");
 
             modelBuilder.Entity("Cine.Models.Cinema", b =>
                 {
@@ -75,8 +75,8 @@ namespace Cine.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Country");
 
-                    b.Property<DateTime>("Duration")
-                        .HasColumnType("TEXT")
+                    b.Property<int>("Duration")
+                        .HasColumnType("INTEGER")
                         .HasColumnName("Duration");
 
                     b.Property<string>("Genre")
@@ -84,6 +84,9 @@ namespace Cine.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT")
                         .HasColumnName("Genre");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Synopsis")
                         .IsRequired()
@@ -108,10 +111,9 @@ namespace Cine.Migrations
 
             modelBuilder.Entity("Cine.Models.Producer", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasMaxLength(60)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Name");
+                    b.Property<int>("ProducerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Age")
                         .HasColumnType("INTEGER")
@@ -127,7 +129,13 @@ namespace Cine.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("TEXT")
+                        .HasColumnName("Name");
+
+                    b.HasKey("ProducerId");
 
                     b.ToTable("Producer");
 
@@ -136,9 +144,9 @@ namespace Cine.Migrations
 
             modelBuilder.Entity("Cine.Models.Show", b =>
                 {
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("TEXT")
-                        .HasColumnName("StartTime");
+                    b.Property<int>("ShowId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("CinemaId")
                         .HasColumnType("INTEGER");
@@ -147,6 +155,9 @@ namespace Cine.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("Date");
 
+                    b.Property<int>("DiscountId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("TEXT")
                         .HasColumnName("EndTime");
@@ -154,9 +165,21 @@ namespace Cine.Migrations
                     b.Property<int>("MovieId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("StartTime");
+                    b.Property<int>("PointsPrice")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("StartTime");
+
+                    b.HasKey("ShowId");
 
                     b.HasIndex("CinemaId");
+
+                    b.HasIndex("DiscountId");
 
                     b.HasIndex("MovieId");
 
@@ -202,12 +225,6 @@ namespace Cine.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(70)
-                        .HasColumnType("TEXT")
-                        .HasColumnName("Country");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -268,6 +285,9 @@ namespace Cine.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnName("TicketId");
 
+                    b.Property<int>("DiscountId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("TEXT")
                         .HasColumnName("Price");
@@ -278,44 +298,18 @@ namespace Cine.Migrations
                     b.Property<int>("ShowId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("ShowStartTime")
+                    b.Property<string>("TheaterUserId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("TicketId");
 
-                    b.HasIndex("ShowStartTime");
+                    b.HasIndex("DiscountId");
+
+                    b.HasIndex("ShowId");
+
+                    b.HasIndex("TheaterUserId");
 
                     b.ToTable("Ticket");
-                });
-
-            modelBuilder.Entity("DiscountShow", b =>
-                {
-                    b.Property<int>("DiscountId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("ShowsStartTime")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("DiscountId", "ShowsStartTime");
-
-                    b.HasIndex("ShowsStartTime");
-
-                    b.ToTable("DiscountShow");
-                });
-
-            modelBuilder.Entity("DiscountTicket", b =>
-                {
-                    b.Property<int>("DiscountsDiscountId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("TicketsTicketId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("DiscountsDiscountId", "TicketsTicketId");
-
-                    b.HasIndex("TicketsTicketId");
-
-                    b.ToTable("DiscountTicket");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -487,6 +481,12 @@ namespace Cine.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Cine.Models.Discount", "Discount")
+                        .WithMany("Shows")
+                        .HasForeignKey("DiscountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Cine.Models.Movie", "Movie")
                         .WithMany()
                         .HasForeignKey("MovieId")
@@ -494,6 +494,8 @@ namespace Cine.Migrations
                         .IsRequired();
 
                     b.Navigation("Cinema");
+
+                    b.Navigation("Discount");
 
                     b.Navigation("Movie");
                 });
@@ -511,43 +513,27 @@ namespace Cine.Migrations
 
             modelBuilder.Entity("Cine.Models.Ticket", b =>
                 {
-                    b.HasOne("Cine.Models.Show", "Show")
-                        .WithMany("Ticekts")
-                        .HasForeignKey("ShowStartTime")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Show");
-                });
-
-            modelBuilder.Entity("DiscountShow", b =>
-                {
-                    b.HasOne("Cine.Models.Discount", null)
-                        .WithMany()
+                    b.HasOne("Cine.Models.Discount", "Discount")
+                        .WithMany("Tickets")
                         .HasForeignKey("DiscountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cine.Models.Show", null)
-                        .WithMany()
-                        .HasForeignKey("ShowsStartTime")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DiscountTicket", b =>
-                {
-                    b.HasOne("Cine.Models.Discount", null)
-                        .WithMany()
-                        .HasForeignKey("DiscountsDiscountId")
+                    b.HasOne("Cine.Models.Show", "Show")
+                        .WithMany("Ticekts")
+                        .HasForeignKey("ShowId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Cine.Models.Ticket", null)
-                        .WithMany()
-                        .HasForeignKey("TicketsTicketId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("Cine.Models.TheaterUser", "TheaterUser")
+                        .WithMany("Ticekts")
+                        .HasForeignKey("TheaterUserId");
+
+                    b.Navigation("Discount");
+
+                    b.Navigation("Show");
+
+                    b.Navigation("TheaterUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -620,6 +606,13 @@ namespace Cine.Migrations
                     b.Navigation("Shows");
                 });
 
+            modelBuilder.Entity("Cine.Models.Discount", b =>
+                {
+                    b.Navigation("Shows");
+
+                    b.Navigation("Tickets");
+                });
+
             modelBuilder.Entity("Cine.Models.Movie", b =>
                 {
                     b.Navigation("Actors");
@@ -635,6 +628,8 @@ namespace Cine.Migrations
             modelBuilder.Entity("Cine.Models.TheaterUser", b =>
                 {
                     b.Navigation("TheaterMember");
+
+                    b.Navigation("Ticekts");
                 });
 #pragma warning restore 612, 618
         }

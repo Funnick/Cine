@@ -10,16 +10,17 @@
     <meta name="author" content="name">
     <meta name="description" content="description here">
     <meta name="keywords" content="keywords,here">
+    <link rel="stylesheet" href="~/css/manager.css">
     <link rel="stylesheet" href="~/lib/tailwindcss/dist/tailwind.min.css">
     <link rel="stylesheet" href="~/css/site.css"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="~/css/styles.css">
     <link rel="stylesheet" href="~/css/all.css">
     <style>
-        body{background: #E55D87;  /* fallback for old browsers */
-             background: -webkit-linear-gradient(to right, #5FC3E4, #E55D87);  /* Chrome 10-25, Safari 5.1-6 */
-             background: linear-gradient(to right, #5FC3E4, #E55D87); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            }
+        body{background: #1D4350;  /* fallback for old browsers */
+             background: -webkit-linear-gradient(to right, #A43931, #1D4350);  /* Chrome 10-25, Safari 5.1-6 */
+             background: linear-gradient(to right, #A43931, #1D4350); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
         .toggle_dot {
             top: -.25rem;
@@ -74,15 +75,15 @@
 </head>
 <body class="bg-white font-sans leading-normal tracking-normal">
 
-<nav class="flex absolute top-0 items-center justify-between flex-wrap bg-black shadow-2xl p-8 fixed w-full z-40 top-0">
+<nav class="flex absolute top-0 items-center justify-between flex-wrap bg-dark shadow-2xl p-8 fixed w-full z-40 top-0">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
-        <a class="text-white no-underline hover:text-white hover:no-underline" href="#">
-            <span class="text-4xl pl-2"><i class="em em-grinning"></i>Cine+</span>
+        <a class="text-white no-underline hover:text-white hover:no-underline" asp-controller="Main" asp-action="Index">
+            <span class="text-4xl pl-2 font-bold"><i class="em em-grinning"></i>Cine+</span>
         </a>
         <span class="text-2xl pl-4">Admin</span>
     </div>
     <div>
-        @User.Identity.Name
+        @User.Identity?.Name
     </div>
     <div class="block lg:hidden">
         <button id="nav-toggle" class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-white hover:border-white">
@@ -93,15 +94,30 @@
     </div>
 
     <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block pt-6 lg:pt-0" id="nav-content">
-        <ul class="list-reset lg:flex justify-end flex-1 items-center">
+        <ul class="list-reset lg:flex justify-end flex-1 items-center font-bold">
             <li class="mr-3">
-                <a class="inline-block py-2 px-4 text-red-600 no-underline" asp-controller="Main" asp-action="Index">HOME</a>
-            </li>
-            <li class="mr-3 ">
-                <a class="inline-block text-red-600 no-underline  hover:text-underline py-2 px-4" href="#">CONTACT</a>
+                <a class="inline-block text-red-600 no-underline hover:fo hover:text-gray-200 py-2 px-4" asp-controller="Movie" asp-action="MovieList">Films</a>
             </li>
             <li class="mr-3">
-                <a class="inline-block text-red-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" href="#">ABOUT</a>
+                <a class="inline-block text-red-600 no-underline hover:text-gray-200 py-2 px-4" asp-controller="Show" asp-action="ShowList">Shows</a>
+            </li>
+            <li class="mr-3">
+                <a class="inline-block text-red-600 no-underline  hover:text-gray-200 py-2 px-4" asp-controller="Cinema" asp-action="CinemaList">Cinemas</a>
+            </li>
+            <li class="mr-3">
+                <a class="inline-block text-red-600 no-underline  hover:text-gray-200 py-2 px-4" asp-controller="Discount" asp-action="DiscountList">Discounts</a>
+            </li>
+            <li class="mr-3">
+                <a class="inline-block text-red-600 no-underline  hover:text-gray-200 py-2 px-4" asp-controller="Ticket" asp-action="TicketList">Tickets</a>
+            </li>
+            <li class="mr-3">
+                <a class="inline-block text-red-600 no-underline  hover:text-gray-200 py-2 px-4" asp-controller="Producer" asp-action="ProducerList">Producers</a>
+            </li>
+            <li class="mr-3">
+                <a class="inline-block text-red-600 no-underline  hover:text-gray-200 py-2 px-4" asp-controller="TheaterMember" asp-action="MemberList">Members</a>
+            </li>
+            <li class="mr-3">
+                <a class="inline-block text-red-600 no-underline  hover:text-gray-200 py-2 px-4" asp-controller="TheaterUser" asp-action="UserList">Users</a>
             </li>
             @if (_signInManager.IsSignedIn(User))
             {

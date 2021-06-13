@@ -23,6 +23,16 @@ namespace Cine.SQLiteRepository
             _context.SaveChanges();
         }
 
+        public void Update(Cinema obj)
+        {
+            Cinema cinema = _context.Cinemas.FirstOrDefault(c => c.CinemaId == obj.CinemaId);
+            if (cinema != null)
+            {
+                cinema.NumberOfSeats = obj.NumberOfSeats;
+            }
+            _context.SaveChanges();
+        }
+
         public Cinema GetObj(int id)
         {
             return _context.Cinemas.Find(id);

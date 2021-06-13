@@ -9,6 +9,6 @@ namespace Cine.ModelsRepository
     public interface ICrudReposiroty<T>
     {
         void Add(T obj);
-        
+        void Update(T obj);
     }
 }

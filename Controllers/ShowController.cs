@@ -26,10 +26,26 @@ namespace Cine.Controllers
         }
         
         [HttpPost]
-        public IActionResult Create(Show obj)
+        public IActionResult Create(ShowViewModel model)
         {
-            _showRepository.Add(obj);
-            return RedirectToAction("index", "main");
+            if (ModelState.IsValid)
+            {
+                Show show = new Show
+                {
+                    StartTime = model.StartTime,
+                    EndTime = model.EndTime,
+                    Date = model.Date,
+                    MovieId = model.MovieId,
+                    Movie = _movieRepository.GetObj(model.MovieId),
+                    CinemaId = model.CinemaId,
+                    Cinema = _cinemaRepository.GetObj(model.CinemaId),
+                    Price = model.Price,
+                    PointsPrice = model.PointsPrice
+                };
+                _showRepository.Add(show);
+            }
+            
+            return RedirectToAction("ShowList", "Show");
         }
         
         public IActionResult MainShowDetails(int id)

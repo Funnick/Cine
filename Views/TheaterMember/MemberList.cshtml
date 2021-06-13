@@ -5,7 +5,7 @@
 
 <div class=" w-full">
     <div class="flex flex-col items-center justify-center">
-        <p class="text-2xl text-center font-bold m-5">Theater Members</p>
+        <p class="text-2xl text-center font-bold m-5 text-white">Theater Members</p>
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
             <tr>
@@ -48,7 +48,7 @@
             }
             </tbody>
         </table>
-        <button data-modal="formMemb" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Add Member</button>
+        <button data-modal="formMemb" class="modal-trigger bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-800 hover:border-400 rounded">Add Member</button>
         <div id="formMemb" class="modal-wrapper">
             <div class="overlay close-modal"></div>
             <div class="modal modal-centered">
@@ -64,12 +64,12 @@
                             <div class="col-12">
                                 <label for="example-time-input" class="col-form-label">User</label>
                                 <select class="form-select form-control" aria-label="Default select example" asp-for="TheaterUser">
-                                    @{/*
-                                @foreach (var user in ViewBag.TheatherUsers)
-                                {
-                                    <option value="@user.UserId">@user.Name</option>
-                                }
-                            */}
+                                    @{
+                                        @foreach (var user in ViewBag.TheatherUsers)
+                                        {
+                                            <option value="@user.UserId">@user.Name</option>
+                                        }
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -95,4 +95,5 @@
             </div>
         </div>
     </div>
+    <br>
 </div>

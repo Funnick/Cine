@@ -25,14 +25,19 @@ namespace Cine.Models
         [ForeignKey("TheaterUser")]
         public string TheaterUserId { get; set; }
         
+        [DataType("Integer")]
+        [ForeignKey("Show")]
         [Required]
         public int ShowId { get; set; }
         
-        public virtual TheaterUser TheaterUser { get; set; }
 
+        public int DiscountId { get; set; }
+
+        public virtual TheaterUser TheaterUser { get; set; }
+        
         [Required]
         public virtual Show Show { get; set; }
         
-        public virtual ICollection<Discount> Discounts { get; set; }
+        public virtual Discount Discount { get; set; }
     }
 }

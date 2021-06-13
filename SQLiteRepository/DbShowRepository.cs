@@ -23,6 +23,26 @@ namespace Cine.SQLiteRepository
             _context.SaveChanges();
         }
 
+        public void Update(Show obj)
+        {
+            Show show = _context.Shows.FirstOrDefault(s => s.ShowId == obj.ShowId);
+            if (show != null)
+            {
+                show.Cinema = obj.Cinema;
+                show.Date = obj.Date;
+                show.Discount = obj.Discount;
+                show.Movie = obj.Movie;
+                show.Price = obj.Price;
+                show.PointsPrice = obj.PointsPrice;
+                show.CinemaId = obj.Cinema.CinemaId;
+                show.MovieId = obj.Movie.MovieId;
+                show.StartTime = obj.StartTime;
+                show.EndTime = obj.EndTime;
+            }
+
+            _context.SaveChanges();
+        }
+
         public Show GetObj(int id)
         {
             return _context.Shows.Find(id);

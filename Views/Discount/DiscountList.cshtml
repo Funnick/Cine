@@ -5,7 +5,7 @@
 
 <div class=" w-full">
     <div class="flex flex-col items-center justify-center">
-        <p class="text-2xl text-center font-bold m-5">Discounts</p>
+        <p class="text-2xl text-center font-bold m-5 text-white">Discounts</p>
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
             <tr>
@@ -26,7 +26,7 @@
                             <th class="px-4 py-3">@item.Discount</th>
                             <th class="px-4 py-3">
                                 <div class="inline-flex">
-                                    <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                    <button data-modal="@item.DiscountId" class="modal-trigger bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
                                         Edit
                                     </button>
                                     <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
@@ -35,6 +35,42 @@
                                 </div>
                             </th>
                         </tr>
+                        <div id="@item.DiscountId" class="modal-wrapper">
+                            <div class="overlay close-modal"></div>
+                            <div class="modal modal-centered">
+                                <div class="modal-content shadow-lg p-5">
+                                    <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                        <div class="flex justify-between items-center">
+                                            Edit Discount @item.DiscountId
+                                        </div>
+                                    </div>
+                                    <!-- Modal content -->
+                                    <div asp-validation-summary="All">
+                                        <input value="@item.DiscountId" hidden="hidden" asp-for="DiscountId">
+                                        <form method="post" id="form_id" class="w-full" asp-controller="Discount" asp-action="Update">
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Description" type="text" asp-for="Description">
+                                                    <span asp-validation-for="Description"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Discount" type="number" asp-for="Percent">
+                                                    <span asp-validation-for="Percent"></span>
+                                                </div>
+                                            </div>
+                                            <div class="mt-5">
+                                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
+                                                <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                                    Close
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
                 }
                 else
@@ -44,7 +80,7 @@
             }
             </tbody>
         </table>
-        <button data-modal="formProm" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Add Discount</button>
+        <button data-modal="formProm" class="modal-trigger bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-800 hover:border-400 rounded">Add Discount</button>
         <div id="formProm" class="modal-wrapper">
             <div class="overlay close-modal"></div>
             <div class="modal modal-centered">
@@ -55,27 +91,31 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-
-                    <form method="post" id="form_id" class="w-full" asp-controller="Discount" asp-action="DiscountList">
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" placeholder="Description" type="text" asp-for="Description">
+                    <div asp-validation-summary="All">
+                        <form method="post" id="form_id" class="w-full" asp-controller="Discount" asp-action="DiscountList">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" placeholder="Description" type="text" asp-for="Description">
+                                    <span asp-validation-for="Description"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" placeholder="Discount" type="number" asp-for="Percent">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" placeholder="Discount" type="number" asp-for="Percent">
+                                    <span asp-validation-for="Percent"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mt-5">
-                            <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
-                            <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
-                                Close
-                            </span>
-                        </div>
-                    </form>
+                            <div class="mt-5">
+                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
+                                <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                    Close
+                                </span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
+                </div>
         </div>
     </div>
+    <br>
 </div>

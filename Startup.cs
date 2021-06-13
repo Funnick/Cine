@@ -42,6 +42,10 @@ namespace Cine
             services.AddScoped<IGetRepository<Movie>, DbMovieRepository>();
             services.AddScoped<IGetRepository<Show>, DbShowRepository>();
             services.AddScoped<IGetRepository<Cinema>, DbCinemaRepository>();
+            services.AddScoped<IGetRepository<Ticket>, DbTicketRepository>();
+            services.AddScoped<IGetRepository<Discount>, DbDiscountRepository>();
+            services.AddScoped<IGetRepository<Actor>, DbActorRepository>();
+            services.AddScoped<IGetRepository<Director>, DbDirectorRepository>();
 
             //services.AddDatabaseDeveloperPageExceptionFilter();
         }

@@ -32,7 +32,7 @@ namespace Cine.Controllers
         {
             IEnumerable<Ticket> tickets = _ticketRepository.GetAllObj();
             ViewBag.Tickets = tickets;
-            ViewBag.TicketCount = tickets == null ? 0 : tickets.Count();
+            ViewBag.TicketCount = tickets?.Count() ?? 0;
             return View();
         }
     }

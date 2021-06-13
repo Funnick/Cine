@@ -4,7 +4,7 @@
 @model Movie;
 <div class=" w-full">
     <div class="flex flex-col items-center justify-center">
-        <p class="text-2xl text-center font-bold m-5">Movies</p>
+        <p class="text-2xl text-center font-bold m-5 text-white">Films</p>
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
                 <th class="px-4 py-3">Title</th>
@@ -51,7 +51,7 @@
                             </div>
                             <th class="px-4 py-3">
                                 <div class="inline-flex">
-                                    <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                    <button data-modal="@item.MovieId@item.Title" class="modal-trigger bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
                                         Edit
                                     </button>
                                     <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
@@ -60,6 +60,74 @@
                                 </div>
                             </th>
                         </tr>
+                        <div id="@item.MovieId@item.Title" class="modal-wrapper">
+                            <div class="overlay close-modal"></div>
+                            <div class="modal modal-centered">
+                                <div class="modal-content shadow-lg p-5">
+                                    <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                        <div class="flex justify-between items-center">
+                                            Edit Film "@item.Title"
+                                        </div>
+                                    </div>
+                                    <!-- Modal content -->
+                                    <div asp-validation-summary="All">
+                                        <form method="post" id="form_id" class="w-full" asp-controller="Movie" asp-action="Update">
+                                            <input hidden="hidden" asp-for="MovieId" value="@item.MovieId">
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Title" type="text" value="@item.Title" asp-for="Title">
+                                                    <span asp-validation-for="Title"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Category" type="text" value="@item.Category" asp-for="Category">
+                                                    <span asp-validation-for="Category"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Genre" type="text" value="@item.Genre" asp-for="Genre">
+                                                    <span asp-validation-for="Genre"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" placeholder="Synopsis" value="@item.Synopsis" asp-for="Synopsis">
+                                                    <span asp-validation-for="Synopsis"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" type="text" placeholder="Country" value="@item.Country" asp-for="Country">
+                                                    <span asp-validation-for="Country"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <label>Duration</label>
+                                                    <input class="form-control" type="number" placeholder="Duration" value="@item.Duration" asp-for="Duration">
+                                                    <span asp-validation-for="Duration"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <label>Year</label>
+                                                    <input class="form-control" type="number" placeholder="Year" value="@item.Year" asp-for="Year">
+                                                    <span asp-validation-for="Year"></span>
+                                                </div>
+                                            </div>
+                                            <div class="mt-5">
+                                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Update"/>
+                                                <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                                    Close
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
                 }
                 else
@@ -69,14 +137,14 @@
             }
             </tbody>
         </table>
-        <button data-modal="formFilm" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Add Movie</button>
+        <button data-modal="formFilm" class="modal-trigger bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-800 hover:border-400 rounded">Add Film</button>
         <div id="formFilm" class="modal-wrapper">
             <div class="overlay close-modal"></div>
             <div class="modal modal-centered">
                 <div class="modal-content shadow-lg p-5">
                     <div class="border-b p-2 pb-3 pt-0 mb-4">
                         <div class="flex justify-between items-center">
-                            Add Movie
+                            Add Film
                         </div>
                     </div>
                     <!-- Modal content -->
@@ -129,4 +197,5 @@
             </div>
         </div>
     </div>
+    <br>
 </div>

@@ -3,9 +3,9 @@
 }
 @model ProducerViewModel;
 
-<div class=" w-full">
+<div class="w-full">
     <div class="flex flex-col items-center justify-center">
-        <p class="text-2xl text-center font-bold m-5">Actors</p>
+        <p class="text-2xl text-center font-bold m-5 text-white">Actors</p>
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
             <tr>
@@ -56,7 +56,7 @@
             }
             </tbody>
         </table>
-        <button data-modal="formAct" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Add Actor</button>
+        <button data-modal="formAct" class="modal-trigger bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-800 hover:border-400 rounded">Add Actor</button>
         <div id="formAct" class="modal-wrapper">
             <div class="overlay close-modal"></div>
             <div class="modal modal-centered">
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-                    <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="ActorsList">
+                    <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="ProducerList">
                         <div class="form-group row">
                             <div class="col-10">
                                 <input class="form-control" placeholder="Name" type="text" asp-for="Name">
@@ -85,14 +85,14 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect" style="display: none;">
-                                    @{
+                                <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
+                                    @{/*
                                         foreach (var mov in ViewBag.Movies)
                                         {
                                             <option value="@mov.MovieId">@mov.Title</option>
                                         }
-                                    }
-                                </select><div class="btn-group custom-btn"><button type="button" class="multiselect dropdown-toggle form-control btn" data-toggle="dropdown" title="Photos, Edit, Cart, Cart, Cart" aria-expanded="false" style="width: auto;">Photos, Edit, Cart, Cart, Cart <b class="caret"></b></button><ul class="multiselect-container dropdown-menu custom-multi"><li class="active"><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="0"> Photos</label></a></li><li><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="1"> Link</label></a></li><li class="active"><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="2"> Edit</label></a></li><li><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="3"> Cart</label></a></li><li class="active"><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="4"> Cart</label></a></li><li class="active"><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="5"> Cart</label></a></li><li><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="6"> Cart</label></a></li><li class="active"><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="7"> Cart</label></a></li><li><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="8"> Cart</label></a></li></ul></div>
+                                    */}
+                                </select>
                             </div>
                         </div>
                         <div class="mt-5">
@@ -110,7 +110,7 @@
 
 <div class=" w-full">
     <div class="flex flex-col items-center justify-center">
-        <p class="text-2xl text-center font-bold m-5">Directors</p>
+        <p class="text-2xl text-center font-bold m-5 text-white">Directors</p>
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
             <tr>
@@ -159,7 +159,7 @@
             }
             </tbody>
         </table>
-        <button data-modal="formDir" class="modal-trigger bg-red-500 hover:bg-red-200 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-500 rounded">Add Director</button>
+        <button data-modal="formDir" class="modal-trigger bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-800 hover:border-400 rounded">Add Director</button>
         <div id="formDir" class="modal-wrapper">
             <div class="overlay close-modal"></div>
             <div class="modal modal-centered">
@@ -170,43 +170,46 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-                    <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="DirectorList">
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" placeholder="Name" type="text" asp-for="Name">
+                    <div asp-validation-summary="All">
+                        <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="ProducerList">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" placeholder="Name" type="text" asp-for="Name">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" placeholder="Country" type="text" asp-for="Country">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" placeholder="Country" type="text" asp-for="Country">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" placeholder="Age" type="text" asp-for="Age">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" placeholder="Age" type="text" asp-for="Age">
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect" style="display: none;">
-                                    @{
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
+                                        @{/*
                                         foreach (var mov in ViewBag.Movies)
                                         {
                                             <option value="@mov.MovieId">@mov.Title</option>
                                         }
-                                    }
-                                </select><div class="btn-group custom-btn"><button type="button" class="multiselect dropdown-toggle form-control btn" data-toggle="dropdown" title="Photos, Edit, Cart, Cart, Cart" aria-expanded="false" style="width: auto;">Photos, Edit, Cart, Cart, Cart <b class="caret"></b></button><ul class="multiselect-container dropdown-menu custom-multi"><li class="active"><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="0"> Photos</label></a></li><li><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="1"> Link</label></a></li><li class="active"><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="2"> Edit</label></a></li><li><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="3"> Cart</label></a></li><li class="active"><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="4"> Cart</label></a></li><li class="active"><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="5"> Cart</label></a></li><li><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="6"> Cart</label></a></li><li class="active"><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="7"> Cart</label></a></li><li><a href="javascript:void(0);"><label class="checkbox"><input type="checkbox" value="8"> Cart</label></a></li></ul></div>
+                                    */}
+                                    </select>
+                                </div>
                             </div>
-                          </div>
-                        <div class="mt-5">
-                            <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
-                            <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
-                                Close
-                            </span>
-                        </div>
-                    </form>
+                            <div class="mt-5">
+                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
+                                <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                    Close
+                                </span>
+                            </div>
+                        </form>
+                </div>
                 </div>
             </div>
         </div>
     </div>
+    <br>
 </div>

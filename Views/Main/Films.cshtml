@@ -11,7 +11,7 @@
             <div class="flex  p-2 gap-4 shadow-2xl bg-white flex-col md:flex-row items-center justify-center">
                 <div class="flex flex-row gap-2 items-center">
                     <h1>Search by:</h1>
-                    <select name="search_by" class="appearance-none">
+                    <select name="search_by" class="">
                         <option selected>Title</option>
                         <option>Country</option>
                         <option>Category</option>
@@ -19,8 +19,8 @@
                 </div>
                 <div class="flex flex-row gap-2 items-center">
                     <h1>Order by:</h1>
-                    <select name="order_by" class="appearance-none">
-                        <option selected>Title(Alphabetic)</option>
+                    <select name="order_by" class="">
+                        <option selected>Title</option>
                         <option>Year</option>
                         <option>Duration</option>
                     </select>
@@ -45,7 +45,7 @@
         </form>
 
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
-            <tr class="text-left border-b-2 border-gray-300">
+            <tr class="text-left border-b-2 bg-gray-600 border-gray-300">
                 <th class="px-4 py-3">Title</th>
                 <th class="px-4 py-3">Genre</th>
                 <th class="px-4 py-3">Duration</th>
@@ -56,16 +56,17 @@
             </tr>
             @foreach (var item in Model.Result)
             {
+                
                 string name = item.Title;
                 name = name.Replace(" ", "");
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <th class="px-4 py-3">@item.Title</th>
                     <th class="px-4 py-3">@item.Genre</th>
-                    <th class="px-4 py-3 hidden md:block">@item.Duration</th>
+                    <th class="px-4 py-3 ">@item.Duration</th>
                     <th class="px-4 py-3">@item.Country</th>
                     <th class="px-4 py-3 ">@item.Category</th>
                     <th class="px-4 py-3 " >@item.Year</th>
-                    <th class="px-4 py-3"><button onclick="openModal('@name-modal')">Moree</button></th>
+                    <th class="px-4 py-3"><a class="cursor-pointer  text-blue-200 underline" onclick="openModal('@name-modal')">More</a></th>
 
                 </tr>
 
@@ -158,7 +159,7 @@
                         </div>
                     </div>
                     <!--Body-->
-                    <div class="justify-center ">
+                    <div class="justify-center text-black">
                         @await Html.PartialAsync("MovieView", item)
                     </div>
                     <!--Footer-->

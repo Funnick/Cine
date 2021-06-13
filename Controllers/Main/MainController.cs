@@ -15,12 +15,13 @@ namespace Cine.Controllers
         
         private readonly int _RegistrysPerPage = 10 ;
         private readonly CineDbContext _DbContext;
+        private  List<Cine.Models.Movie> _Movies;
+
         public MainController(CineDbContext DbContext)
         {
             _DbContext = DbContext;
         }
-        private List<Cine.Models.Movie> _Movies;
-        private GenericPaginator<Cine.Models.Movie> _MoviePaginator;
+        
 
         
         [HttpGet]
@@ -31,6 +32,7 @@ namespace Cine.Controllers
         
         public IActionResult Films(int page = 1, string search_by = "Title", string order_by = "Title", string search = "")
         {
+            GenericPaginator<Cine.Models.Movie> _MoviePaginator;
             
             int _TotalRegistry = _DbContext.Movies.Count();
             if (search_by == "Title")_Movies = _DbContext.Movies.Where(x => x.Title.StartsWith(search)).ToList();
@@ -71,7 +73,7 @@ namespace Cine.Controllers
         }
         
 
-        public IActionResult Shows()
+        public IActionResult Shows( int page = 1, string search_by = "Title", string order_by = "Title", string search = "")
         {
             return View();
         }

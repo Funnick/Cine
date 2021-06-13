@@ -32,10 +32,10 @@ namespace Cine.Controllers
             return RedirectToAction("index", "main");
         }
         
-        /*public IActionResult ShowDetail(int id)
+        public IActionResult MainShowDetails(int id)
         {
             return View(_showRepository.GetObj(id));
-        }*/
+        }
         
         public IActionResult ShowList()
         {
@@ -55,8 +55,11 @@ namespace Cine.Controllers
         public IActionResult MainShows()
         {
             IEnumerable<Show> shows = _showRepository.GetAllObj();
+            IEnumerable<Movie> movies = _movieRepository.GetAllObj();
             ViewBag.Shows = shows;
             ViewBag.ShowsCount = shows?.Count() ?? 0;
+            ViewBag.Movies = movies;
+            ViewBag.MoviesCount = movies?.Count() ?? 0;
             return View();
         }
     }

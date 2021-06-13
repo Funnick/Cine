@@ -1,5 +1,4 @@
-﻿@model GenericPaginator<Cine.Models.Movie>
-
+﻿
 @{
     ViewData["Title"] = "Movie";
 }
@@ -54,7 +53,7 @@
                 <th class="px-4 py-3">Year</th>
                 <th class="px-4 py-3">Deatils</th>
             </tr>
-            @foreach (var item in Model.Result)
+            @foreach (var item in ViewBag.Movies)
             {
                 
                 string name = item.Title;
@@ -74,71 +73,12 @@
 
         </table>
 
-        <div class="flex flex-col md:flex-row items-center justify-center py-2">
-            @if (Model.Result.Count() > 0)
-            {
-                <div>
-                    <span>
-                        <strong>@Model.TotalRegistrys</strong> registros encontrados
-                    </span>
-                </div>
-                <div>
-                    <span>&nbsp;|&nbsp;</span>
-                    <span>
-                        Página <strong>@(Model.ActualPage)</strong> de
-                        <strong>@Model.TotalPages</strong>
-                    </span>
-                    <span>&nbsp;|&nbsp;</span>
-                </div>
-
-            }
-            else
-            {
-                <span>No hay resultados para esta búsqueda</span>
-                <span>&nbsp;|&nbsp;</span>
-            }
-            <div>
-                @if (Model.ActualPage > 1)
-                {
-                    @Html.ActionLink("<<", "Index", new { pagina = 1 },
-                                    new { @class = "btn btn-sm btn-default" })
-                    <span></span>
-                    @Html.ActionLink("Anterior", "Index", new { pagina = Model.ActualPage - 1 },
-                                    new { @class = "btn btn-sm btn-default" })
-                }
-                else
-                {
-                    @Html.ActionLink("<<", "Index", new { pagina = 1 },
-                                    new { @class = "btn btn-sm btn-default disabled" })
-                    <span></span>
-                    @Html.ActionLink("Anterior", "Index", new { pagina = 1 },
-                                    new { @class = "btn btn-sm btn-default disabled" })
-                }
-                <span></span>
-                @if (Model.ActualPage < Model.TotalPages)
-                {
-                    @Html.ActionLink("Siguiente", "Index", new { pagina = Model.ActualPage + 1 },
-                                    new { @class = "btn btn-sm btn-default" })
-                    <span></span>
-                    @Html.ActionLink(">>", "Index", new { pagina = Model.ActualPage },
-                                    new { @class = "btn btn-sm btn-default" })
-                }
-                else
-                {
-                    @Html.ActionLink("Siguiente", "Index", new { pagina = Model.ActualPage - 1 },
-                                    new { @class = "btn btn-sm btn-default disabled" })
-                    <span></span>
-                    @Html.ActionLink(">>", "Index", new { pagina = Model.ActualPage },
-                                    new { @class = "btn btn-sm btn-default disabled" })
-                }
-            </div>
-
-        </div>
+        
 
     </div>
     <script>all_modals = []</script>
       
-    @foreach (var item in Model.Result)
+    @foreach (var item in ViewBag.Movies)
     {
         string name = item.Title;
         name = name.Replace(" ", "");
@@ -160,7 +100,19 @@
                     </div>
                     <!--Body-->
                     <div class="justify-center text-black">
-                        @await Html.PartialAsync("MovieView", item)
+                        <div class="flex flex-wrap gap-4">
+                            <h1 class="">Title: item.Title</h1>
+                            <h1>Genre: item.Genre</h1>
+                            <h1>Duration: item.Duration</h1>
+                            <h1>Country: item.Country</h1>
+                            <h1>Category: item.Category</h1>
+                            <h1>Year: item.Year</h1>
+                            <div>
+                                <h1>Synopsis:</h1>
+                                <p>@item.Synopsis</p>
+                            </div>
+                            
+                        </div>
                     </div>
                     <!--Footer-->
                     <div class="flex justify-end pt-2 space-x-14">

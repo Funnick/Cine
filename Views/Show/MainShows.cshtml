@@ -1,8 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Shows";
 }
-@model GenericPaginator<Cine.Models.Show>
- 
+
 <div class=" w-full">
     <div class="flex flex-col items-center justify-center">
         <p class="text-2xl text-center font-bold m-5">Films</p>
@@ -11,17 +10,16 @@
                 <div class="flex flex-row gap-2 items-center">
                     <h1>Search by:</h1>
                     <select name="search_by" class="">
-                        <option selected>Title</option>
-                        <option>Country</option>
+                        <option selected>Movie</option>
+                        <option>Date</option>
                         <option>Category</option>
                     </select>
                 </div>
                 <div class="flex flex-row gap-2 items-center">
                     <h1>Order by:</h1>
                     <select name="order_by" class="">
-                        <option selected>Title</option>
-                        <option>Year</option>
-                        <option>Duration</option>
+                        <option selected>Movie</option>
+                        <option>Date</option>
                     </select>
                 </div>
                 <div>
@@ -49,89 +47,21 @@
                 <th class="px-4 py-3">Start Time</th>
                 <th class="px-4 py-3">End Time</th>
                 <th class="px-4 py-3">Date</th>
-                <th class="px-4 py-3 ">Cinema</th>
-                <th class="px-4 py-3">Seats</th>
+                <th class="px-4 py-3">Disponibility</th>
                 <th class="px-4 py-3">Reserve</th>
             </tr>
-            @foreach (var item in Model.Result)
+            @foreach (var item in ViewBag.Shows)
             {
-                string name = item.Movie.Title;
-                name = name.Replace(" ", "");
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <th class="px-4 py-3">@item.Movie.Title</th>
                     <th class="px-4 py-3">@item.StartTime</th>
                     <th class="px-4 py-3">@item.EndTime</th>
                     <th class="px-4 py-3">@item.Date</th>
-                    <th class="px-4 py-3 ">@item.Cinema.CinemaId</th>
-                    <th class="px-4 py-3 ">@item.Cinema.NumberOfSeats</th>
-                    <th class="px-4 py-3"><a class="cursor-pointer  text-blue-200 underline" onclick="openModal('@name-modal')">More</a></th>
-
+                    <th class="px-4 py-3 ">Blank for now</th>
+                    <th class="px-4 py-3"><a class="cursor-pointer  text-blue-200 underline" asp-action="MainShowDetails" asp-fragment="@item.StartTime">More...</a></th>
                 </tr>
-
             }
-
         </table>
-
-        <div class="flex flex-col md:flex-row items-center justify-center py-2">
-            @if (Model.Result.Count() > 0)
-            {
-                <div>
-                    <span>
-                        <strong>@Model.TotalRegistrys</strong> registros encontrados
-                    </span>
-                </div>
-                <div>
-                    <span>&nbsp;|&nbsp;</span>
-                    <span>
-                        Página <strong>@(Model.ActualPage)</strong> de
-                        <strong>@Model.TotalPages</strong>
-                    </span>
-                    <span>&nbsp;|&nbsp;</span>
-                </div>
-
-            }
-            else
-            {
-                <span>No hay resultados para esta búsqueda</span>
-                <span>&nbsp;|&nbsp;</span>
-            }
-            <div>
-                @if (Model.ActualPage > 1)
-                {
-                    @Html.ActionLink("<<", "Index", new { pagina = 1 },
-                                    new { @class = "btn btn-sm btn-default" })
-                    <span></span>
-                    @Html.ActionLink("Anterior", "Index", new { pagina = Model.ActualPage - 1 },
-                                    new { @class = "btn btn-sm btn-default" })
-                }
-                else
-                {
-                    @Html.ActionLink("<<", "Index", new { pagina = 1 },
-                                    new { @class = "btn btn-sm btn-default disabled" })
-                    <span></span>
-                    @Html.ActionLink("Anterior", "Index", new { pagina = 1 },
-                                    new { @class = "btn btn-sm btn-default disabled" })
-                }
-                <span></span>
-                @if (Model.ActualPage < Model.TotalPages)
-                {
-                    @Html.ActionLink("Siguiente", "Index", new { pagina = Model.ActualPage + 1 },
-                                    new { @class = "btn btn-sm btn-default" })
-                    <span></span>
-                    @Html.ActionLink(">>", "Index", new { pagina = Model.ActualPage },
-                                    new { @class = "btn btn-sm btn-default" })
-                }
-                else
-                {
-                    @Html.ActionLink("Siguiente", "Index", new { pagina = Model.ActualPage - 1 },
-                                    new { @class = "btn btn-sm btn-default disabled" })
-                    <span></span>
-                    @Html.ActionLink(">>", "Index", new { pagina = Model.ActualPage },
-                                    new { @class = "btn btn-sm btn-default disabled" })
-                }
-            </div>
-
-        </div>
 
     </div>
 </div>

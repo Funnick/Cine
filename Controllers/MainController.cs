@@ -12,19 +12,6 @@ namespace Cine.Controllers
 {
     public class MainController : Controller
     {
-        
-        private readonly int _RegistrysPerPage = 10 ;
-        private readonly CineDbContext _DbContext;
-        private  List<Cine.Models.Movie> _Movies;
-
-        public MainController(CineDbContext DbContext)
-        {
-            _DbContext = DbContext;
-        }
-        
-
-        
-        [HttpGet]
         public IActionResult Index()
         {
             return View();
@@ -72,17 +59,6 @@ namespace Cine.Controllers
         //    return View(_MoviePaginator);
         //}
         
-
-        public IActionResult Shows( int page = 1, string search_by = "Title", string order_by = "Title", string search = "")
-        {
-            return View();
-        }
-
-
-
-
-
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

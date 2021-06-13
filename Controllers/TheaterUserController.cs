@@ -114,5 +114,10 @@ namespace Cine.Controllers
             ViewBag.UsersCount = users == null ? 0 : users.Count();
             return View();
         }
+
+        public IActionResult MainProfile()
+        {
+            return View();
+        }
     }
 }

@@ -17,59 +17,43 @@ namespace Cine.Controllers
         private readonly IGetRepository<Show> _showRepository;
         private readonly IGetRepository<Movie> _movieRepository;
         private readonly IGetRepository<Cinema> _cinemaRepository;
-        private readonly IGetRepository<Discount> _discountRepository;
+        private readonly ITicketRepository _ticketRepository;
 
-        public ShowController(IGetRepository<Show> showRepository,IGetRepository<Movie> movieRepository,IGetRepository<Cinema> cinemaRepository, IGetRepository<Discount> discountRepository)
+        public ShowController(IGetRepository<Show> showRepository,IGetRepository<Movie> movieRepository,
+            IGetRepository<Cinema> cinemaRepository,
+            ITicketRepository ticketRepository)
         {
+            _ticketRepository = ticketRepository;
             _showRepository = showRepository;
             _movieRepository = movieRepository;
             _cinemaRepository = cinemaRepository;
-            _discountRepository = discountRepository;
         }
         
         [HttpPost]
-        public IActionResult Create(ShowViewModel model)
+        public IActionResult Create(Show obj)
         {
-            if (ModelState.IsValid)
-            {
-                Show show = new Show
-                {
-                    StartTime = model.StartTime,
-                    EndTime = model.EndTime,
-                    Date = model.Date,
-                    MovieId = model.MovieId,
-                    Movie = _movieRepository.GetObj(model.MovieId),
-                    CinemaId = model.CinemaId,
-                    Cinema = _cinemaRepository.GetObj(model.CinemaId),
-                    Price = model.Price,
-                    PointsPrice = model.PointsPrice
-                };
-                _showRepository.Add(show);
-            }
-            
+            _showRepository.Add(obj);
             return RedirectToAction("ShowList", "Show");
         }
         
         public IActionResult MainShowDetails(int id)
         {
-            IEnumerable<Movie> movies = _movieRepository.GetAllObj();
-            ViewBag.Movies = movies;
-            ViewBag.MoviesCount = movies?.Count() ?? 0;
-
-            IEnumerable<Cinema> cinemas = _cinemaRepository.GetAllObj();
-            ViewBag.Cinemas = cinemas;
-            ViewBag.CinemasCount = cinemas?.Count() ?? 0;
-
-            IEnumerable<Discount> discounts = _discountRepository.GetAllObj();
-            ViewBag.Discount = discounts;
-            ViewBag.DiscountsCount = discounts?.Count() ?? 0;
-
-            return View(_showRepository.GetObj(id));
+            Show s = _showRepository.GetObj(id);
+            ViewBag.Movie = _movieRepository.GetObj(s.MovieId);
+            Cinema cinema = _cinemaRepository.GetObj(s.CinemaId);
+            ViewBag.Cinema = cinema;
+            IEnumerable<Ticket> tickets = _ticketRepository.GetShowTicekts(id);
+            List<bool> seats = new List<bool>(cinema.NumberOfSeats);
+            for (int i = 0; i < seats.Count; i++)
+                seats[i] = true;
+            foreach (var t in  tickets)
+                seats[t.SeatNumber] = false;
+            ViewBag.Seats = seats;
+            return View(s);
         }
         
         public IActionResult ShowList()
         {
-            
             IEnumerable<Show> shows = _showRepository.GetAllObj();
             IEnumerable<Movie> movies = _movieRepository.GetAllObj();
             IEnumerable<Cinema> cinemas = _cinemaRepository.GetAllObj();

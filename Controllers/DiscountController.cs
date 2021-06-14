@@ -32,7 +32,7 @@ namespace Cine.Controllers
         {
             IEnumerable<Discount> discounts = _discountRepository.GetAllObj();
             ViewBag.Discounts = discounts;
-            ViewBag.DiscountsCount = discounts == null ? 0 : discounts.Count();
+            ViewBag.DiscountsCount = discounts?.Count() ?? 0;
             return View();
         }
     }

@@ -15,10 +15,16 @@ namespace Cine.Controllers
     public class MovieController : Controller
     {
         private readonly IGetRepository<Movie> _movieRepository;
+        private readonly IGetRepository<Director> _directorRepository;
+        private readonly IGetRepository<Actor> _actorRepository;
 
-        public MovieController(IGetRepository<Movie> movieRepository)
+        public MovieController(IGetRepository<Movie> movieRepository,
+            IGetRepository<Director> directorRepository,
+            IGetRepository<Actor> actorRepository)
         {
             _movieRepository = movieRepository;
+            _directorRepository = directorRepository;
+            _actorRepository = actorRepository;
         }
 
         [HttpPost]
@@ -31,8 +37,14 @@ namespace Cine.Controllers
         public IActionResult MovieList()
         {
             IEnumerable<Movie> movies = _movieRepository.GetAllObj();
+            IEnumerable<Actor> actors = _actorRepository.GetAllObj();
+            IEnumerable<Director> directors = _directorRepository.GetAllObj();
             ViewBag.Movies = movies;
-            ViewBag.MoviesCount = movies == null ? 0 : movies.Count();
+            ViewBag.MoviesCount = movies?.Count() ?? 0;
+            ViewBag.Directors = directors;
+            ViewBag.DirectorsCount = directors?.Count() ?? 0;
+            ViewBag.Actors = actors;
+            ViewBag.ActorsCount = actors?.Count() ?? 0;
             return View();
         }
         //Regular user view (Main)

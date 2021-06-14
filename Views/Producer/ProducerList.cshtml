@@ -83,15 +83,32 @@
                                 <input class="form-control" placeholder="Age" type="text" asp-for="Age">
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="form-group row">
                             <div class="col-md-12">
-                                <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
-                                    @{/*
+                                <label>Role</label>
+                                <select type="text" class="form-control" asp-for="Role">
+                                    <option value="Primary">Primary</option>
+                                    <option value="Secondary">Secondary</option>
+                                    <option value="Extra">Extra</option>
+                                    @{
                                         foreach (var mov in ViewBag.Movies)
                                         {
                                             <option value="@mov.MovieId">@mov.Title</option>
                                         }
-                                    */}
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <label>Films</label>
+                                <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
+                                    @{
+                                        foreach (var mov in ViewBag.Movies)
+                                        {
+                                            <option value="@mov.MovieId">@mov.Title</option>
+                                        }
+                                    }
                                 </select>
                             </div>
                         </div>
@@ -187,15 +204,16 @@
                                     <input class="form-control" placeholder="Age" type="text" asp-for="Age">
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="form-group row">
                                 <div class="col-md-12">
+                                    <label>Films</label>
                                     <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
-                                        @{/*
+                                        @{
                                         foreach (var mov in ViewBag.Movies)
                                         {
                                             <option value="@mov.MovieId">@mov.Title</option>
                                         }
-                                    */}
+                                    }
                                     </select>
                                 </div>
                             </div>

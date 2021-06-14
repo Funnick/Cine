@@ -9,7 +9,7 @@ using Microsoft.CodeAnalysis;
 
 namespace Cine.SQLiteRepository
 {
-    public class DbTicketRepository : IGetRepository<Ticket>
+    public class DbTicketRepository : ITicketRepository
     {
         private readonly CineDbContext _context;
         
@@ -49,6 +49,11 @@ namespace Cine.SQLiteRepository
         public IEnumerable<Ticket> GetAllObj()
         {
             return _context.Tickets;
+        }
+
+        public IEnumerable<Ticket> GetShowTicekts(int showId)
+        {
+            return _context.Tickets.Where<Ticket>(t => t.ShowId == showId);
         }
     }
 }

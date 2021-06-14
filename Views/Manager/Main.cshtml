@@ -6,23 +6,41 @@
     <div class="row" style="margin: 10px">
         <div class="col-6">
             <div class="card-header">Statistics</div>
-            <div class="form-group">
-                <label for="example-time-input" class="col-form-label">Search Criteria</label>
-                <select class="form-select form-control" aria-label="Default select example">
-                    <option value="day">By Day</option>
-                    <option value="month">By Month</option>
-                    <option value="year">By Year</option>
-                    <option value="genre">By Genre</option>
-                    <option value="category">By Category</option>
-                    <option value="genre">By Genre</option>
-                </select>
-            
-                <!--<span asp-validation-for="CinemaId"></span>-->
+            <div class="form-group row">
+                <div class="col-4">
+                    <label for="example-time-input" class="col-form-label">Search Criteria</label>
+                    <select id="criterion" class="form-select form-control" aria-label="Default select example">
+                        <option value="day">By Day</option>
+                        <option value="month">By Month</option>
+                        <option value="year">By Year</option>
+                        <option value="genre">By Genre</option>
+                        <option value="category">By Category</option>
+                        <option value="film">By Film</option>
+                        <option value="rating">By Rating</option>
+                    </select>
+                    <!--<span asp-validation-for="CinemaId"></span>-->
+                </div>
+                <div class="col-4">
+                    <label for="example-time-input" class="col-form-label">Value</label>
+                    <input class="form-control" type="number" max="31" min="1">
+                </div>
             </div>
         </div>
         <div class="col-6">
             <div class="card-header">Films to show</div>
-            <p>asdais asduy iu ywiu owe q[a oaj d</p>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label for="example-time-input" class="col-form-label">Search Criteria</label>
+                    <select id="criterion" class="form-select form-control" aria-label="Default select example">
+                        <option value="viewed">Most viewed movies</option>
+                        <option value="liked">Most liked movies</option>
+                        <option value="economic">Economic gain</option>
+                        <option value="promotion">Promotion</option>
+                        <option value="random">Random</option>
+                    </select>
+                    <!--<span asp-validation-for="CinemaId"></span>-->
+                </div>
+            </div>
         </div>
     </div>
 </div>

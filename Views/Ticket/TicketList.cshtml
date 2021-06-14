@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Manager/_Layout.cshtml";
 }
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model Ticket;
 
 <div class=" w-full">
@@ -19,7 +20,7 @@
             {
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <th class="px-4 py-3">@item.Price</th>
-                    <th class="px-4 py-3">@item.Promotion</th>
+                    <th class="px-4 py-3">@item.Seats</th>
                     <th class="px-4 py-3">@item.Show</th>
                     <th class="px-4 py-3">
                         <div class="inline-flex">
@@ -47,47 +48,62 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-                    <form method="post" id="form_id" class="w-full" asp-controller="Ticket" asp-action="Create">
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" type="number" placeholder="Price" asp-for="Price">
+                    <div asp-validation-summary="All">
+                        <form method="post" id="form_id" class="w-full" asp-controller="Ticket" asp-action="Create">
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" type="number" placeholder="Price" asp-for="Price">
+                                    <span asp-validation-for="Price"></span>
+                                </div>
                             </div>
-                        </div>
-                        <label for="example-time-input" class="col-form-label">Discount</label>
-                        <select class="form-select form-control" aria-label="Default select example" asp-for="Discount">
-                            @{
-                                foreach (var discount in ViewBag.Discounts)
-                                {
-                                    <option value="@discount.DiscountId">@discount.Description</option>
+                            <label for="example-time-input" class="col-form-label">Discount</label>
+                            <select class="form-select form-control" aria-label="Default select example" asp-for="DiscountId">
+                                @{
+                                    if (ViewBag.DiscountsCount != 0)
+                                    {
+                                        foreach (var discount in ViewBag.Discounts)
+                                        {
+                                            <option value="@discount.DiscountId">@discount.Description</option>
+                                            <input hidden="hidden" asp-for="Discount" value="@discount"/>
+                                        }
+                                    }
                                 }
-                            }
-                        </select>
-                        <label for="example-time-input" class="col-form-label">Show</label>
-                        <select class="form-select form-control" aria-label="Default select example" asp-for="Show">
-                            @{
-                                foreach (var show in ViewBag.Shows)
-                                {
-                                    <option value="@show.ShowId.">@show.StartTime @show.Date</option>
+                            </select>
+                            <label for="example-time-input" class="col-form-label">Show</label>
+                            <select class="form-select form-control" aria-label="Default select example" asp-for="ShowId">
+                                @{
+                                    if (ViewBag.ShowsCount != 0)
+                                    {
+                                        foreach (var show in ViewBag.Shows)
+                                        {
+                                            <option value="@show.ShowId.">@show.StartTime.ToString("T") @show.Date.ToString("D")</option>
+                                            <input hidden="hidden" asp-for="Show" value="@show"/>
+                                        }
+                                    }
                                 }
-                            }
-                        </select>
-                        <label for="example-time-input" class="col-form-label">Usuario</label>
-                        <select class="form-select form-control" aria-label="Default select example" asp-for="TheaterUser">
-                            @{/*
-                                foreach (var user in ViewBag.Users)
-                                {
-                                    <option value="@user.TheaterUserId">@user.Name</option>
+                            </select>
+                            <label for="example-time-input" class="col-form-label">Usuario</label>
+                            <select class="form-select form-control" aria-label="Default select example" asp-for="TheaterUserId">
+                                @{
+                                    if (ViewBag.TheaterUsersCount != 0)
+                                    {
+                                        foreach (var user in ViewBag.TheaterUsers)
+                                        {
+                                            <option value="@user.Id">@user.Email</option>
+                                            <input hidden="hidden" asp-for="TheaterUser" value="@user"/>
+                                        }
+                                    }
                                 }
-                            */}
-                        </select>
+                            </select>
 
-                        <div class="mt-5">
-                            <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
-                            <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
-                                Close
-                            </span>
-                        </div>
-                    </form>
+                            <div class="mt-5">
+                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
+                                <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                    Close
+                                </span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

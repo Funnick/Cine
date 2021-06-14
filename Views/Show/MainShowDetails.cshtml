@@ -5,7 +5,7 @@
 
     <div>
         <div>
-            <h1 class="text-center font-bold text-5xl mt-8 tracking-wide relative">Descuentos</h1>
+            <h1 class="text-center font-bold text-5xl mt-8 tracking-wide relative">Discounts</h1>
 
             <div class="flex flex-row justify-center my-4 text-sm tracking-tight font-medium text-gray-700">
                 <p class="mx-3">MLC</p>
@@ -25,32 +25,33 @@
 
                 <p class="mx-3">Chips</p>
             </div>
-
+            
             <div class="flex flex-col md:flex-row md: gap-2 md:transform md:scale-75 lg:scale-100 justify-center">
                 <div class="border rounded-lg  text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
                     <div class="">Regular</div>
-                    <div id="Chips" class="font-bold text-6xl Chips hidden">20</div>
-                    <div id="MLC" class="font-bold text-6xl MLC">&dollar;Price </div>
+                    <div id="Chips" class="font-bold text-6xl Chips hidden">@Model.PointsPrice</div>
+                    <div id="MLC" class="font-bold text-6xl MLC">&dollar;@Model.Price </div>
                 </div>
-                    <div class="border rounded-lg  text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
-                        <div class="">@Model.Discount.Description</div>
-                        <div id="Chips" class="font-bold text-6xl Chips hidden">20</div>
-                        <div id="MLC" class="font-bold text-6xl MLC">&dollar Price; <a class="text-md text-red-400 font-bold">@Model.Discount.Percent % OFF</a></div>
-                    </div>
+                <div class="border rounded-lg  text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
+                    <div class="">@Model.Discount.Description</div>
+                    <div id="Chips" class="font-bold text-6xl Chips hidden">@Model.PointsPrice</div>
+                    <div id="MLC" class="font-bold text-2xl MLC">&dollar;@Model.Price</div>
+                    <div class="text-6xl text-red-400 font-bold">@Model.Discount.Percent % OFF</div>
+                </div>
             </div>
         </div>
         <div>
             <h1 class="text-center font-bold text-5xl mt-8 tracking-wide relative">@Model.Movie.Title</h1>
         </div>
         <div>
-            <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">@Model.Date</h1>
+            <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">Date: @Model.Date.ToString("D")</h1>
         </div>
         <div class="flex flex-row items-center gap-4 justify-center">
             <div>
-                <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">@Model.StartTime</h1>
+                <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">Start Time: @Model.StartTime.ToString("H:mm")</h1>
             </div>
             <div>
-                <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">@Model.EndTime</h1>
+                <h1 class="text-center font-bold text-2xl mt-8 tracking-wide relative">End Time: @Model.EndTime.ToString("H:mm")</h1>
             </div>
         </div>
         <div class="m-4 tracking-wide bg-gray-100 rounded-lg p-5 shadow-inner">
@@ -79,12 +80,7 @@
                 </div>
                 <div class="my-5 mr-5 ml-5 flex justify-center">
                     <p>Formulario para comprar tickets</p>
-                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" novalidate="novalidate">
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="PQSM5XMP4R56U">
-                        <input type="image" src="https://www.paypalobjects.com/es_ES/ES/i/btn/btn_donateCC_LG.gif" name="submit" alt="PayPal, la forma rápida y segura de pagar en Internet." formtarget="_blank" border="0">
-                        <img alt="" src="https://www.paypalobjects.com/es_ES/i/scr/pixel.gif" class="img-responsive" width="1" height="1" border="0">
-                    </form>
+                    
                 </div>
                 <div class="flex justify-end pt-2 space-x-14">
                     <button class="py-8 px-8  bg-gradient border-gray-500 text-center font-bold text-2xl mt-8 tracking-wide relative rounded-lg block">BUY TICKETS</button>

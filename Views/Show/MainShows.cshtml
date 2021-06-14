@@ -58,7 +58,7 @@
                     <th class="px-4 py-3">@item.EndTime</th>
                     <th class="px-4 py-3">@item.Date</th>
                     <th class="px-4 py-3 ">Blank for now</th>
-                    <th class="px-4 py-3"><a class="cursor-pointer  text-blue-200 underline" asp-action="MainShowDetails" asp-fragment="@item.StartTime">More...</a></th>
+                    <th class="px-4 py-3">@Html.ActionLink("Details", "MainShowDetails", "Show", new {id = item.ShowId}, null)</th>
                 </tr>
             }
         </table>

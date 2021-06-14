@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Threading.Tasks;
 using Cine.Models;
 using Cine.ModelsRepository;
-using Humanizer;
+//using Humanizer;
 
 namespace Cine.SQLiteRepository
 {

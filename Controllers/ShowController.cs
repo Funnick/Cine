@@ -17,12 +17,14 @@ namespace Cine.Controllers
         private readonly IGetRepository<Show> _showRepository;
         private readonly IGetRepository<Movie> _movieRepository;
         private readonly IGetRepository<Cinema> _cinemaRepository;
+        private readonly IGetRepository<Discount> _discountRepository;
 
-        public ShowController(IGetRepository<Show> showRepository,IGetRepository<Movie> movieRepository,IGetRepository<Cinema> cinemaRepository)
+        public ShowController(IGetRepository<Show> showRepository,IGetRepository<Movie> movieRepository,IGetRepository<Cinema> cinemaRepository, IGetRepository<Discount> discountRepository)
         {
             _showRepository = showRepository;
             _movieRepository = movieRepository;
             _cinemaRepository = cinemaRepository;
+            _discountRepository = discountRepository;
         }
         
         [HttpPost]
@@ -50,11 +52,24 @@ namespace Cine.Controllers
         
         public IActionResult MainShowDetails(int id)
         {
+            IEnumerable<Movie> movies = _movieRepository.GetAllObj();
+            ViewBag.Movies = movies;
+            ViewBag.MoviesCount = movies?.Count() ?? 0;
+
+            IEnumerable<Cinema> cinemas = _cinemaRepository.GetAllObj();
+            ViewBag.Cinemas = cinemas;
+            ViewBag.CinemasCount = cinemas?.Count() ?? 0;
+
+            IEnumerable<Discount> discounts = _discountRepository.GetAllObj();
+            ViewBag.Discount = discounts;
+            ViewBag.DiscountsCount = discounts?.Count() ?? 0;
+
             return View(_showRepository.GetObj(id));
         }
         
         public IActionResult ShowList()
         {
+            
             IEnumerable<Show> shows = _showRepository.GetAllObj();
             IEnumerable<Movie> movies = _movieRepository.GetAllObj();
             IEnumerable<Cinema> cinemas = _cinemaRepository.GetAllObj();

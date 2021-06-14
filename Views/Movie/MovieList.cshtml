@@ -14,6 +14,8 @@
                 <th class="px-4 py-3">Year</th>
                 <th class="px-4 py-3">Country</th>
                 <th class="px-4 py-3">Synopsis</th>
+                <th class="px-4 py-3">Directors</th>
+                <th class="px-4 py-3">Actors</th>
                 <th class="px-4 py-3">Action</th>
             </tr>
             <tbody>
@@ -30,11 +32,43 @@
                             <th class="px-4 py-3">@item.Year</th>
                             <th class="px-4 py-3">@item.Country</th>
                             <th class="px-4 py-3">
-                                <button data-modal="@item.MovieId" class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                <button data-modal="@item.MovieId@item.Synopsis?.GetHashCode()" class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                     See
                                 </button>
                             </th>
-                            <div id="@item.MovieId" class="modal-wrapper">
+                            <th class="px-4 py-3">
+                                @{
+                                    if (item.Directors?.Count > 0)
+                                    {
+                                        <button data-modal="@item.MovieId@item.Directors?.GetHashCode()" class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            See
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button disabled="disabled" class="cursor-not-allowed bg-blue-300 text-white font-bold py-2 px-4 rounded">
+                                            See
+                                        </button>
+                                    }
+                                }
+                            </th>
+                            <th class="px-4 py-3">
+                                @{
+                                    if (item.Actors?.Count > 0)
+                                    {
+                                        <button data-modal="@item.MovieId@item.Actors?.GetHashCode()" class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            See
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button disabled="disabled" class="cursor-not-allowed bg-blue-300 text-white font-bold py-2 px-4 rounded">
+                                            See
+                                        </button>
+                                    }
+                                }
+                            </th>
+                            <div id="@item.MovieId@item.Synopsis?.GetHashCode()" class="modal-wrapper">
                                 <div class="overlay close-modal"></div>
                                 <div class="modal modal-centered">
                                     <div class="modal-content shadow-lg p-5">
@@ -46,6 +80,52 @@
                                         <p>
                                             @item.Synopsis
                                         </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="@item.MovieId@item.Directors?.GetHashCode()" class="modal-wrapper">
+                                <div class="overlay close-modal"></div>
+                                <div class="modal modal-centered">
+                                    <div class="modal-content shadow-lg p-5">
+                                        <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                            <div class="flex justify-between items-center">
+                                                Directors
+                                            </div>
+                                        </div>
+                                        @{
+                                            if (item.Directors?.Count > 0)
+                                            {
+                                                foreach (var director in item.Directors)
+                                                {
+                                                    <div>
+                                                        <p>@director.Name</p>
+                                                    </div>
+                                                }
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="@item.MovieId@item.Actors?.GetHashCode()" class="modal-wrapper">
+                                <div class="overlay close-modal"></div>
+                                <div class="modal modal-centered">
+                                    <div class="modal-content shadow-lg p-5">
+                                        <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                            <div class="flex justify-between items-center">
+                                                Synopsis
+                                            </div>
+                                        </div>
+                                        @{
+                                            if (item.Actors?.Count > 0)
+                                            {
+                                                foreach (var actor in item.Actors)
+                                                {
+                                                    <div>
+                                                        <p>@actor.Name</p>
+                                                    </div>
+                                                }
+                                            }
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -185,6 +265,33 @@
                                 <label>Year</label>
                                 <input class="form-control" type="number" value="2021" placeholder="Year" asp-for="Year">
                             </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <label>Actors</label>
+                                <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect" asp-for="Actors">
+                                    @{
+                                        foreach (var actor in ViewBag.Actors)
+                                        {
+                                            <option value="@actor.MovieId">@actor.Name</option>
+                                            <input hidden="hidden" asp-for="Actors" value="@actor"/>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <label>Directors</label>
+                                <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect" asp-for="Directors">
+                                    @{
+                                        foreach (var director in ViewBag.Directors)
+                                        {
+                                            <option value="@director.MovieId">@director.Name</option>
+                                            <input hidden="hidden" asp-for="Directors" value="@director"/>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            
                         </div>
                         <div class="mt-5">
                             <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>

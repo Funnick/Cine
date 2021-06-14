@@ -28,13 +28,15 @@ namespace Cine.Models
 
         public int PointsPrice { get; set; }
         
+
         [Required] 
         public int MovieId { get; set; }
         
+
         [Required]
         public int CinemaId { get; set; }
 
-        public int DiscountId { get; set; } 
+        public int? DiscountId { get; set; } 
 
         [Required]
         public virtual Movie Movie { get; set; }

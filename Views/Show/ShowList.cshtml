@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Manager/_Layout.cshtml";
 }
-@model ShowViewModel;
+@model Show;
 <div class=" w-full">
     <div class="flex flex-col items-center justify-center">
         <p class="text-2xl text-center font-bold m-5 text-white">Shows</p>
@@ -64,58 +64,53 @@
                     <!-- Modal content -->
                     <form method="post" id="form_id" class="w-full" asp-controller="Show" asp-action="Create">
                         <div asp-validation-summary="All">
-                            <div class="form-group row">
-                                <label for="example-date-input" class="col-2 col-form-label">Date</label>
-                                <div class="col-10">
-                                    <input class="form-control" type="date" value="1959-01-01" asp-for="Date">
-                                    <span asp-validation-for="Date"></span>
-                                </div>
+                        <div class="form-group row">
+                            <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                            <div class="col-10">
+                                <input class="form-control" type="date" value="1959-01-01" asp-for="Date">
+                                <span asp-validation-for="Date"></span>
                             </div>
-                            <div class="form-group row">
-                                <label for="example-time-input" class="col-2 col-form-label">Start</label>
-                                <div class="col-10">
-                                    <input class="form-control" type="time" asp-for="StartTime">
-                                    <span asp-validation-for="StartTime"></span>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-time-input" class="col-2 col-form-label">Start</label>
+                            <div class="col-10">
+                                <input class="form-control" type="time" asp-for="StartTime">
+                                <span asp-validation-for="StartTime"></span>
                             </div>
-                            <div class="form-group row">
-                                <label for="example-time-input" class="col-2 col-form-label">End</label>
-                                <div class="col-10">
-                                    <input class="form-control" type="time" asp-for="EndTime">
-                                    <span asp-validation-for="EndTime"></span>
-                                </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="example-time-input" class="col-2 col-form-label">End</label>
+                            <div class="col-10">
+                                <input class="form-control" type="time" asp-for="EndTime">
+                                 <span asp-validation-for="EndTime"></span>
                             </div>
-                            <div class="form-group">
-                                <label for="example-time-input" class="col-form-label">Movie</label>
-                                <select class="form-select form-control" aria-label="Default select example" asp-for="MovieId">
-                                    @{
-                                        if (ViewBag.MoviesCount != 0)
+                        </div>
+                        <label for="example-time-input" class="col-form-label">Movie</label>
+                        <select class="form-select form-control" aria-label="Default select example" asp-for="MovieId">
+                            @{
+                                if (ViewBag.MoviesCount != 0)
+                                {
+                                    foreach (var movie in ViewBag.Movies)
+                                    {
+                                        <option value="@movie.MovieId">@movie.Title</option>
+                                        <input hidden="hidden" asp-for="Movie" value="@movie" />
+                                    }
+                                }
+                            }
+                        </select>
+                        <label for="example-time-input" class="col-form-label">Cinema</label>
+                            <select class="form-select form-control" aria-label="Default select example" asp-for="CinemaId">
+                                @{
+                                    if (ViewBag.CinemasCount != 0)
+                                    {
+                                        foreach (var cinema in ViewBag.Cinemas)
                                         {
-                                            foreach (var movie in ViewBag.Movies)
-                                            {
-                                                <option value="@movie.MovieId">@movie.Title</option>
-                                            }
+                                            <option value="@cinema.CinemaId">@cinema.NumberOfSeats seats</option>
+                                            <input hidden="hidden" asp-for="Cinema" value="@cinema" />
                                         }
                                     }
-                                </select>
-
-                                <!--<span asp-validation-for="CinemaId"></span>-->
-                            </div>
-                            <div class="form-group">
-                                <label for="example-time-input" class="col-form-label">Cinema</label>
-                                <select class="form-select form-control" aria-label="Default select example" asp-for="CinemaId">
-                                    @{
-                                        if (ViewBag.CinemasCount != 0)
-                                        {
-                                            foreach (var cinema in ViewBag.Cinemas)
-                                            {
-                                                <option value="@cinema.CinemaId">@cinema.NumberOfSeats seats</option>
-                                            }
-                                        }
-                                    }
-                                </select>
-                                <!--<span asp-validation-for="CinemaId"></span>-->
-                            </div>
+                                }
+                            </select>
                             <div class="form-group row">
                                 <label for="example-time-input" class="col-2 col-form-label">Price</label>
                                 <div class="col-10">
@@ -124,18 +119,18 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="example-time-input" class="col-2 col-form-label">Points</label>
+                                <label for="example-time-input" class="col-2 col-form-label">Points Price</label>
                                 <div class="col-10">
                                     <input class="form-control" type="number" asp-for="PointsPrice">
                                     <span asp-validation-for="PointsPrice"></span>
                                 </div>
                             </div>
                             <div class="mt-5">
-                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
-                                <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
-                                    Close
-                                </span>
-                            </div>
+                            <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
+                            <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                Close
+                            </span>
+                        </div>
                         </div>
                     </form>
                 </div>

@@ -1,15 +1,28 @@
 ﻿@{
     Layout = "~/Views/Manager/_Layout.cshtml";
 }
-<div class="card">
-    <div class="card-body">
-        <a class="inline-block text-red-600 no-underline  hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="Movie" asp-action="MovieList">Peliculas</a>
-        <a class="inline-block text-red-600 no-underline  hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="Cinema" asp-action="CinemaList">Cinemas</a>
-        <a class="inline-block text-red-600 no-underline  hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="TheaterMember" asp-action="MemberList">Miembros</a>
-        <a class="inline-block text-red-600 no-underline  hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="Show" asp-action="ShowList">Funciones</a>
-        <a class="inline-block text-red-600 no-underline  hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="TheaterUser" asp-action="UserList">Usuarios</a>
-        <a class="inline-block text-red-600 no-underline  hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="Ticket" asp-action="TicketList">Entradas</a>
-        <a class="inline-block text-red-600 no-underline  hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="Producer" asp-action="ProducerList">Realizadores</a>
-        <a class="inline-block text-red-600 no-underline  hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="Discount" asp-action="DiscountList">Descuentos</a>
+<br>
+<div class="card bg-dark" style="text-align: center; opacity: 80%; color: white">
+    <div class="row" style="margin: 10px">
+        <div class="col-6">
+            <div class="card-header">Statistics</div>
+            <div class="form-group">
+                <label for="example-time-input" class="col-form-label">Search Criteria</label>
+                <select class="form-select form-control" aria-label="Default select example">
+                    <option value="day">By Day</option>
+                    <option value="month">By Month</option>
+                    <option value="year">By Year</option>
+                    <option value="genre">By Genre</option>
+                    <option value="category">By Category</option>
+                    <option value="genre">By Genre</option>
+                </select>
+            
+                <!--<span asp-validation-for="CinemaId"></span>-->
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card-header">Films to show</div>
+            <p>asdais asduy iu ywiu owe q[a oaj d</p>
+        </div>
     </div>
 </div>

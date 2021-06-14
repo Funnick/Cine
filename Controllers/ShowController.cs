@@ -26,10 +26,12 @@ namespace Cine.Controllers
         }
         
         [HttpPost]
-        public IActionResult Create(ShowViewModel model)
+        public IActionResult Create(Show obj)
         {
+            /*
             if (ModelState.IsValid)
             {
+                Console.WriteLine(model.Movie.Title);
                 Show show = new Show
                 {
                     StartTime = model.StartTime,
@@ -37,14 +39,19 @@ namespace Cine.Controllers
                     Date = model.Date,
                     MovieId = model.MovieId,
                     Movie = _movieRepository.GetObj(model.MovieId),
+                    Movie = model.Movie,
+                    MovieId = model.Movie.MovieId,
                     CinemaId = model.CinemaId,
                     Cinema = _cinemaRepository.GetObj(model.CinemaId),
+                    Cinema = model.Cinema,
+                    CinemaId = model.Cinema.CinemaId, 
                     Price = model.Price,
                     PointsPrice = model.PointsPrice
                 };
-                _showRepository.Add(show);
-            }
             
+                _showRepository.Add(show);
+            }*/
+            _showRepository.Add(obj);
             return RedirectToAction("ShowList", "Show");
         }
         

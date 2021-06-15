@@ -11,8 +11,8 @@
             <tr>
                 <th class="px-4 py-3">Name</th>
                 <th class="px-4 py-3">Country</th>
-                <th class="px-4 py-3">Year</th>
                 <th class="px-4 py-3">Role</th>
+                <th class="px-4 py-3">Age</th>
                 <th class="px-4 py-3">Movies</th>
                 <th class="px-4 py-3">Action</th>
             </tr>
@@ -28,25 +28,90 @@
                             <th class="px-4 py-3">@item.Role</th>
                             <th class="px-4 py-3">@item.Age</th>
                             <th class="px-4 py-3">
-                                @{
+                                @{/*
                                     if (!(item.Movies is null))
                                         foreach (var movies in item.Movies)
                                         {
                                             <a>@movies.Title</a>
                                         }
-                                }
+                                */}
                             </th>
                             <th class="px-4 py-3">
                                 <div class="inline-flex">
-                                    <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                    <button data-modal="@item.GetHashCode()" class="modal-trigger bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
                                         Edit
                                     </button>
                                     <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                                        Elim
+                                        Del
                                     </button>
                                 </div>
                             </th>
                         </tr>
+                        <div id="@item.GetHashCode()" class="modal-wrapper">
+                            <div class="overlay close-modal"></div>
+                            <div class="modal modal-centered">
+                                <div class="modal-content shadow-lg p-5">
+                                    <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                        <div class="flex justify-between items-center">
+                                            Edit Actor
+                                        </div>
+                                    </div>
+                                    <!-- Modal content -->
+                                    <div asp-validation-summary="All">
+                                        <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="UpdateActor">
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Name" type="text" value="@item.Name" asp-for="Name">
+                                                    <span asp-validation-for="Name"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Country" type="text" value="@item.Country" asp-for="Country">
+                                                    <span asp-validation-for="Country"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Age" type="number" value="@item.Age" asp-for="Age">
+                                                    <span asp-validation-for="Age"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <label>Role</label>
+                                                    <select type="text" class="form-control" onselect="@item.Role" asp-for="Role">
+                                                        <option value="Primary">Primary</option>
+                                                        <option value="Secondary">Secondary</option>
+                                                        <option value="Extra">Extra</option>
+                                                        <span asp-validation-for="Role"></span>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <label>Films</label>
+                                                    <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
+                                                        @{
+                                                            foreach (var mov in ViewBag.Movies)
+                                                            {
+                                                                <option value="@mov.MovieId">@mov.Title</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mt-5">
+                                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Update"/>
+                                                <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                                    Close
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
                 }
                 else
@@ -67,20 +132,24 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-                    <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="ProducerList">
+                    <div asp-validation-summary="All">
+                    <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="CreateActor">
                         <div class="form-group row">
                             <div class="col-10">
                                 <input class="form-control" placeholder="Name" type="text" asp-for="Name">
+                                <span asp-validation-for="Name"></span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-10">
                                 <input class="form-control" placeholder="Country" type="text" asp-for="Country">
+                                <span asp-validation-for="Country"></span>
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-10">
-                                <input class="form-control" placeholder="Age" type="text" asp-for="Age">
+                                <input class="form-control" placeholder="Age" type="number" asp-for="Age">
+                                <span asp-validation-for="Age"></span>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -90,12 +159,7 @@
                                     <option value="Primary">Primary</option>
                                     <option value="Secondary">Secondary</option>
                                     <option value="Extra">Extra</option>
-                                    @{
-                                        foreach (var mov in ViewBag.Movies)
-                                        {
-                                            <option value="@mov.MovieId">@mov.Title</option>
-                                        }
-                                    }
+                                    <span asp-validation-for="Role"></span>
                                 </select>
                             </div>
                         </div>
@@ -120,6 +184,7 @@
                         </div>
                     </form>
                 </div>
+                </div>
             </div>
         </div>
     </div>
@@ -133,7 +198,7 @@
             <tr>
                 <th class="px-4 py-3">Name</th>
                 <th class="px-4 py-3">Country</th>
-                <th class="px-4 py-3">Year</th>
+                <th class="px-4 py-3">Age</th>
                 <th class="px-4 py-3">Movies</th>
                 <th class="px-4 py-3">Action</th>
             </tr>
@@ -148,25 +213,79 @@
                             <th class="px-4 py-3">@item.Country</th>
                             <th class="px-4 py-3">@item.Age</th>
                             <th class="px-4 py-3">
-                                @{
+                                @{/*
                                     if (!(item.Movies is null))
                                         foreach (var movies in item.Movies)
                                         {
                                             <a>@movies.Title</a>
                                         }
-                                }
+                                */}
                             </th>
                             <th class="px-4 py-3">
                                 <div class="inline-flex">
-                                    <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                    <button data-modal="@item.GetHashCode()" class="modal-trigger bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
                                         Edit
                                     </button>
                                     <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                                        Elim
+                                        Del
                                     </button>
                                 </div>
                             </th>
                         </tr>
+                        <div id="@item.GetHashCode()" class="modal-wrapper">
+                            <div class="overlay close-modal"></div>
+                            <div class="modal modal-centered">
+                                <div class="modal-content shadow-lg p-5">
+                                    <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                        <div class="flex justify-between items-center">
+                                            Edit Director
+                                        </div>
+                                    </div>
+                                    <!-- Modal content -->
+                                    <div asp-validation-summary="All">
+                                        <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="UpdateDirector">
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Name" type="text" value="@item.Name" asp-for="Name">
+                                                    <span asp-validation-for="Name"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Country" type="text" value="@item.Country" asp-for="Country">
+                                                    <span asp-validation-for="Country"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-10">
+                                                    <input class="form-control" placeholder="Age" type="number" value="@item.Age" asp-for="Age">
+                                                    <span asp-validation-for="Age"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-md-12">
+                                                    <label>Films</label>
+                                                    <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
+                                                        @{
+                                                            foreach (var mov in ViewBag.Movies)
+                                                            {
+                                                                <option value="@mov.MovieId">@mov.Title</option>
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="mt-5">
+                                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
+                                                <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                                    Close
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
                 }
                 else
@@ -183,12 +302,12 @@
                 <div class="modal-content shadow-lg p-5">
                     <div class="border-b p-2 pb-3 pt-0 mb-4">
                         <div class="flex justify-between items-center">
-                            Add Actor
+                            Add Director
                         </div>
                     </div>
                     <!-- Modal content -->
                     <div asp-validation-summary="All">
-                        <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="ProducerList">
+                        <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="CreateDirector">
                             <div class="form-group row">
                                 <div class="col-10">
                                     <input class="form-control" placeholder="Name" type="text" asp-for="Name">

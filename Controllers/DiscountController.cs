@@ -27,6 +27,11 @@ namespace Cine.Controllers
             _discountRepository.Add(obj);
             return RedirectToAction("DiscountList", "Discount");
         }
+        public IActionResult Update(Discount obj)
+        {
+            _discountRepository.Update(obj);
+            return RedirectToAction("DiscountList", "Discount");
+        }
         
         public IActionResult DiscountList()
         {

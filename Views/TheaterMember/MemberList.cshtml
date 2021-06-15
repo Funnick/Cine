@@ -1,7 +1,6 @@
 ﻿@{
     Layout = "~/Views/Manager/_Layout.cshtml";
 }
-@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model TheaterMember;
 
 <div class=" w-full">
@@ -71,11 +70,12 @@
                                             {
                                                 @foreach (var user in ViewBag.TheaterUsers)
                                                 {
-                                                    <option value="@user.Id">@user.Email</option>
+                                                    <option value=@user.Id>@user.Email</option>
                                                     <input hidden="hidden" asp-for="TheaterUser" value="@user">
                                                 }
                                             }
                                         }
+                                        <span asp-validation-for="TheaterUser"></span>
                                     </select>
                                 </div>
                             </div>

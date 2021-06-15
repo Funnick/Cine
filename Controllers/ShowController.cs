@@ -39,7 +39,12 @@ namespace Cine.Controllers
             _showRepository.Add(obj);
             return RedirectToAction("ShowList", "Show");
         }
-        
+        public IActionResult Update(Show obj)
+        {
+            _showRepository.Update(obj);
+            return RedirectToAction("ShowList", "Show");
+        }
+
         public IActionResult MainShowDetails(int id)
         {
             
@@ -83,12 +88,15 @@ namespace Cine.Controllers
             IEnumerable<Show> shows = _showRepository.GetAllObj();
             IEnumerable<Movie> movies = _movieRepository.GetAllObj();
             IEnumerable<Cinema> cinemas = _cinemaRepository.GetAllObj();
+            IEnumerable<Discount> discounts = _discountRepository.GetAllObj();
             ViewBag.Shows = shows;
             ViewBag.ShowsCount = shows?.Count() ?? 0;
             ViewBag.Movies = movies;
             ViewBag.MoviesCount = movies?.Count() ?? 0;
             ViewBag.Cinemas = cinemas;
             ViewBag.CinemasCount = cinemas?.Count() ?? 0;
+            ViewBag.Discounts = discounts;
+            ViewBag.DiscountsCount = discounts?.Count() ?? 0;
             return View();
         }
 

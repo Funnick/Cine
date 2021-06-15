@@ -25,7 +25,7 @@ namespace Cine.Models
         [Required]
         public int ShowId { get; set; }
         
-        public int DiscountId { get; set; }
+        public int? DiscountId { get; set; }
 
         [Required]
         public virtual Show Show { get; set; }

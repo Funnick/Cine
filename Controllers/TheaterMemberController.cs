@@ -41,7 +41,8 @@ namespace Cine.Controllers
         public IActionResult Create(IFormCollection user)
         {
             var member =  _userRepository.GetTheaterUser(user["member"]);
-            TheaterMember temp = new TheaterMember() { TheaterUser = member, TheaterUserId = member.Id };
+            //TheaterMember temp = new TheaterMember() { TheaterUser = member, TheaterUserId = member.Id };
+            _theaterMemberRepository.Add(member);
             return RedirectToAction("MemberList", "TheaterMember");
         }
     }

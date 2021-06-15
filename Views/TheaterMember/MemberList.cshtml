@@ -23,18 +23,14 @@
                     foreach (var item in ViewBag.Members)
                     {
                         <tr class="bg-gray-100 border-b border-gray-200">
-                            <th class="px-4 py-3">@item.Name</th>
                             <th class="px-4 py-3">@item.Email</th>
                             <th class="px-4 py-3">@item.Card</th>
                             <th class="px-4 py-3">@item.Code</th>
                             <th class="px-4 py-3">@item.Points</th>
                             <th class="px-4 py-3">
                                 <div class="inline-flex">
-                                    <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                    <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded">
                                         Edit
-                                    </button>
-                                    <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                                        Del
                                     </button>
                                 </div>
                             </th>

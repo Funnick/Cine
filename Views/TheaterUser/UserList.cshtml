@@ -33,23 +33,19 @@
                             }
                             <th class="px-4 py-3">
                                 <div class="inline-flex">
-                                    <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
-                                        Edit
-                                    </button>
                                     @if (item.TheaterMember == null)
                                     {
-                                    <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4">
-                                        Del
-                                    </button>
-                                    
+                                        <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                            Edit
+                                        </button>
                                         <button class="bg-gray-200 hover:bg-blue-500 text-black-dark font-bold py-2 px-4 rounded-r">
                                             Member
                                         </button>
                                     }
                                     else
                                     {
-                                        <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                                            Del
+                                        <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded">
+                                            Edit
                                         </button>
                                     }
                                 </div>

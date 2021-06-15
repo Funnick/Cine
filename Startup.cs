@@ -46,6 +46,7 @@ namespace Cine
             services.AddScoped<IGetRepository<Discount>, DbDiscountRepository>();
             services.AddScoped<IGetRepository<Actor>, DbActorRepository>();
             services.AddScoped<IGetRepository<Director>, DbDirectorRepository>();
+            services.AddScoped<ITicketRepository, DbTicketRepository>();
 
             //services.AddDatabaseDeveloperPageExceptionFilter();
         }
@@ -66,7 +67,7 @@ namespace Cine
             app.UseRouting();
 
             app.UseAuthentication();
-            
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -76,7 +77,7 @@ namespace Cine
                     pattern: "{controller=Main}/{action=Index}/{id?}");
             });
 
-            
+
         }
     }
 }

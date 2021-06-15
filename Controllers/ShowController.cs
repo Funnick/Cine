@@ -9,6 +9,7 @@ using Cine.Models;
 using Cine.ModelsRepository;
 using Cine.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Cine.Controllers
 {
@@ -18,15 +19,18 @@ namespace Cine.Controllers
         private readonly IGetRepository<Movie> _movieRepository;
         private readonly IGetRepository<Cinema> _cinemaRepository;
         private readonly ITicketRepository _ticketRepository;
+        private readonly IGetRepository<Discount> _discountRepository;
 
         public ShowController(IGetRepository<Show> showRepository,IGetRepository<Movie> movieRepository,
             IGetRepository<Cinema> cinemaRepository,
-            ITicketRepository ticketRepository)
+            ITicketRepository ticketRepository,
+            IGetRepository<Discount> discountRepository)
         {
             _ticketRepository = ticketRepository;
             _showRepository = showRepository;
             _movieRepository = movieRepository;
             _cinemaRepository = cinemaRepository;
+            _discountRepository = discountRepository;
         }
         
         [HttpPost]
@@ -38,18 +42,40 @@ namespace Cine.Controllers
         
         public IActionResult MainShowDetails(int id)
         {
+            
             Show s = _showRepository.GetObj(id);
             ViewBag.Movie = _movieRepository.GetObj(s.MovieId);
             Cinema cinema = _cinemaRepository.GetObj(s.CinemaId);
             ViewBag.Cinema = cinema;
             IEnumerable<Ticket> tickets = _ticketRepository.GetShowTicekts(id);
-            List<bool> seats = new List<bool>(cinema.NumberOfSeats);
-            for (int i = 0; i < seats.Count; i++)
+            bool[] seats = new bool[cinema.NumberOfSeats];
+            for (int i = 0; i < cinema.NumberOfSeats; i++)
                 seats[i] = true;
             foreach (var t in  tickets)
                 seats[t.SeatNumber] = false;
             ViewBag.Seats = seats;
             return View(s);
+        }
+        [HttpPost]
+        public IActionResult MainShowDetails(IFormCollection seatsform)
+        {
+            int withDiscounts = 0;
+            if (seatsform.Keys.Contains("discount")) withDiscounts = int.Parse(seatsform["discount"]);
+            int showId = int.Parse(seatsform["id"]);
+            List<int> seats = new List<int>();
+            int item = 0;
+            foreach(var t in seatsform.Keys)
+            {
+                if (Int32.TryParse(t, out item))
+                {
+                    seats.Add(item);
+                }
+            }
+            //En seats estan los ints de los asientos whitdiscount la cantidad de tickets q tiene descuentos y el showid del show
+
+
+
+            return RedirectToAction("MainShows", "Show");
         }
         
         public IActionResult ShowList()

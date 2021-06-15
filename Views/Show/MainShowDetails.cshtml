@@ -1,5 +1,5 @@
 ﻿@model Show
-
+@inject SignInManager<TheaterUser> _signInManager;
 
 <div class="w-full overflow-hidden bg-fixed bg-cover bg-no-repeat">
 
@@ -25,19 +25,23 @@
 
                 <p class="mx-3">Chips</p>
             </div>
-            
+
             <div class="flex flex-col md:flex-row md: gap-2 md:transform md:scale-75 lg:scale-100 justify-center">
                 <div class="border rounded-lg  text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
                     <div class="">Regular</div>
                     <div id="Chips" class="font-bold text-6xl Chips hidden">@Model.PointsPrice</div>
                     <div id="MLC" class="font-bold text-6xl MLC">&dollar;@Model.Price </div>
                 </div>
-                <div class="border rounded-lg  text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
-                    <div class="">@Model.Discount.Description</div>
-                    <div id="Chips" class="font-bold text-6xl Chips hidden">@Model.PointsPrice</div>
-                    <div id="MLC" class="font-bold text-2xl MLC">&dollar;@Model.Price</div>
-                    <div class="text-6xl text-red-400 font-bold">@Model.Discount.Percent % OFF</div>
-                </div>
+                @if (Model.Discount != null)
+                {
+                    <div class="border rounded-lg  text-center p-5 mx-auto md:mx-0 my-2 md:my-6 bg-gray-100 font-medium z-10 shadow-lg">
+                        <div class="">@Model.Discount.Description</div>
+                        <div id="Chips" class="font-bold text-6xl Chips hidden">@Model.PointsPrice</div>
+                        <div id="MLC" class="font-bold text-2xl MLC">&dollar;@Model.Price</div>
+                        <div class="text-6xl text-red-400 font-bold">@Model.Discount.Percent % OFF</div>
+                    </div>
+                }
+
             </div>
         </div>
         <div>
@@ -59,9 +63,18 @@
                 @Model.Movie.Synopsis
             </p>
         </div>
-        <div class="w-full flex items-center justify-center">
-            <button id="card_open" class="py-8 px-8  bg-gradient border-gray-500 text-center font-bold text-2xl mt-8 tracking-wide relative rounded-lg block">BUY TICKETS</button>
-        </div>
+        @if (_signInManager.IsSignedIn(User))
+        {
+            <div class="w-full mb-4 flex items-center justify-center">
+                <button id="card_open" class="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-green-500 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none">BUY TICKETS</button>
+            </div>
+        }
+        else
+        {
+            <div class="w-full mb-4 flex items-center justify-center">
+                <button  class="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-green-500 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none">Log in for buy</button>
+            </div>
+        }
 
     </div>
 
@@ -78,13 +91,45 @@
                         </svg>
                     </div>
                 </div>
-                <div class="my-5 mr-5 ml-5 flex justify-center">
-                    <p>Formulario para comprar tickets</p>
-                    
-                </div>
-                <div class="flex justify-end pt-2 space-x-14">
-                    <button class="py-8 px-8  bg-gradient border-gray-500 text-center font-bold text-2xl mt-8 tracking-wide relative rounded-lg block">BUY TICKETS</button>
-                </div>
+                <form name="buy" method="post">
+                    <div class="my-5 mr-5 ml-5 flex justify-center">
+
+                        <div class="">
+
+                            <h1 class="m-4">Seats</h1>
+                            <div class="grid grid-cols-10 gap-6">
+                                @{ int item = -1;}
+                                @foreach (var seat in ViewBag.seats)
+                                {
+                                    item++;
+                                    if (seat)
+                                    {
+                                        <input name="@item" type="checkbox" class="h-5 w-5 " />
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" class="h-5 w-5 " disable />
+                                    }
+                                }
+                            </div>
+                            @if (Model.Discount != null)
+                            {
+                                <div>
+                                    <h1>With Discount</h1>
+                                    <input name="discount" type="number" class="border">
+                                </div>
+                            }
+
+                        </div>
+                        <input name="id" class="hidden" value="@Model.ShowId" />
+
+
+                    </div>
+                    <div class="flex justify-end pt-2 space-x-14">
+                        <button type="submit" class="inline-block px-6 py-2 text-xs font-medium leading-6 text-center text-white uppercase transition bg-green-500 rounded shadow ripple hover:shadow-lg hover:bg-green-600 focus:outline-none">BUY TICKETS</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>

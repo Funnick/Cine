@@ -64,18 +64,17 @@
                             <div class="form-group row">
                                 <div class="col-12">
                                     <label for="example-time-input" class="col-form-label">User</label>
-                                    <select class="form-select form-control" aria-label="Default select example" asp-for="TheaterUserId">
+                                    <select name="member" class="form-select form-control" aria-label="Default select example" asp-for="TheaterUserId">
                                         @{
                                             if (ViewBag.TheaterUsersCount != 0)
                                             {
                                                 @foreach (var user in ViewBag.TheaterUsers)
                                                 {
                                                     <option value=@user.Id>@user.Email</option>
-                                                    <input hidden="hidden" asp-for="TheaterUser" value="@user">
+                                                    <span asp-validation-for="TheaterUser"></span>
                                                 }
                                             }
                                         }
-                                        <span asp-validation-for="TheaterUser"></span>
                                     </select>
                                 </div>
                             </div>

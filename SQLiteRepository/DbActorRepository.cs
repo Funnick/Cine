@@ -37,7 +37,7 @@ namespace Cine.SQLiteRepository
             _context.SaveChanges();
         }
 
-        public Actor GetObj(int id)
+        public Actor GetObj(int? id)
         {
             return _context.Actors.Find(id);
         }

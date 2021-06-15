@@ -13,6 +13,7 @@
                 <th class="px-4 py-3">Price</th>
                 <th class="px-4 py-3">Seats</th>
                 <th class="px-4 py-3">Show</th>
+                <th class="px-4 py-3">Discount</th>
                 <th class="px-4 py-3">Action</th>
             </tr>
             <tbody>
@@ -25,6 +26,7 @@
                             <th class="px-4 py-3">@item.Price</th>
                             <th class="px-4 py-3">@item.Seats</th>
                             <th class="px-4 py-3">@item.Show</th>
+                            <th class="px-4 py-3">@item.Discount.Description</th>
                             <th class="px-4 py-3">
                                 <div class="inline-flex">
                                     <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
@@ -97,20 +99,6 @@
                                     }
                                 }
                             </select>
-                            <label for="example-time-input" class="col-form-label">Usuario</label>
-                            <select class="form-select form-control" aria-label="Default select example" asp-for="TheaterUserId">
-                                @{
-                                    if (ViewBag.TheaterUsersCount != 0)
-                                    {
-                                        foreach (var user in ViewBag.TheaterUsers)
-                                        {
-                                            <option value="@user.Id">@user.Email</option>
-                                            <span asp-validation-for="TheaterUserId"></span>
-                                        }
-                                    }
-                                }
-                            </select>
-
                             <div class="mt-5">
                                 <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
                                 <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">

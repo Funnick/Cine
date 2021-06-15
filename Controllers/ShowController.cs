@@ -75,9 +75,43 @@ namespace Cine.Controllers
                 {
                     seats.Add(item);
                 }
-            }
+            }   
+            
             //En seats estan los ints de los asientos whitdiscount la cantidad de tickets q tiene descuentos y el showid del show
-
+            Show show = _showRepository.GetObj(showId);
+            Discount d;
+            if (show.DiscountId != null)
+                d = _discountRepository.GetObj(show.DiscountId);
+            else
+                d = null;
+            foreach (var s in seats)
+            {
+                if (withDiscounts > 0)
+                {
+                    decimal percent = d.Percent;
+                    Ticket newTicket = new Ticket
+                    {
+                        Price = show.Price - ((show.Price * percent) / 100),
+                        Discount = d,
+                        DiscountId = d.DiscountId,
+                        SeatNumber = s,
+                        Show = show,
+                        ShowId = show.ShowId,
+                    };
+                    _ticketRepository.Add(newTicket);
+                }
+                else
+                {
+                    Ticket newTicket = new Ticket
+                    {
+                        Price = show.Price,
+                        SeatNumber = s,
+                        Show = show,
+                        ShowId = show.ShowId,
+                    };
+                    _ticketRepository.Add(newTicket);
+                }
+            }
 
 
             return RedirectToAction("MainShows", "Show");

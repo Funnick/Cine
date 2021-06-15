@@ -15,8 +15,5 @@ namespace Cine.Models
         public string Card { get; set; }
         
         public virtual TheaterMember TheaterMember { get; set; }
-
-        public virtual ICollection<Ticket> Ticekts { get; set; }
-
     }
 }

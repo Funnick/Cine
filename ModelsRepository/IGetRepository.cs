@@ -4,7 +4,7 @@ namespace Cine.ModelsRepository
 {
     public interface IGetRepository<T> : ICrudReposiroty<T>
     {
-        T GetObj(int id);
+        T GetObj(int? id);
         IEnumerable<T> GetAllObj();
     }
 }

@@ -74,7 +74,6 @@
     </style>
 </head>
 <body class="bg-white font-sans leading-normal tracking-normal">
-
 <nav class="flex absolute top-0 items-center justify-between flex-wrap bg-dark shadow-2xl p-8 fixed w-full z-40 top-0">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
         <a class="text-white no-underline hover:text-white hover:no-underline" asp-controller="Main" asp-action="Index">
@@ -133,16 +132,12 @@
                     <a class="inline-block text-red-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4" asp-controller="TheaterUser" asp-action="Login">Log in</a>
                 </li>
             }
-
         </ul>
     </div>
 </nav>
-
-<!--Container-->
 <div class="w-full h-full content shadow-lg mx-auto mt-24 md:mt-18 bg-cover bg-fixed">
-        @RenderBody()
-        </div>
-
+    @RenderBody()
+</div>
 <script>
         //Javascript to toggle the menu
         document.getElementById('nav-toggle').onclick = function () {

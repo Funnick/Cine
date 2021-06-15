@@ -42,7 +42,7 @@ namespace Cine.SQLiteRepository
             _context.SaveChanges();
         }
 
-        public Movie GetObj(int id)
+        public Movie GetObj(int? id)
         {
             return _context.Movies.Find(id);
         }

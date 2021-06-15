@@ -35,7 +35,7 @@ namespace Cine.SQLiteRepository
             _context.SaveChanges();
         }
 
-        public Discount GetObj(int id)
+        public Discount GetObj(int? id)
         {
             return _context.Discounts.Find(id);
         }

@@ -34,14 +34,12 @@ namespace Cine.SQLiteRepository
                 ticket.Show = obj.Show;
                 ticket.DiscountId = obj.DiscountId;
                 ticket.SeatNumber = obj.SeatNumber;
-                ticket.TheaterUser = obj.TheaterUser;
-                ticket.TheaterUserId = obj.TheaterUser.Id;
             }
 
             _context.SaveChanges();
         }
 
-        public Ticket GetObj(int id)
+        public Ticket GetObj(int? id)
         {
             return _context.Tickets.Find(id);
         }

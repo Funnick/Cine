@@ -35,11 +35,8 @@
                             <th class="px-4 py-3">@item.Discount?.Description</th>
                             <th class="px-4 py-3">
                                 <div class="inline-flex">
-                                    <button data-modal="@item.ShowId" class="modal-trigger bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                    <button data-modal="@item.ShowId" class="modal-trigger bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded">
                                         Edit
-                                    </button>
-                                    <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                                        Elim
                                     </button>
                                 </div>
                             </th>
@@ -60,21 +57,21 @@
                                             <div class="form-group row">
                                                 <label for="example-date-input" class="col-2 col-form-label">Date</label>
                                                 <div class="col-10">
-                                                    <input class="form-control" type="date" value="@item.Date" asp-for="Date">
+                                                    <input class="form-control" type="date" value="@item.Date.ToString("MM/dd/yyyy")" asp-for="Date">
                                                     <span asp-validation-for="Date"></span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-time-input" class="col-2 col-form-label">Start</label>
                                                 <div class="col-10">
-                                                    <input class="form-control" type="time" value="@item.StartTime" asp-for="StartTime">
+                                                    <input class="form-control" type="time" value="@item.StartTime.ToString("T")" asp-for="StartTime">
                                                     <span asp-validation-for="StartTime"></span>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="example-time-input" class="col-2 col-form-label">End</label>
                                                 <div class="col-10">
-                                                    <input class="form-control" type="time" value="@item.EndTime" asp-for="EndTime">
+                                                    <input class="form-control" type="time" value="@item.EndTime.ToString("T")" asp-for="EndTime">
                                                     <span asp-validation-for="EndTime"></span>
                                                 </div>
                                             </div>
@@ -86,8 +83,14 @@
                                                         {
                                                             foreach (var dis in ViewBag.Discounts)
                                                             {
-                                                                <option value="@dis.DiscountId">@dis.Description</option>
-                                                                <input hidden="hidden" asp-for="Discount" value="@dis"/>
+                                                                if (dis.DiscountId == item.DiscountId)
+                                                                {
+                                                                    <option selected="" value="@dis.DiscountId">@dis.Description</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@dis.DiscountId">@dis.Description</option>
+                                                                }
                                                                 <span asp-validation-for="DiscountId"></span>
                                                             }
                                                         }
@@ -102,8 +105,14 @@
                                                         {
                                                             foreach (var movie in ViewBag.Movies)
                                                             {
-                                                                <option value="@movie.MovieId">@movie.Title</option>
-                                                                <input hidden="hidden" asp-for="Movie" value="@movie"/>
+                                                                if (movie.MovieId == item.MovieId)
+                                                                {
+                                                                    <option selected="" value="@movie.MovieId">@movie.Title</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@movie.MovieId">@movie.Title</option>
+                                                                }
                                                                 <span asp-validation-for="MovieId"></span>
                                                             }
                                                         }
@@ -118,8 +127,14 @@
                                                         {
                                                             foreach (var cinema in ViewBag.Cinemas)
                                                             {
-                                                                <option value="@cinema.CinemaId">@cinema.NumberOfSeats seats</option>
-                                                                <input hidden="hidden" asp-for="Cinema" value="@cinema" />
+                                                                if (cinema.CinemaId == item.CinemaId)
+                                                                {
+                                                                    <option selected="" value="@cinema.CinemaId">@cinema.NumberOfSeats seats</option>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <option value="@cinema.CinemaId">@cinema.NumberOfSeats seats</option>
+                                                                }
                                                                 <span asp-validation-for="CinemaId"></span>
                                                             }
                                                         }
@@ -203,7 +218,7 @@
                                             foreach (var dis in ViewBag.Discounts)
                                             {
                                                 <option value="@dis.DiscountId">@dis.Description</option>
-                                                <input hidden="hidden" asp-for="Discount" value="@dis"/>
+                                                <span asp-validation-for="DiscountId"></span>
                                             }
                                         }
                                     }
@@ -218,7 +233,7 @@
                                             foreach (var movie in ViewBag.Movies)
                                             {
                                                 <option value="@movie.MovieId">@movie.Title</option>
-                                                <input hidden="hidden" asp-for="Movie" value="@movie"/>
+                                                <span asp-validation-for="MovieId"></span>
                                             }
                                         }
                                     }
@@ -233,7 +248,7 @@
                                             foreach (var cinema in ViewBag.Cinemas)
                                             {
                                                 <option value="@cinema.CinemaId">@cinema.NumberOfSeats seats</option>
-                                                <input hidden="hidden" asp-for="Cinema" value="@cinema"/>
+                                                <span asp-validation-for="CinemaId"></span>
                                             }
                                         }
                                     }

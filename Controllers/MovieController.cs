@@ -33,6 +33,11 @@ namespace Cine.Controllers
             _movieRepository.Add(obj);
             return RedirectToAction("MovieList", "Movie");
         }
+        public IActionResult Update(Movie obj)
+        {
+            _movieRepository.Update(obj);
+            return RedirectToAction("MovieList", "Movie");
+        }
         
         public IActionResult MovieList()
         {

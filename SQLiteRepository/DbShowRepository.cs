@@ -28,14 +28,12 @@ namespace Cine.SQLiteRepository
             Show show = _context.Shows.FirstOrDefault(s => s.ShowId == obj.ShowId);
             if (show != null)
             {
-                show.Cinema = obj.Cinema;
+                show.MovieId = obj.MovieId;
                 show.Date = obj.Date;
-                show.Discount = obj.Discount;
-                show.Movie = obj.Movie;
+                show.DiscountId = obj.DiscountId;
                 show.Price = obj.Price;
                 show.PointsPrice = obj.PointsPrice;
-                show.CinemaId = obj.Cinema.CinemaId;
-                show.MovieId = obj.Movie.MovieId;
+                show.CinemaId = obj.CinemaId;
                 show.StartTime = obj.StartTime;
                 show.EndTime = obj.EndTime;
             }

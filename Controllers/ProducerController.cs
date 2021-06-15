@@ -24,17 +24,29 @@ namespace Cine.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Actor obj)
+        public IActionResult CreateActor(Actor obj)
         {
             _actorRepository.Add(obj);
             return RedirectToAction("ProducerList", "Producer");
         }
         [HttpPost]
-        public IActionResult Create(Director obj)
+        public IActionResult CreateDirector(Director obj)
         {
             _directorRepository.Add(obj);
             return RedirectToAction("ProducerList", "Producer");
         }
+        [HttpPost]
+        public IActionResult UpdateDirector(Director obj)
+        {
+            _directorRepository.Update(obj);
+            return RedirectToAction("ProducerList", "Producer");
+        }
+        public IActionResult UpdateActor(Actor obj)
+        {
+            _actorRepository.Update(obj);
+            return RedirectToAction("ProducerList", "Producer");
+        }
+
         public IActionResult ProducerList()
         {
             IEnumerable<Actor> actors = _actorRepository.GetAllObj();

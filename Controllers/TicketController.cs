@@ -36,12 +36,18 @@ namespace Cine.Controllers
             _ticketRepository.Add(obj);
             return RedirectToAction("TicketList", "Ticket");
         }
-        
+        [HttpPost]
+        public IActionResult Update(Ticket obj)
+        {
+            _ticketRepository.Update(obj);
+            return RedirectToAction("TicketList", "Ticket");
+        }
+
         public IActionResult TicketList()
         {
             IEnumerable<Ticket> tickets = _ticketRepository.GetAllObj();
             ViewBag.Tickets = tickets;
-            ViewBag.TicketCount = tickets?.Count() ?? 0;
+            ViewBag.TicketsCount = tickets?.Count() ?? 0;
             IEnumerable<Discount> discounts = _discountRepository.GetAllObj();
             ViewBag.Discounts = discounts;
             ViewBag.DiscountsCount = discounts?.Count() ?? 0;

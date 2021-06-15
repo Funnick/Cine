@@ -22,6 +22,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
     <PackageReference Include="Pagination" Version="3.0.0.3" />
+    <PackageReference Include="Paginator.NET" Version="1.0.2" />
     <PackageReference Include="sqlite" Version="3.13.0" />
   </ItemGroup>
 

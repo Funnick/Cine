@@ -197,6 +197,32 @@
                                                     <span asp-validation-for="Year"></span>
                                                 </div>
                                             </div>
+                                            <div class="form-group row">
+                                                <div class="col-6">
+                                                    <label>Actors</label>
+                                                    <select type="text" class="select form-control" multiple asp-for="Actors">
+                                                        @{
+                                                            foreach (var actor in ViewBag.Actors)
+                                                            {
+                                                                <option value="@actor.ProducerId">@actor.Name</option>
+                                                                <span asp-validation-for="Actors"></span>
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label>Directors</label>
+                                                    <select type="text" class="multiselect form-control" multiple="multiple" asp-for="Directors">
+                                                        @{
+                                                            foreach (var director in ViewBag.Directors)
+                                                            {
+                                                                <option value="@director.ProducerId">@director.Name</option>
+                                                                <span asp-validation-for="Directors"></span>
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
                                             <div class="mt-5">
                                                 <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Update"/>
                                                 <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
@@ -228,78 +254,86 @@
                         </div>
                     </div>
                     <!-- Modal content -->
-                    <form method="post" id="form_id" class="w-full" asp-controller="Movie" asp-action="Create">
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" placeholder="Title" type="text" asp-for="Title">
+                    <div asp-validation-summary="All">
+                        <form method="post" id="form_id" class="w-full" asp-controller="Movie" asp-action="Create">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" placeholder="Title" type="text" asp-for="Title">
+                                    <span asp-validation-for="Title"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" placeholder="Category" type="text" asp-for="Category">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" placeholder="Category" type="text" asp-for="Category">
+                                    <span asp-validation-for="Category"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" placeholder="Genre" type="text" asp-for="Genre">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" placeholder="Genre" type="text" asp-for="Genre">
+                                    <span asp-validation-for="Genre"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" type="text" placeholder="Synopsis" asp-for="Synopsis">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" type="text" placeholder="Synopsis" asp-for="Synopsis">
+                                    <span asp-validation-for="Synopsis"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <input class="form-control" type="text" placeholder="Country" asp-for="Country">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <input class="form-control" type="text" placeholder="Country" asp-for="Country">
+                                    <span asp-validation-for="Country"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <label>Duration</label>
-                                <input class="form-control" type="number" placeholder="Duration" asp-for="Duration">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <label>Duration</label>
+                                    <input class="form-control" type="number" placeholder="Duration" asp-for="Duration">
+                                    <span asp-validation-for="Duration"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-10">
-                                <label>Year</label>
-                                <input class="form-control" type="number" value="2021" placeholder="Year" asp-for="Year">
+                            <div class="form-group row">
+                                <div class="col-10">
+                                    <label>Year</label>
+                                    <input class="form-control" type="number" value="2021" placeholder="Year" asp-for="Year">
+                                    <span asp-validation-for="Year"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-6">
-                                <label>Actors</label>
-                                <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect" asp-for="Actors">
-                                    @{
-                                        foreach (var actor in ViewBag.Actors)
-                                        {
-                                            <option value="@actor.MovieId">@actor.Name</option>
-                                            <input hidden="hidden" asp-for="Actors" value="@actor"/>
+                            <div class="form-group row">
+                                <div class="col-6">
+                                    <label>Actors</label>
+                                    <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect" asp-for="Actors">
+                                        @{
+                                            foreach (var actor in ViewBag.Actors)
+                                            {
+                                                <option value="@actor.ProducerId">@actor.Name</option>
+                                                <span asp-validation-for="Actors"></span>
+                                            }
                                         }
-                                    }
-                                </select>
-                            </div>
-                            <div class="col-6">
-                                <label>Directors</label>
-                                <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect" asp-for="Directors">
-                                    @{
-                                        foreach (var director in ViewBag.Directors)
-                                        {
-                                            <option value="@director.MovieId">@director.Name</option>
-                                            <input hidden="hidden" asp-for="Directors" value="@director"/>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <label>Directors</label>
+                                    <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect" asp-for="Directors">
+                                        @{
+                                            foreach (var director in ViewBag.Directors)
+                                            {
+                                                <option value="@director.ProducerId">@director.Name</option>
+                                                <span asp-validation-for="Actors"></span>
+                                            }
                                         }
-                                    }
-                                </select>
+                                    </select>
+                                </div>
                             </div>
-                            
-                        </div>
-                        <div class="mt-5">
-                            <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
-                            <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
-                                Close
-                            </span>
-                        </div>
-                    </form>
+                            <div class="mt-5">
+                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
+                                <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
+                                    Close
+                                </span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

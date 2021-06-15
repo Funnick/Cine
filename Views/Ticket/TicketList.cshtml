@@ -16,23 +16,32 @@
                 <th class="px-4 py-3">Action</th>
             </tr>
             <tbody>
-            @foreach (var item in ViewBag.Tickets)
-            {
-                <tr class="bg-gray-100 border-b border-gray-200">
-                    <th class="px-4 py-3">@item.Price</th>
-                    <th class="px-4 py-3">@item.Seats</th>
-                    <th class="px-4 py-3">@item.Show</th>
-                    <th class="px-4 py-3">
-                        <div class="inline-flex">
-                            <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
-                                Edit
-                            </button>
-                            <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                                Elim
-                            </button>
-                        </div>
-                    </th>
-                </tr>
+            @{
+                if (ViewBag.TicketsCount != 0)
+                {
+                    foreach (var item in ViewBag.Tickets)
+                    {
+                        <tr class="bg-gray-100 border-b border-gray-200">
+                            <th class="px-4 py-3">@item.Price</th>
+                            <th class="px-4 py-3">@item.Seats</th>
+                            <th class="px-4 py-3">@item.Show</th>
+                            <th class="px-4 py-3">
+                                <div class="inline-flex">
+                                    <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
+                                        Edit
+                                    </button>
+                                    <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
+                                        Elim
+                                    </button>
+                                </div>
+                            </th>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <th class="px-4 py-3">No elements to show</th>
+                }
             }
             </tbody>
         </table>
@@ -56,6 +65,12 @@
                                     <span asp-validation-for="Price"></span>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <input class="form-control" type="number" placeholder="Seats" asp-for="SeatNumber">
+                                    <span asp-validation-for="SeatNumber"></span>
+                                </div>
+                            </div>
                             <label for="example-time-input" class="col-form-label">Discount</label>
                             <select class="form-select form-control" aria-label="Default select example" asp-for="DiscountId">
                                 @{
@@ -64,7 +79,7 @@
                                         foreach (var discount in ViewBag.Discounts)
                                         {
                                             <option value="@discount.DiscountId">@discount.Description</option>
-                                            <input hidden="hidden" asp-for="Discount" value="@discount"/>
+                                            <span asp-validation-for="DiscountId"></span>
                                         }
                                     }
                                 }
@@ -77,7 +92,7 @@
                                         foreach (var show in ViewBag.Shows)
                                         {
                                             <option value="@show.ShowId.">@show.StartTime.ToString("T") @show.Date.ToString("D")</option>
-                                            <input hidden="hidden" asp-for="Show" value="@show"/>
+                                            <span asp-validation-for="ShowId"></span>
                                         }
                                     }
                                 }
@@ -90,7 +105,7 @@
                                         foreach (var user in ViewBag.TheaterUsers)
                                         {
                                             <option value="@user.Id">@user.Email</option>
-                                            <input hidden="hidden" asp-for="TheaterUser" value="@user"/>
+                                            <span asp-validation-for="TheaterUserId"></span>
                                         }
                                     }
                                 }

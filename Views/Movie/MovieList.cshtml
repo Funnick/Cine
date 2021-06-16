@@ -112,7 +112,7 @@
                                     <div class="modal-content shadow-lg p-5">
                                         <div class="border-b p-2 pb-3 pt-0 mb-4">
                                             <div class="flex justify-between items-center">
-                                                Synopsis
+                                                Actors
                                             </div>
                                         </div>
                                         @{
@@ -197,7 +197,7 @@
                                             <div class="form-group row">
                                                 <div class="col-6">
                                                     <label>Actors</label>
-                                                    <select type="text" class="select form-control" multiple asp-for="Actors">
+                                                    <select name="Actors" type="text" class="select form-control" multiple>
                                                         @{
                                                             foreach (var actor in ViewBag.Actors)
                                                             {
@@ -209,7 +209,7 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <label>Directors</label>
-                                                    <select type="text" class="multiselect form-control" multiple="multiple" asp-for="Directors">
+                                                    <select name="Directors" type="text" class="multiselect form-control" multiple>
                                                         @{
                                                             foreach (var director in ViewBag.Directors)
                                                             {
@@ -300,7 +300,7 @@
                             <div class="form-group row">
                                 <div class="col-6">
                                     <label>Actors</label>
-                                    <select name="Actors"type="text" class="multiselect form-control" multiple >
+                                    <select name="Actors" type="text" class="multiselect form-control" multiple >
                                         @{
                                             foreach (var actor in ViewBag.Actors)
                                             {

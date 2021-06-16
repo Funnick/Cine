@@ -47,6 +47,7 @@ namespace Cine
             services.AddScoped<IGetRepository<Actor>, DbActorRepository>();
             services.AddScoped<IGetRepository<Director>, DbDirectorRepository>();
             services.AddScoped<ITicketRepository, DbTicketRepository>();
+            services.AddScoped<IParticipantRepository, DbParticipateRepository>();
 
             //services.AddDatabaseDeveloperPageExceptionFilter();
         }

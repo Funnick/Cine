@@ -3,14 +3,16 @@ using System;
 using Cine.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cine.Migrations
 {
     [DbContext(typeof(CineDbContext))]
-    partial class CineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210616152744_Participate")]
+    partial class Participate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,9 +88,6 @@ namespace Cine.Migrations
                     b.Property<string>("Photo")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("ProducerId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Synopsis")
                         .IsRequired()
                         .HasMaxLength(300)
@@ -106,8 +105,6 @@ namespace Cine.Migrations
                         .HasColumnName("Year");
 
                     b.HasKey("MovieId");
-
-                    b.HasIndex("ProducerId");
 
                     b.ToTable("Movie");
                 });
@@ -491,13 +488,6 @@ namespace Cine.Migrations
                     b.HasDiscriminator().HasValue("Director");
                 });
 
-            modelBuilder.Entity("Cine.Models.Movie", b =>
-                {
-                    b.HasOne("Cine.Models.Producer", null)
-                        .WithMany("Movies")
-                        .HasForeignKey("ProducerId");
-                });
-
             modelBuilder.Entity("Cine.Models.Show", b =>
                 {
                     b.HasOne("Cine.Models.Cinema", "Cinema")
@@ -633,11 +623,6 @@ namespace Cine.Migrations
                     b.Navigation("Actors");
 
                     b.Navigation("Directors");
-                });
-
-            modelBuilder.Entity("Cine.Models.Producer", b =>
-                {
-                    b.Navigation("Movies");
                 });
 
             modelBuilder.Entity("Cine.Models.Show", b =>

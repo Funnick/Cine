@@ -47,17 +47,15 @@
                 <th class="px-4 py-3">Start Time</th>
                 <th class="px-4 py-3">End Time</th>
                 <th class="px-4 py-3">Date</th>
-                <th class="px-4 py-3">Disponibility</th>
                 <th class="px-4 py-3">Reserve</th>
             </tr>
             @foreach (var item in ViewBag.Shows)
             {
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <th class="px-4 py-3">@item.Movie.Title</th>
-                    <th class="px-4 py-3">@item.StartTime</th>
-                    <th class="px-4 py-3">@item.EndTime</th>
-                    <th class="px-4 py-3">@item.Date</th>
-                    <th class="px-4 py-3 ">Blank for now</th>
+                    <th class="px-4 py-3">@item.StartTime.ToString("H:mm")</th>
+                    <th class="px-4 py-3">@item.EndTime.ToString("H:mm")</th>
+                    <th class="px-4 py-3">@item.Date.ToString("D")</th>
                     <th class="px-4 py-3">@Html.ActionLink("Details", "MainShowDetails", "Show", new {id = item.ShowId}, null)</th>
                 </tr>
             }

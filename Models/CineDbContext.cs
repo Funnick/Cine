@@ -25,6 +25,8 @@ namespace Cine.Models {
         public DbSet<TheaterMember> TheaterMembers { get; set; }
         public DbSet<TheaterUser> TheaterUsers { get; set; }
         public DbSet<Cinema> Cinemas { get; set; }
+        public DbSet<Participate> Participants { get; set; }
+
     }
 
 

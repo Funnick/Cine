@@ -243,7 +243,7 @@
         <button data-modal="formFilm" class="modal-trigger bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-800 hover:border-400 rounded">Add Film</button>
         <div id="formFilm" class="modal-wrapper">
             <div class="overlay close-modal"></div>
-            <div class="modal modal-centered">
+            <div class="modal modal-centered h-auto">
                 <div class="modal-content shadow-lg p-5">
                     <div class="border-b p-2 pb-3 pt-0 mb-4">
                         <div class="flex justify-between items-center">
@@ -300,31 +300,29 @@
                             <div class="form-group row">
                                 <div class="col-6">
                                     <label>Actors</label>
-                                    <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect" asp-for="Actors">
+                                    <select name="Actors"type="text" class="multiselect form-control" multiple >
                                         @{
                                             foreach (var actor in ViewBag.Actors)
                                             {
                                                 <option value="@actor.ProducerId">@actor.Name</option>
-                                                <span asp-validation-for="Actors"></span>
                                             }
                                         }
                                     </select>
                                 </div>
                                 <div class="col-6">
                                     <label>Directors</label>
-                                    <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect" asp-for="Directors">
+                                    <select name="Directors" type="text" class="multiselect form-control" multiple>
                                         @{
                                             foreach (var director in ViewBag.Directors)
                                             {
                                                 <option value="@director.ProducerId">@director.Name</option>
-                                                <span asp-validation-for="Actors"></span>
                                             }
                                         }
                                     </select>
                                 </div>
                             </div>
                             <div class="mt-5">
-                                <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
+                                <button type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded">Add</button>
                                 <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
                                     Close
                                 </span>

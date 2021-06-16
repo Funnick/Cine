@@ -21,7 +21,7 @@ namespace Cine.Models
         public int SeatNumber { get; set; }
 
         [DataType("Integer")]
-        [ForeignKey("Show")]
+        [ForeignKey("ShowId")]
         [Required]
         public int ShowId { get; set; }
         

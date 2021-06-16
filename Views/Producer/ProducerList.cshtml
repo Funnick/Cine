@@ -56,6 +56,7 @@
                                     <!-- Modal content -->
                                     <div asp-validation-summary="All">
                                         <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="UpdateActor">
+                                            <input hidden asp-for="ProducerId" value="@item.ProducerId">
                                             <div class="form-group row">
                                                 <div class="col-10">
                                                     <input class="form-control" placeholder="Name" type="text" value="@item.Name" asp-for="Name">
@@ -223,9 +224,6 @@
                                     <button data-modal="@item.GetHashCode()" class="modal-trigger bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
                                         Edit
                                     </button>
-                                    <button class="bg-gray-200 hover:bg-red-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                                        Del
-                                    </button>
                                 </div>
                             </th>
                         </tr>
@@ -241,6 +239,7 @@
                                     <!-- Modal content -->
                                     <div asp-validation-summary="All">
                                         <form method="post" id="form_id" class="w-full" asp-controller="Producer" asp-action="UpdateDirector">
+                                            <input hidden asp-for="ProducerId" value="@item.ProducerId">
                                             <div class="form-group row">
                                                 <div class="col-10">
                                                     <input class="form-control" placeholder="Name" type="text" value="@item.Name" asp-for="Name">

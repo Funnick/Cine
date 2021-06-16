@@ -5,6 +5,9 @@ namespace Cine.ViewModels
 {
     public class ProducerViewModel
     {
+        [Key]
+        public int ProducerId { get; set; }
+        
         [Required]
         [MaxLength(60)]
         public string Name { get; set; }

@@ -112,6 +112,9 @@ namespace Cine.Controllers
             IEnumerable<TheaterUser> users = _userManager.Users;
             ViewBag.Users = users;
             ViewBag.UsersCount = users == null ? 0 : users.Count();
+            IEnumerable<TheaterMember> members = _theaterMemberRepository.GetAllTheaterMembers();
+            ViewBag.Members = members;
+            ViewBag.MembersCount = members?.Count() ?? 0;
             return View();
         }
 

@@ -9,12 +9,10 @@
         <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
             <tr>
-                <th class="px-4 py-3">Name</th>
                 <th class="px-4 py-3">Email</th>
                 <th class="px-4 py-3">Card</th>
                 <th class="px-4 py-3">Code</th>
                 <th class="px-4 py-3">Points</th>
-                <th class="px-4 py-3">Action</th>
             </tr>
             <tbody>
             @{
@@ -23,18 +21,11 @@
                     foreach (var item in ViewBag.Members)
                     {
                         <tr class="bg-gray-100 border-b border-gray-200">
-                            <th class="px-4 py-3">@item.Email</th>
-                            <th class="px-4 py-3">@item.Card</th>
+                            <th class="px-4 py-3">@item.TheaterUser.Email</th>
+                            <th class="px-4 py-3">@item.TheaterUser.Card</th>
                             <th class="px-4 py-3">@item.Code</th>
                             <th class="px-4 py-3">@item.Points</th>
-                            <th class="px-4 py-3">
-                                <div class="inline-flex">
-                                    <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded">
-                                        Edit
-                                    </button>
-                                </div>
-                            </th>
-                        </tr>
+                            </tr>
                     }
                 }
                 else

@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Manager/_Layout.cshtml";
 }
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @model RegisterViewModel;
 
 <div class=" w-full">
@@ -12,7 +13,6 @@
                 <th class="px-4 py-3">Email</th>
                 <th class="px-4 py-3">Card</th>
                 <th class="px-4 py-3">Member?</th>
-                <th class="px-4 py-3">Action</th>
             </tr>
             <tbody>
             @{
@@ -23,33 +23,25 @@
                         <tr class="bg-gray-100 border-b border-gray-200">
                             <th class="px-4 py-3">@item.Email</th>
                             <th class="px-4 py-3">@item.Card</th>
-                            @if (item.TheaterMember != null)
-                            {
-                                <th class="px-4 py-3">Yes</th>  
-                            }
-                            else
-                            {
-                                <th class="px-4 py-3">No</th>  
-                            }
-                            <th class="px-4 py-3">
-                                <div class="inline-flex">
-                                    @if (item.TheaterMember == null)
+                            @{
+                                if (ViewBag.MembersCount != 0)
+                                {
+                                    bool yes = false;
+                                    foreach (var mem in ViewBag.Members)
                                     {
-                                        <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded-l">
-                                            Edit
-                                        </button>
-                                        <button class="bg-gray-200 hover:bg-blue-500 text-black-dark font-bold py-2 px-4 rounded-r">
-                                            Member
-                                        </button>
+                                        if (mem.TheaterUserId == item.Id)
+                                        {
+                                            <th class="px-4 py-3">Yes</th>
+                                            yes = true;
+                                            break;
+                                        }
                                     }
-                                    else
+                                    if (!yes)
                                     {
-                                        <button class="bg-gray-200 hover:bg-green-500 text-black-dark font-bold py-2 px-4 rounded">
-                                            Edit
-                                        </button>
+                                        <th class="px-4 py-3">No</th>
                                     }
-                                </div>
-                            </th>
+                                }
+                            }
                         </tr>
                     }
                 }

@@ -41,19 +41,33 @@ namespace Cine.Controllers
         [HttpPost]
         public IActionResult Main(IFormCollection querys)
         {
-            int value = int.Parse(querys["value"]);
-            switch (querys["statics_by"])
+
+            if (querys.ContainsKey("filmsCriteria"))
             {
-                case "day":
-                    var shows = _showRepository.GetAllObj();
-                    var tickets = _ticketRepository.GetAllObj();
-                    shows = shows.Where(x => x.Date)
-                    break;
+                if (querys["filmsCriteria"] == "liked")
+                {
+                    
+                }
+                if (querys["filmsCriteria"] == "economic")
+                {
 
+                }
+            }
+            if (querys.ContainsKey("statics_by"))
+            {
+                string value = querys["Value"];
+                if(querys["statics_by"] == "category")
+                {
 
+                }
+                if (querys["statics_by"] == "film")
+                {
 
-                default:
-                    break;
+                }
+                if (querys["statics_by"] == "rating")
+                {
+
+                }
             }
 
             return View();

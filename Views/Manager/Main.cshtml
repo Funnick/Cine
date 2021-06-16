@@ -16,13 +16,15 @@
                         <label for="example-time-input" class="col-form-label">Date</label>
                         <input name="date" class="form-control" type="Date">
                     </div>
+                    <div class="col-4">
                         <label for="example-time-input" class="col-form-label">Search By:</label>
                         <select name="statics_by" id="criterion" class="form-select form-control" aria-label="Default select example">
-                            <option value="year">Category</option>
+                            <option value="category">Category</option>
                             <option value="film">Film</option>
                             <option value="rating">Rating</option>
                         </select>
-                        <input name="Value" class="form-control"
+                        <input name="Value" class="form-control" type="text" />
+                    </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
@@ -36,15 +38,18 @@
         <div class="col-6">
             <div class="card-header">Films to show</div>
             <div class="form-group row">
-                <div class="col-4">
-                    <label for="example-time-input" class="col-form-label">Search: </label>
-                    <select name="filmsCriteria" id="criterion" class="form-select form-control" aria-label="Default select example">
-                        <option value="liked">Most liked movies</option>
-                        <option value="economic">Economic gain</option>
-                    </select>
-                    <br>
-                    <button type="submit"  class="bg-blue-500 hover:bg-blue-200 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-500 rounded">Search</button>
-                </div>
+                <form method="post">
+                    <div class="col-4">
+                        <label for="example-time-input" class="col-form-label">Search: </label>
+                        <select name="filmsCriteria" id="criterion" class="form-select form-control" aria-label="Default select example">
+                            <option value="liked">Most liked movies</option>
+                            <option value="economic">Economic gain</option>
+                        </select>
+                        <br>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-200 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-500 rounded">Search</button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>

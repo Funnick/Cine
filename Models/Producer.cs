@@ -24,5 +24,8 @@ namespace Cine.Models
         [Required]
         [Column("Age")]
         public int Age { get; set; }
+        
+        [Column("Movies")]
+        public virtual ICollection<Movie> Movies { get; set; }
     }
 }

@@ -57,8 +57,11 @@
                                             {
                                                 @foreach (var user in ViewBag.TheaterUsers)
                                                 {
-                                                    <option value=@user.Id>@user.Email</option>
-                                                    <span asp-validation-for="TheaterUser"></span>
+                                                    if(user.TheaterMember == null)
+                                                    {
+                                                        <option value=@user.Id>@user.Email</option>
+                                                        <span asp-validation-for="TheaterUser"></span>
+                                                    }
                                                 }
                                             }
                                         }

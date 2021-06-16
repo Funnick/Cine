@@ -29,7 +29,7 @@
                             <th class="px-4 py-3">@item.EndTime.ToString("T")</th>
                             <th class="px-4 py-3">@item.Date.ToString("D")</th>
                             <th class="px-4 py-3">@item.Movie.Title</th>
-                            <th class="px-4 py-3">@item.Cinema.NumberOfSeats</th>
+                            <th class="px-4 py-3">@item.Cinema.NumberOfSeats seats</th>
                             <th class="px-4 py-3">@item.Price</th>
                             <th class="px-4 py-3">@item.PointsPrice</th>
                             <th class="px-4 py-3">@item.Discount?.Description</th>
@@ -191,7 +191,7 @@
                             <div class="form-group row">
                                 <label for="example-date-input" class="col-2 col-form-label">Date</label>
                                 <div class="col-10">
-                                    <input class="form-control" type="date" value="1959-01-01" asp-for="Date">
+                                    <input class="form-control" type="date" value="2021-06-16" asp-for="Date">
                                     <span asp-validation-for="Date"></span>
                                 </div>
                             </div>

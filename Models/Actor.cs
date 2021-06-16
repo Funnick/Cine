@@ -8,5 +8,7 @@ namespace Cine.Models
         [RegularExpression("Principal|Secundario|Extra", 
         ErrorMessage="Los roles posibles son: Principal, Secundario o Extra")]
         public string Role { get; set;  }
+        
+        
     }
 }

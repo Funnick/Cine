@@ -28,13 +28,20 @@
                             <th class="px-4 py-3">@item.Role</th>
                             <th class="px-4 py-3">@item.Age</th>
                             <th class="px-4 py-3">
-                                @{/*
-                                    if (!(item.Movies is null))
-                                        foreach (var movies in item.Movies)
-                                        {
-                                            <a>@movies.Title</a>
-                                        }
-                                */}
+                                @{
+                                    if (item.Movies != null)
+                                    {
+                                        <button data-modal="@item.ProducerId" class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            See
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button disabled class="cursor-not-allowed bg-blue-300 text-white font-bold py-2 px-4 rounded">
+                                            See
+                                        </button>
+                                    }
+                                }
                             </th>
                             <th class="px-4 py-3">
                                 <div class="inline-flex">
@@ -44,6 +51,29 @@
                                 </div>
                             </th>
                         </tr>
+                        <div id="@item.ProducerId" class="modal-wrapper">
+                            <div class="overlay close-modal"></div>
+                            <div class="modal modal-centered">
+                                <div class="modal-content shadow-lg p-5">
+                                    <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                        <div class="flex justify-between items-center">
+                                            Movies
+                                        </div>
+                                    </div>
+                                    @{
+                                        if (item.Movies != null)
+                                            foreach (var mov in @item.Movies)
+                                            {
+                                                <div>
+                                                    <p>
+                                                        @mov.Title
+                                                    </p>
+                                                </div>
+                                            }
+                                    }
+                                </div>
+                            </div>
+                        </div>
                         <div id="@item.GetHashCode()" class="modal-wrapper">
                             <div class="overlay close-modal"></div>
                             <div class="modal modal-centered">
@@ -83,19 +113,6 @@
                                                         <option value="Secondary">Secondary</option>
                                                         <option value="Extra">Extra</option>
                                                         <span asp-validation-for="Role"></span>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-12">
-                                                    <label>Films</label>
-                                                    <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
-                                                        @{
-                                                            foreach (var mov in ViewBag.Movies)
-                                                            {
-                                                                <option value="@mov.MovieId">@mov.Title</option>
-                                                            }
-                                                        }
                                                     </select>
                                                 </div>
                                             </div>
@@ -161,19 +178,6 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <label>Films</label>
-                                <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
-                                    @{
-                                        foreach (var mov in ViewBag.Movies)
-                                        {
-                                            <option value="@mov.MovieId">@mov.Title</option>
-                                        }
-                                    }
-                                </select>
-                            </div>
-                        </div>
                         <div class="mt-5">
                             <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
                             <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
@@ -211,13 +215,20 @@
                             <th class="px-4 py-3">@item.Country</th>
                             <th class="px-4 py-3">@item.Age</th>
                             <th class="px-4 py-3">
-                                @{/*
-                                    if (!(item.Movies is null))
-                                        foreach (var movies in item.Movies)
-                                        {
-                                            <a>@movies.Title</a>
-                                        }
-                                */}
+                                @{
+                                    if (item.Movies != null)
+                                    {
+                                        <button data-modal="@item.ProducerId" class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            See
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button disabled class="cursor-not-allowed bg-blue-300 text-white font-bold py-2 px-4 rounded">
+                                            See
+                                        </button>
+                                    }
+                                }
                             </th>
                             <th class="px-4 py-3">
                                 <div class="inline-flex">
@@ -227,6 +238,29 @@
                                 </div>
                             </th>
                         </tr>
+                        <div id="@item.ProducerId" class="modal-wrapper">
+                            <div class="overlay close-modal"></div>
+                            <div class="modal modal-centered">
+                                <div class="modal-content shadow-lg p-5">
+                                    <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                        <div class="flex justify-between items-center">
+                                            Movies
+                                        </div>
+                                    </div>
+                                    @{
+                                        if (item.Movies != null)
+                                            foreach (var mov in @item.Movies)
+                                            {
+                                                <div>
+                                                    <p>
+                                                        @mov.Title
+                                                    </p>
+                                                </div>
+                                            }
+                                    }
+                                </div>
+                            </div>
+                        </div>
                         <div id="@item.GetHashCode()" class="modal-wrapper">
                             <div class="overlay close-modal"></div>
                             <div class="modal modal-centered">
@@ -258,19 +292,7 @@
                                                     <span asp-validation-for="Age"></span>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <div class="col-md-12">
-                                                    <label>Films</label>
-                                                    <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
-                                                        @{
-                                                            foreach (var mov in ViewBag.Movies)
-                                                            {
-                                                                <option value="@mov.MovieId">@mov.Title</option>
-                                                            }
-                                                        }
-                                                    </select>
-                                                </div>
-                                            </div>
+                                            
                                             <div class="mt-5">
                                                 <input type="submit" class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded" value="Create"/>
                                                 <span class="close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded">
@@ -317,19 +339,6 @@
                             <div class="form-group row">
                                 <div class="col-10">
                                     <input class="form-control" placeholder="Age" type="text" asp-for="Age">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    <label>Films</label>
-                                    <select type="text" class="multiselect form-control" multiple="multiple" role="multiselect">
-                                        @{
-                                        foreach (var mov in ViewBag.Movies)
-                                        {
-                                            <option value="@mov.MovieId">@mov.Title</option>
-                                        }
-                                    }
-                                    </select>
                                 </div>
                             </div>
                             <div class="mt-5">

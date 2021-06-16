@@ -12,12 +12,12 @@ namespace Cine.SQLiteRepository
     public class DbTicketRepository : ITicketRepository
     {
         private readonly CineDbContext _context;
-        
+
         public DbTicketRepository(CineDbContext context)
         {
             _context = context;
         }
-        
+
         public void Add(Ticket obj)
         {
             _context.Tickets.Add(obj);
@@ -52,6 +52,12 @@ namespace Cine.SQLiteRepository
         public IEnumerable<Ticket> GetShowTicekts(int showId)
         {
             return _context.Tickets.Where<Ticket>(t => t.ShowId == showId);
+        }
+
+        public void Detele(int? id)
+        {
+            Ticket t = GetObj(id);
+            _context.Tickets.Remove(t);
         }
     }
 }

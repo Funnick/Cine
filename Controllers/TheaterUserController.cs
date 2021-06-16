@@ -120,13 +120,9 @@ namespace Cine.Controllers
 
         public IActionResult MainProfile()
         {
-            //pasame aki en el TheatherUSer
             return View();
         }
-        [HttpPost]
-        public IActionResult MainProfile(int ticketcode)
-        {
-            return View();
-        }
+        
+        
     }
 }

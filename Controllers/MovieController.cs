@@ -9,6 +9,7 @@ using Cine.Models;
 using Cine.ModelsRepository;
 using Cine.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Cine.Controllers
 {
@@ -17,19 +18,32 @@ namespace Cine.Controllers
         private readonly IGetRepository<Movie> _movieRepository;
         private readonly IGetRepository<Director> _directorRepository;
         private readonly IGetRepository<Actor> _actorRepository;
+        private readonly IParticipantRepository _participateRepository;
 
         public MovieController(IGetRepository<Movie> movieRepository,
             IGetRepository<Director> directorRepository,
-            IGetRepository<Actor> actorRepository)
+            IGetRepository<Actor> actorRepository,
+            IParticipantRepository participateRepository)
         {
             _movieRepository = movieRepository;
             _directorRepository = directorRepository;
             _actorRepository = actorRepository;
+            _participateRepository = participateRepository;
+
         }
 
         [HttpPost]
-        public IActionResult Create(Movie obj)
+        public IActionResult Create(Movie obj, IFormCollection createform)
         {
+            foreach (var actor in createform["Actors"])
+            {
+                _participateRepository.Add(new Participate() { MovieId = obj.MovieId, ProducerId = int.Parse(actor)});
+            }
+            foreach (var director in createform["Actors"])
+            {
+                _participateRepository.Add(new Participate() { MovieId = obj.MovieId, ProducerId = int.Parse(director)});
+            }
+
             _movieRepository.Add(obj);
             return RedirectToAction("MovieList", "Movie");
         }
@@ -42,14 +56,9 @@ namespace Cine.Controllers
         public IActionResult MovieList()
         {
             IEnumerable<Movie> movies = _movieRepository.GetAllObj();
-            IEnumerable<Actor> actors = _actorRepository.GetAllObj();
-            IEnumerable<Director> directors = _directorRepository.GetAllObj();
             ViewBag.Movies = movies;
             ViewBag.MoviesCount = movies?.Count() ?? 0;
-            ViewBag.Directors = directors;
-            ViewBag.DirectorsCount = directors?.Count() ?? 0;
-            ViewBag.Actors = actors;
-            ViewBag.ActorsCount = actors?.Count() ?? 0;
+            
             return View();
         }
         //Regular user view (Main)

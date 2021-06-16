@@ -21,6 +21,7 @@ namespace Cine.Controllers
         private readonly ITicketRepository _ticketRepository;
         private readonly IGetRepository<Discount> _discountRepository;
 
+
         public ShowController(IGetRepository<Show> showRepository,IGetRepository<Movie> movieRepository,
             IGetRepository<Cinema> cinemaRepository,
             ITicketRepository ticketRepository,

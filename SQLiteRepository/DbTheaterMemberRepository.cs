@@ -22,7 +22,7 @@ namespace Cine.SQLiteRepository
             TheaterMember newMember = new TheaterMember()
             {
                 Points = 0, TheaterUser = theaterUser,
-                TheaterUserId = theaterUser.Id
+                TheaterUserId = theaterUser.Id, Code=theaterUser.Id
             };
             theaterUser.TheaterMember = newMember;
             _context.SaveChanges();

@@ -10,6 +10,7 @@ using Cine.ModelsRepository;
 using Cine.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace Cine.Controllers
 {
@@ -37,9 +38,11 @@ namespace Cine.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(TheaterUser user)
+        public IActionResult Create(IFormCollection user)
         {
-            _theaterMemberRepository.Add(user);
+            var member =  _userRepository.GetTheaterUser(user["member"]);
+            //TheaterMember temp = new TheaterMember() { TheaterUser = member, TheaterUserId = member.Id };
+            _theaterMemberRepository.Add(member);
             return RedirectToAction("MemberList", "TheaterMember");
         }
     }

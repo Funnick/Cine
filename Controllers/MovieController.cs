@@ -97,6 +97,7 @@ namespace Cine.Controllers
         public IActionResult MainMovies(int page = 1, string search_by = "Title", string order_by = "Title", string search = "")
         {
             IEnumerable<Movie> movies = _movieRepository.GetAllObj();
+            if (search == null) search = "";
             if (search_by == "Title") movies = movies.Where(x => x.Title.StartsWith(search));
             else if (search_by == "Country") movies = movies.Where(x => x.Country.StartsWith(search));
             else if (search_by == "Category") movies = movies.Where(x => x.Category.StartsWith(search));

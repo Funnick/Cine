@@ -84,9 +84,9 @@
         name = name.Replace(" ", "");
         
         <script> all_modals.push('@name-modal') </script>
-        <div class="@name-modal fixed w-full inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster">
-            <div class="border border-black shadow-lg modal-container bg-gray-200  w-1/2 md:max-w-11/12 mx-auto rounded-xl shadow-lg z-50 overflow-y-auto" >
-                <div class="modal-content py-4 text-left px-6  bg-cover bg-no-repeat" style="background-image:url('@item.Photo')">
+        <div class="@name-modal fixed w-full inset-0 z-50  flex justify-center items-center  animated fadeIn faster">
+            <div class="border border-black shadow-lg modal-container bg-gray-200  w-1/2 md:max-w-11/12 mx-auto rounded-xl shadow-lg z-50 " >
+                <div class="modal-content overflow-auto h-auto text-left px-6  bg-cover bg-no-repeat" style="background-image:url('@item.Photo')">
                     <!--Title-->
                     <div class="flex justify-between items-center pb-3">
                         <h1 class="text-2xl font-bold text-black">Details</h1>
@@ -100,7 +100,7 @@
                     </div>
                     <!--Body-->
                     <div class="justify-center text-black">
-                        <div class="flex flex-wrap gap-4">
+                        <div class="flex w-auto h-auto flex-wrap gap-4 ">
                             <h1 class="">Title: @item.Title</h1>
                             <h1>Genre: @item.Genre</h1>
                             <h1>Duration: @item.Duration</h1>

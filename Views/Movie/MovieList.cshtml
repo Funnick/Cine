@@ -70,14 +70,14 @@
                             </th>
                             <div id="@item.MovieId@item.Synopsis?.GetHashCode()" class="modal-wrapper">
                                 <div class="overlay close-modal"></div>
-                                <div class="modal modal-centered">
+                                <div class="modal modal-centered h-auto">
                                     <div class="modal-content shadow-lg p-5">
                                         <div class="border-b p-2 pb-3 pt-0 mb-4">
                                             <div class="flex justify-between items-center">
                                                 Synopsis
                                             </div>
                                         </div>
-                                        <p>
+                                        <p class="h-auto max-h-40 overflow-auto">
                                             @item.Synopsis
                                         </p>
                                     </div>
@@ -139,7 +139,7 @@
                         </tr>
                         <div id="@item.MovieId@item.Title" class="modal-wrapper">
                             <div class="overlay close-modal"></div>
-                            <div class="modal modal-centered">
+                            <div class="modal modal-centered h-auto">
                                 <div class="modal-content shadow-lg p-5">
                                     <div class="border-b p-2 pb-3 pt-0 mb-4">
                                         <div class="flex justify-between items-center">
@@ -148,7 +148,7 @@
                                     </div>
                                     <!-- Modal content -->
                                     <div asp-validation-summary="All">
-                                        <form method="post" id="form_id" class="w-full" asp-controller="Movie" asp-action="Update">
+                                        <form method="post" id="form_id" class="w-full overflow-auto" asp-controller="Movie" asp-action="Update">
                                             <input hidden="hidden" asp-for="MovieId" value="@item.MovieId">
                                             <div class="form-group row">
                                                 <div class="col-10">
@@ -252,7 +252,7 @@
                     </div>
                     <!-- Modal content -->
                     <div asp-validation-summary="All">
-                        <form method="post" id="form_id" class="w-full" asp-controller="Movie" asp-action="Create">
+                        <form method="post" id="form_id" class="w-full overflow-auto" asp-controller="Movie" asp-action="Create">
                             <div class="form-group row">
                                 <div class="col-10">
                                     <input class="form-control" placeholder="Title" type="text" asp-for="Title">

@@ -100,6 +100,7 @@ namespace Cine.Controllers
 
             ViewBag.Movies = movies;
             ViewBag.MoviesCount = movies == null ? 0 : movies.Count();
+
             return View();
         }
     }

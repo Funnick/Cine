@@ -14,12 +14,12 @@ namespace Cine.Controllers
 {
     public class TicketController : Controller
     {
-        private readonly IGetRepository<Ticket> _ticketRepository;
+        private readonly ITicketRepository _ticketRepository;
         private readonly IGetRepository<Discount> _discountRepository;
         private readonly IGetRepository<Show> _showRepository;
         private readonly ITheaterUserRepository _userRepository;
 
-        public TicketController(IGetRepository<Ticket> ticketRepository, 
+        public TicketController(ITicketRepository ticketRepository, 
             IGetRepository<Discount> discountRepository,
             IGetRepository<Show> showRepository,
             ITheaterUserRepository userRepository)
@@ -58,6 +58,16 @@ namespace Cine.Controllers
             ViewBag.TheaterUsers = users;
             ViewBag.TheaterUsersCount = users?.Count() ?? 0;
             return View();
+        }
+
+        public IActionResult CancelTicket(int? id)
+        {
+            _ticketRepository.Detele(id);
+            return RedirectToAction("MainProfile", "TheaterUser");
+        }
+        public IActionResult BuyedTicket(IEnumerable<Ticket> buyed)
+        {
+            return View(buyed);
         }
     }
 }

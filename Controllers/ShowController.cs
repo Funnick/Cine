@@ -85,6 +85,7 @@ namespace Cine.Controllers
                 d = _discountRepository.GetObj(show.DiscountId);
             else
                 d = null;
+            List<Ticket> buyed = new List<Ticket>();
             foreach (var s in seats)
             {
                 if (withDiscounts > 0)
@@ -100,6 +101,7 @@ namespace Cine.Controllers
                         ShowId = show.ShowId,
                     };
                     _ticketRepository.Add(newTicket);
+                    buyed.Add(newTicket);
                 }
                 else
                 {
@@ -111,6 +113,7 @@ namespace Cine.Controllers
                         ShowId = show.ShowId,
                     };
                     _ticketRepository.Add(newTicket);
+                    buyed.Add(newTicket);
                 }
             }
 
@@ -136,9 +139,11 @@ namespace Cine.Controllers
         }
 
         //Regular user view (Main)
-        public IActionResult MainShows()
+        public IActionResult MainShows(int page = 1)
         {
             IEnumerable<Show> shows = _showRepository.GetAllObj();
+            shows = shows.Where(x => x.Date > DateTime.Now);
+            shows = shows.OrderBy(x => x.Date);
             IEnumerable<Movie> movies = _movieRepository.GetAllObj();
             ViewBag.Shows = shows;
             ViewBag.ShowsCount = shows?.Count() ?? 0;

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Ticket>
+
+
+
+
+<div class="font-sans ">
+    <div class="relative min-h-screen flex flex-col sm:justify-center items-center ">
+        <div class="relative w-auto h-auto sm:max-w-sm w-full">
+            @foreach(var t in Model)
+            {
+            <div class="flex flex-row gap-2">
+                <h1>Code: @t.TicketId</h1>
+                <h1>Seat: @t.SeatNumber</h1>
+            </div>
+            }
+        </div>
+    </div>
+</div>

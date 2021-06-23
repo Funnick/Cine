@@ -94,9 +94,16 @@ namespace Cine.Controllers
             return View();
         }
         //Regular user view (Main)
-        public IActionResult MainMovies()
+        public IActionResult MainMovies(int page = 1, string search_by = "Title", string order_by = "Title", string search = "")
         {
             IEnumerable<Movie> movies = _movieRepository.GetAllObj();
+            if (search_by == "Title") movies = movies.Where(x => x.Title.StartsWith(search));
+            else if (search_by == "Country") movies = movies.Where(x => x.Country.StartsWith(search));
+            else if (search_by == "Category") movies = movies.Where(x => x.Category.StartsWith(search));
+            if (order_by == "Title") movies = movies.OrderBy(x => x.Title);
+            else if (order_by == "Year") movies = movies.OrderBy(x => x.Year);
+            else if (order_by == "Duration") movies = movies.OrderBy(x => x.Duration);
+
 
             ViewBag.Movies = movies;
             ViewBag.MoviesCount = movies == null ? 0 : movies.Count();

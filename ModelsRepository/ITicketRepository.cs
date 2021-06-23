@@ -6,5 +6,6 @@ namespace Cine.ModelsRepository
     public interface ITicketRepository : IGetRepository<Ticket>
     {
         IEnumerable<Ticket> GetShowTicekts(int showId);
+        void Detele(int? id);
     }
 }
